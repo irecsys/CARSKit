@@ -6,7 +6,7 @@
 
 Just in the past decade, some novel RS emerged, such as **context-aware recommender systems (CARS)**, group recommender systems, social recommender systems, and so on. However, the open-source recommendation engines mentioned above usually just include classical recommendation algorithms in their library without any expansion on those new type of recommender systems. One of the reasons why is that those new type of RS typically have different formats on the data and additional information is required to be incorporated into the recomendation algorithms. Therefore, it is not that easy to have those algorithms embeded in the existing toolkit.
 
-### Intro
+### Introduction
 
 In the domain of context-aware recommender systems, many contextual recommendation algorithms have been proposed and developed in the past decade. Many of them have been widely considered as baseline algorithms in this domain, but there are still no libraries to support those algorithms for evaluation purposes. **CARSKit** is a Java-based context-aware recommendation engine, and the first one specifically for the context-aware recommendation problems. It includes almost all popular context-aware recommendation algorithms (e.g., context pre-filtering, post-filtering and contextual modeling algorithms) in the toolkit. In addition, it also provides some preprocessing tools for users to convert their data to the common format in CARS.
 

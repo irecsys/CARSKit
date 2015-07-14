@@ -21,5 +21,7 @@ In terms of the context-aware recommendation algorithms, CARSKit simply divides 
 ### Release
 
 Currently, the toolki was built and tested offline. It will be released soon in 2015.
+Please consider filling out our survey on movie ratings: http://tinyurl.com/surveycars
+Relevant requests, questions or bug reports, please send emails to [recsys.carskit AT gmail.com]
 
 

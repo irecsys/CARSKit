@@ -18,6 +18,10 @@ In the domain of context-aware recommender systems, many contextual recommendati
 
 In terms of the context-aware recommendation algorithms, CARSKit simply divides it into two categories: **Transformation Algorithms** and **Adaptation Algorithms**. The transformation algorithms try to convert the mulidimensional recommendation problem into traditional 2-dimensional problem, so that the traditional recommendation algorithms can still be used. In contrast to those algorithms based on transformation algorithms, the adaptation algorithms focus on their effect on building algorithms by adapting to the multidimensional rating space. Most of the algorithms inside belong to the contextual modeling algorithms, such as Context-aware Matrix Facatorization, Tensor Factorization, Contextual Sparse Linear Method, Factorization Machines, and so forth.
 
+### Open Source
+
+The project will be hosted on Github: https://github.com/irecsys/CARSKit. But the current development and testing are performed offline, the source codes were not released on Github yet.
+
 ### Release Notes
 
 Currently, the toolki was built and tested offline. It will be released soon in 2015.

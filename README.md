@@ -21,17 +21,24 @@ In terms of the context-aware recommendation algorithms, CARSKit simply divides 
 ### Data Sets
 
 A list of context-aware data sets can be found here: http://tiny.cc/contextdata 
+Please consider filling out our survey on movie ratings: http://tinyurl.com/surveycars
 
 ### Open Source
 
 The project will be hosted on Github: https://github.com/irecsys/CARSKit. But the current development and testing are performed offline, the source codes were not released on Github yet.
 
+### Contacts
+
+Relevant requests or questions, please send emails to [recsys.carskit AT gmail.com]. For bug reports or related questions to the CARSKit itself (e.g., implementations or optimizations), please submit the ticket to this github.
+
 ### Release Notes
 
-Currently, the toolki was built and tested offline. It will be released soon in 2015.
+2015/08/25, Pre-Release
+Most algorithms (traditional recsys algorithms and context-aware recsys algorithms) have been implemented. Only a few of more changed will be made, and probably some new CARS algorithms (published in this year) will be implemented. API documents will be created, as well as a short demo. The CARSKit is almost done, and it will be released in September, 2015, estimatedly.
 
-Please consider filling out our survey on movie ratings: http://tinyurl.com/surveycars
 
-Relevant requests, questions or bug reports, please send emails to [recsys.carskit AT gmail.com]
+
+
+
 
 

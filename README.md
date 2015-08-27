@@ -29,10 +29,6 @@ Please consider filling out our survey on movie ratings: http://tinyurl.com/surv
 
 I would like to show our gratitude to Dr. Guibing Guo (the author of LibRec) for his comments and suggestions on the development of CARSKit.
 
-### Contacts
-
-Relevant requests or questions, please send emails to [recsys.carskit AT gmail.com]. For bug reports or related questions to the CARSKit itself (e.g., implementations or optimizations), please submit the ticket to this github.
-
 ### Release Notes
 
 **2015/08/25, Pre-Release**

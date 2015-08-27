@@ -32,7 +32,7 @@ I would like to show our gratitude to Dr. Guibing Guo (the author of LibRec) for
 
 **2015/08/25, Pre-Release**
 
-Most algorithms (traditional recsys algorithms and context-aware recsys algorithms) have been implemented. Only a few of more changes will be made, and probably some new CARS algorithms (published in 2015) will be implemented. API documents will be created, as well as a short demo. The CARSKit is almost done, and it will be released in September, 2015, estimatedly.
+Most algorithms (traditional recsys algorithms and context-aware recsys algorithms) have been implemented. Only a few of more changes will be made, and probably some new CARS algorithms (published in 2015) will be implemented. API documents will be created, as well as a short demo. The CARSKit is almost done, and it will be released in September, 2015, estimatedly. We will fix bugs and implement more algorithms in the following updates, and CARSKit is finally expected to be merged into LibRec.
 
 
 

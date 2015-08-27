@@ -2,7 +2,7 @@
 
 ### Introduction
 
-**CARSKit** (https://github.com/irecsys/CARSKit/) is an open-source Java-based recommendation engine, where it can be used, modified and distributed under the terms of the GNU General Public License. (Java version 1.7 or higher required). It is specifically designed for context-aware recommendations. 
+**CARSKit** (https://github.com/irecsys/CARSKit/) is an open-source Java-based context-aware recommendation engine, where it can be used, modified and distributed under the terms of the GNU General Public License. (Java version 1.7 or higher required). It is specifically designed for context-aware recommendations. 
 
 
 ### GPL License

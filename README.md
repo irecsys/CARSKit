@@ -22,8 +22,7 @@ Please cite the following papers if you use CARSKit in your research:
 
 ### Data Sets
 
-A list of context-aware data sets can be found here: http://tiny.cc/contextdata 
-
+A list of context-aware data sets can be found here: http://tiny.cc/contextdata <br/>
 Please consider filling out our survey on movie ratings: http://tinyurl.com/surveycars
 
 ### Acknowledgement

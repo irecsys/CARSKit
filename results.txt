@@ -1,0 +1,32 @@
+WorkingPath: C:\Users\irecs\Desktop\CARSKit_backup\CARSKit.Workspace\
+Your original rating data path: C:\Users\irecs\Desktop\CARSKit_backup\ratings_food.txt
+Current working path: C:\Users\irecs\Desktop\CARSKit_backup\CARSKit.Workspace\
+Data transformaton completed (from Compact to Binary format). See new rating file: C:\Users\irecs\Desktop\CARSKit_backup\CARSKit.Workspace\ratings_binary.txt
+Dataset: ...ARSKit.Workspace\ratings_binary.txt
+DataPath: C:\Users\irecs\Desktop\CARSKit_backup\CARSKit.Workspace\ratings_binary.txt
+Rating data set has been successfully loaded.
+
+/************************************************************************************
+ *
+ * Dataset: C:\Users\irecs\Desktop\CARSKit_backup\CARSKit.Workspace\ratings_binary.txt
+ * User amount: 212
+ * Item amount: 20
+ * Rate amount: 6360
+ * Context dimensions: 2 (realsituation, virtualsituation)
+ * Context conditions: 8 (realsituation: 4, virtualsituation: 4)
+ * Context situations: 9
+ * Contextual Data density: 75.0000%
+ * Scale distribution: [3.0 x 2192, 2.0 x 1570, 1.0 x 1356, 4.0 x 613, 5.0 x 629]
+ * 
+ * Average value of all ratings: 2.620912
+ * Standard deviation of all ratings: 1.203312
+ * Mode of all rating values: 3.000000
+ * Median of all rating values: 3.000000
+ *
+ ************************************************************************************/
+Dataset: ...ARSKit.Workspace\ratings_binary.txt
+DataPath: C:\Users\irecs\Desktop\CARSKit_backup\CARSKit.Workspace\ratings_binary.txt
+Rating data set has been successfully loaded.
+With Setup: cv -k 5 -p on --rand-seed 1 --test-view all
+Final Results by CAMF_ICS, MAE: 1.620912, RMSE: 2.018717, NAME: 0.405228, rMAE: 1.620912, rRMSE: 2.018717, MPE: 0.000000, numFactors: 10, numIter: 120, lrate: 2.0E-10, maxlrate: -1.0, regB: 0.001, regU: 0.001, regI: 0.001, regC: 0.001, isBoldDriver: true, Time: '00:03','00:00'
+

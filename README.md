@@ -44,6 +44,16 @@ I would like to show our gratitude to Dr. Guibing Guo (the author of LibRec) for
 ### Release Notes
 ------------------
 
+**2015/09/25, Initial Release Version 0.1.0**
+Today is the day -- iPhone 6S/6S+ is released for sales and we have the initial release for CARSKit.
+
+* **Notes and updates**: This is the initial release. Most algorithms and functions have been completed except the tensor factorization (TF). For its implementations, please refer to the latest version of LibRec.
+* **To-Do List**: 
+  - integrate TF with CARSkit; 
+  - create user guide; 
+  - generate a demo; 
+  - incorporate more recommendation algorithms, such as post-filtering ones, etc
+
 **2015/08/25, Pre-Release**
 
 Most algorithms (traditional recsys algorithms and context-aware recsys algorithms) have been implemented. Only a few of more changes will be made, and probably some new CARS algorithms (published in 2015) will be implemented. API documents will be created, as well as a short demo. The CARSKit is almost done, and it will be released in September, 2015, estimatedly. We will fix bugs and implement more algorithms in the following updates, and CARSKit is finally expected to be merged into LibRec.

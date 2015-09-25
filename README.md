@@ -34,6 +34,15 @@ Please cite the following papers if you use CARSKit in your research:
 
 A list of context-aware data sets can be found here: http://tiny.cc/contextdata <br/>
 
+### User Guide
+--------------
+
+Comming soon...
+
+ - **Data Preparation**
+ - **Configuration**
+ - **Evaluations**
+
 ### Acknowledgement
 --------------------
 

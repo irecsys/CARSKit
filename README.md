@@ -1,7 +1,5 @@
 # CARSKit
 
-<b style='color:red'>CARSKit will be released in Sep, 2015</b>
-
 ### Introduction
 -------------------
 

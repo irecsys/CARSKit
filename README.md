@@ -55,7 +55,7 @@ I would like to show our gratitude to Dr. Guibing Guo (the author of LibRec) for
 
 Today is the day -- iPhone 6S/6S+ is released for sales and we have the initial release for CARSKit.
 
-* **Notes and updates**: This is the initial release. Most algorithms and functions have been completed except the tensor factorization (TF). For its implementations, please refer to the latest version of LibRec.
+* **Notes and updates**: This is the initial release. Most algorithms and functions have been completed except the tensor factorization (TF). For TF, please refer to the latest version of LibRec.
 * **To-Do List**: 
   - integrate TF with CARSkit; 
   - create user guide; 

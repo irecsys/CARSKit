@@ -1,1 +1,0 @@
-Final Results by CAMF_ICS, MAE: 1.620912, RMSE: 2.018717, NAME: 0.405228, rMAE: 1.620912, rRMSE: 2.018717, MPE: 0.000000, numFactors: 10, numIter: 120, lrate: 2.0E-10, maxlrate: -1.0, regB: 0.001, regU: 0.001, regI: 0.001, regC: 0.001, isBoldDriver: true, Time: '00:03','00:00'

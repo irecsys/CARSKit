@@ -54,6 +54,15 @@ I would like to show our gratitude to Dr. Guibing Guo (the author of LibRec) for
 ### Release Notes
 ------------------
 
+**2015/11/11, Version 0.2.0 (Coming Soon)**
+* **What's New**:
+ - add Tensor Factorization into CARSKit
+ - optimizer the coding
+ - probably add some post-filtering algorithms
+* **To-Do List**: 
+  - preparation to integrate with LibRec
+  - may implement more context-aware recommendation algorithms
+
 **2015/09/25, Initial Release Version 0.1.0**
 
 Today is the day -- iPhone 6S/6S+ is released for sales and we have the initial release for CARSKit.

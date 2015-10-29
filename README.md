@@ -29,6 +29,8 @@ Please cite the following papers if you use CARSKit in your research:
 
 1. Yong Zheng, Bamshad Mobasher, Robin Burke. "CARSKit: A Java-Based Context-aware Recommendation Engine", Proceedings of the 15th IEEE International Conference on Data Mining (ICDM) Workshops, Atlantic City, NJ, USA, Nov 2015
 
+If you use CARSKit in your research papers, please let us know. And I will create a list of publications using this toolkit.
+
 ### Downloads
 * **[CARSKit-v0.1.0.jar](https://raw.githubusercontent.com/irecsys/CARSKit/master/jar/CARSKit-v0.1.0.jar)**
 

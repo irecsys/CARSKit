@@ -57,7 +57,7 @@ I would like to show our gratitude to Dr. Guibing Guo (the author of LibRec) for
 **2015/11/11, Version 0.2.0 (Coming Soon)**
 * **What's New**:
  - add Tensor Factorization into CARSKit
- - optimizer the coding
+ - optimize the coding
  - probably add some post-filtering algorithms
 * **To-Do List**: 
   - preparation to integrate with LibRec

@@ -18,13 +18,16 @@
 
 package carskit.generic;
 
-import java.util.List;
+import java.util.*;
 
+import carskit.data.structure.SparseMatrix;
+import librec.data.SparseTensor;
 import librec.data.Configuration;
 import librec.data.MatrixEntry;
-import librec.data.SparseMatrix;
-import librec.data.SparseTensor;
+import librec.data.TensorEntry;
 import happy.coding.io.Strings;
+import happy.coding.io.FileIO;
+import happy.coding.io.Logs;
 
 /**
  * Interface for tensor recommenders
@@ -33,8 +36,9 @@ import happy.coding.io.Strings;
  *
  */
 
+
 @Configuration("factors, lRate, maxLRate, reg, iters, boldDriver")
-public class TensorRecommender extends librec.intf.IterativeRecommender {
+public class TensorRecommender extends IterativeRecommender {
 
     /* for all tensors */
     protected static SparseTensor rateTensor;
@@ -56,6 +60,7 @@ public class TensorRecommender extends librec.intf.IterativeRecommender {
     public TensorRecommender(SparseMatrix trainMatrix, SparseMatrix testMatrix, int fold) throws Exception {
         super(trainMatrix, testMatrix, fold);
 
+
         // construct train and test data
         trainTensor = rateTensor.clone();
         testTensor = new SparseTensor(dimensions);
@@ -63,8 +68,9 @@ public class TensorRecommender extends librec.intf.IterativeRecommender {
         testTensor.setItemDimension(itemDimension);
 
         for (MatrixEntry me : testMatrix) {
-            int u = me.row();
-            int i = me.column();
+            int ui = me.row();
+            int u=rateDao.getUserIdFromUI(ui);
+            int i=rateDao.getItemIdFromUI(ui);
 
             List<Integer> indices = rateTensor.getIndices(u, i);
 
@@ -76,9 +82,23 @@ public class TensorRecommender extends librec.intf.IterativeRecommender {
         }
     }
 
-    @Override
-    public String toString() {
-        return Strings.toString(new Object[] { numFactors, initLRate, maxLRate, reg, numIters, isBoldDriver });
+    public int[] getKeys(int u, int i, int c){
+        int[] keys = new int[numDimensions];
+        keys[0] = u;
+        keys[1] = i;
+        HashMap<Integer, ArrayList<Integer>> dimensionConditionsList =rateDao.getDimensionConditionsList();
+        ArrayList<Integer> conds=rateDao.getContextConditionsList().get(c);
+        //System.out.println(Arrays.toString(conds.toArray()));
+        int start=-1;
+        for(int k=0;k<conds.size();++k){
+            int condId = conds.get(k);
+            int index = dimensionConditionsList.get(++start).indexOf(condId);
+            if(index==-1)
+                Logs.error("Index == -1: dimId = "+start+", condId = "+condId);
+            keys[2+start] = index;
+        }
+        return keys;
     }
+
 
 }

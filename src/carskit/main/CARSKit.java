@@ -24,6 +24,7 @@ import carskit.alg.baseline.ranking.*;
 import carskit.alg.cars.adaptation.dependent.FM;
 import carskit.alg.cars.adaptation.dependent.dev.*;
 import carskit.alg.cars.adaptation.dependent.sim.*;
+import carskit.alg.cars.adaptation.independent.CPTF;
 import carskit.alg.cars.transformation.prefiltering.splitting.UserSplitting;
 import com.google.common.collect.*;
 
@@ -310,7 +311,7 @@ public class CARSKit {
             case "test-set":
                 DataDAO testDao = new DataDAO(evalOptions.getString("-f"), rateDao.getUserIds(), rateDao.getItemIds(), rateDao.getContextIds(), rateDao.getUserItemIds(),
                         rateDao.getContextDimensionIds(), rateDao.getContextConditionIds(), rateDao.getURatedList(), rateDao.getIRatedList(),
-                        rateDao.getDimConditionsList(), rateDao.getConditionDimensionsList(), rateDao.getConditionContextsList(), rateDao.getContextConditionsList(),
+                        rateDao.getDimConditionsList(), rateDao.getConditionDimensionMap(), rateDao.getConditionContextsList(), rateDao.getContextConditionsList(),
                         rateDao.getUiUserIds(), rateDao.getUiItemIds());
 
                 SparseMatrix testData = testDao.readData(binThold);
@@ -390,6 +391,7 @@ public class CARSKit {
         // average performance of k-fold
         Map<Measure, Double> avgMeasure = new HashMap<>();
         for (Recommender algo : algos) {
+            //Logs.info("Measures: "+algo.measures.entrySet().size());
             for (Entry<Measure, Double> en : algo.measures.entrySet()) {
                 Measure m = en.getKey();
                 double val = avgMeasure.containsKey(m) ? avgMeasure.get(m) : 0.0;
@@ -641,6 +643,13 @@ public class CARSKit {
                     recsys.setIdMappers(userIdMapper, itemIdMapper);
                     return recsys;
                 }
+            }
+
+            ///////// Context-aware recommender: Tensor Factorization //////////////////////////////////////////////////////////
+            case "cptf":
+            {
+                rateDao.LoadAsTensor();
+                return new CPTF(trainMatrix, testMatrix, fold);
             }
 
             ///////// Context-aware recommender: CAMF //////////////////////////////////////////////////////////

@@ -838,6 +838,21 @@ public abstract class Recommender implements Runnable{
         return measures;
     }
 
+    /**
+     * determine whether the rating of a user-item (u, j) is used to predicted
+     *
+     */
+    protected boolean isTestable(int u, int j) {
+        String uiid=u+","+j;
+        int rowid=rateDao.getUserItemId(uiid);
+        switch (view) {
+            case "cold-start":
+                return trainMatrix.rowSize(rowid) < 5 ? true : false;
+            case "all":
+            default:
+                return true;
+        }
+    }
 
     /**
      *

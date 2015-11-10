@@ -30,7 +30,7 @@ import java.io.File;
 import java.util.*;
 
 import carskit.data.structure.SparseMatrix;
-import carskit.data.structure.SparseTensor;
+import librec.data.SparseTensor;
 
 import com.google.common.collect.BiMap;
 import com.google.common.collect.HashBasedTable;
@@ -80,9 +80,10 @@ public class DataDAO {
     private BiMap<Integer, String> idUsers, idItems, idCtx, idUIs, idDims, idConds;
 
     // u--> ui1, ui3, ui4,,,; i--> u1i,u3i,u4i,...
-    private Multimap<Integer, Integer> uRatedList, iRatedList, dimConditionsList, condDimensionsList, condContextsList, contextConditionsList;
+    private Multimap<Integer, Integer> uRatedList, iRatedList, dimConditionsList, condContextsList;
 
-    private HashMap<Integer, Integer> uiUserIds, uiItemIds;
+    private HashMap<Integer, Integer> uiUserIds, uiItemIds, condDimensionMap;
+    private HashMap<Integer,  ArrayList<Integer>> dimensionConditionsList, contextConditionsList;
 
     private ArrayList<Integer> EmptyContextConditions;
 
@@ -95,8 +96,8 @@ public class DataDAO {
      */
     public DataDAO(String path, BiMap<String, Integer> userIds, BiMap<String, Integer>itemIds, BiMap<String, Integer> ctxIds, BiMap<String, Integer> uiIds,
                    BiMap<String, Integer> dimIds, BiMap<String, Integer> condIds, Multimap<Integer, Integer> uRatedList, Multimap<Integer, Integer> iRatedList,
-                   Multimap<Integer, Integer> dimConditionsList, Multimap<Integer, Integer> condDimensionsList, Multimap<Integer, Integer> condContextsList,
-                   Multimap<Integer, Integer> contextConditionsList, HashMap<Integer, Integer> uiUserIds, HashMap<Integer, Integer>  uiItemIds) {
+                   Multimap<Integer, Integer> dimConditionsList, HashMap<Integer, Integer> condDimensionMap, Multimap<Integer, Integer> condContextsList,
+                   HashMap<Integer,  ArrayList<Integer>> contextConditionsList, HashMap<Integer, Integer> uiUserIds, HashMap<Integer, Integer>  uiItemIds) {
         dataPath = path;
 
         this.userIds = (userIds==null) ? HashBiMap.create() : (HashBiMap)userIds;
@@ -109,12 +110,12 @@ public class DataDAO {
         this.uRatedList = (uRatedList==null) ? HashMultimap.create() : (HashMultimap)uRatedList;
         this.iRatedList = (iRatedList==null) ? HashMultimap.create() : (HashMultimap)iRatedList;
         this.dimConditionsList = (dimConditionsList==null) ? HashMultimap.create() : (HashMultimap)dimConditionsList;
-        this.condDimensionsList = (condDimensionsList==null) ? HashMultimap.create() : (HashMultimap)condDimensionsList;
         this.condContextsList = (condContextsList==null) ? HashMultimap.create() : (HashMultimap)condContextsList;
-        this.contextConditionsList = (contextConditionsList==null) ? HashMultimap.create() : (HashMultimap)contextConditionsList;
+        this.contextConditionsList = (contextConditionsList==null) ? new HashMap<Integer,  ArrayList<Integer>>() : (HashMap<Integer,  ArrayList<Integer>>)contextConditionsList;
 
         this.uiUserIds = (uiUserIds==null)?new HashMap<>():(HashMap)uiUserIds;
         this.uiItemIds = (uiItemIds==null)?new HashMap<>():(HashMap)uiItemIds;
+        this.condDimensionMap = (condDimensionMap==null)?new HashMap<>():(HashMap)condDimensionMap;
 
         scaleDist = HashMultiset.create();
     }
@@ -163,11 +164,11 @@ public class DataDAO {
             String context=data[i].trim();
             String[] cs=context.split(":");
             String dim=cs[0].trim();
-            int dimc = dimIds.containsKey(dim) ? dimIds.get(dim) : dimIds.size();
+            int dimc = dimIds.containsKey(dim) ? dimIds.get(dim) : dimIds.size(); // hash dimension Ids, from 0 to N
             dimIds.put(dim,dimc);
             condIds.put(context,i-3);
             dimConditionsList.put(dimc,i-3);
-            condDimensionsList.put(i-3,dimc);
+            condDimensionMap.put(i-3,dimc); // key = condId, value = dimId
 
             // record which conditions are the empty contexts, i.e., the condition value = NA
             if(context.endsWith(":na"))
@@ -224,16 +225,19 @@ public class DataDAO {
                 }
             }
             String ctx=sb_ctx.toString();
+            // inner id starting from 0
             int cc=ctxIds.containsKey(ctx) ? ctxIds.get(ctx) : ctxIds.size();
             ctxIds.put(ctx, cc);
-            for(Integer cond:condList)
-                contextConditionsList.put(cc,cond);
-            for(Integer cond:condList)
-                    this.condContextsList.put(cond,cc);
+            contextConditionsList.put(cc, condList);
+            for(Integer cond:condList) {
+                //contextConditionsList.put(cc, cond);
+                this.condContextsList.put(cond, cc);
+            }
+
             //System.out.println(useritem+"; "+ctx+"; "+rate);
 
             dataTable.put(uic, cc, rate); // useritem, ctx, rating
-            colMap.put(cc,uic);
+            colMap.put(cc, uic);
 
         }
         br.close();
@@ -249,133 +253,87 @@ public class DataDAO {
         // release memory of data table
         dataTable = null;
 
-        Logs.info("Rating data set has been successfully loaded.");
+            Logs.info("Rating data set has been successfully loaded.");
         return rateMatrix;
     }
 
+    public HashMap<Integer, ArrayList<Integer>> getDimensionConditionsList()
+    {
+        return this.dimensionConditionsList;
+    }
 
     /**
-     * Read data from the data file. Note that we didn't take care of the duplicated lines.
-     *
-     * @param cols
-     *            the indexes of the relevant columns in the data file: {user, item, rating}, other columns are treated
-     *            as features
-     * @param binThold
-     *            the threshold to binarize a rating. If a rating is greater than the threshold, the value will be 1;
-     *            otherwise 0. To disable this feature, i.e., keep the original rating value, set the threshold a
-     *            negative value
-     * @return a sparse tensor storing all the relevant data
+     * Convert loaded SparseMatrix to SparseTensor
      */
-    @SuppressWarnings("unchecked")
-    public librec.data.SparseMatrix[] readTensor(int[] cols, double binThold) throws Exception {
 
-        if (cols.length < 3)
-            throw new Exception("Column length cannot be smaller than 3. Usage: user, item, rating columns.");
-
-        Logs.info(String.format("Dataset: %s", Strings.last(dataPath, 38)));
-
-        int[] dims = null;
-        int numDims = 0;
-        List<Integer>[] ndLists = null;
-        Set<Integer>[] ndSets = null;
+    public SparseTensor toSparseTensor(SparseMatrix sm)
+    {
+        int numDims=2+this.numContextDims();
+        int[] dims = new int[numDims];
+        List<Integer>[] ndLists = (List<Integer>[]) new List<?>[numDims];
+        Set<Integer>[] ndSets = (Set<Integer>[]) new Set<?>[numDims];
         List<Double> vals = new ArrayList<Double>();
-
-        BufferedReader br = FileIO.getReader(dataPath);
-        String line = null;
-        while ((line = br.readLine()) != null) {
-            if (isHeadline()) {
-                setHeadline(false);
-                continue;
-            }
-
-            String[] data = line.trim().split("[ \t,]+");
-
-            // initialization
-            if (dims == null) {
-                numDims = data.length - 1;
-                dims = new int[numDims];
-                ndLists = (List<Integer>[]) new List<?>[numDims];
-                ndSets = (Set<Integer>[]) new Set<?>[numDims];
-                for (int d = 0; d < numDims; d++) {
-                    ndLists[d] = new ArrayList<Integer>();
-                    ndSets[d] = new HashSet<Integer>();
-                }
-            }
-
-            // set data
-            for (int d = 0; d < data.length; d++) {
-                String val = data[d];
-                int feature = -1;
-
-                if (d == cols[0]) {
-                    // user
-                    feature = userIds.containsKey(val) ? userIds.get(val) : userIds.size();
-                    userIds.put(val, feature);
-
-                } else if (d == cols[1]) {
-                    // item
-                    feature = itemIds.containsKey(val) ? itemIds.get(val) : itemIds.size();
-                    itemIds.put(val, feature);
-
-                } else if (d == cols[2]) {
-                    // rating
-                    double rate = Double.parseDouble(val);
-
-                    // binarize the rating for item recommendation task
-                    if (binThold >= 0)
-                        rate = rate > binThold ? 1.0 : 0.0;
-
-                    vals.add(rate);
-                    scaleDist.add(rate);
-
-                    continue;
-                } else {
-                    // other: val as feature value
-                    feature = val.equalsIgnoreCase("na") ? 0 : Integer.parseInt(val);
-                }
-
-                int dim = d > cols[2] ? d - 1 : d;
-                ndLists[dim].add(feature);
-                ndSets[dim].add(feature);
-            }
-        }
-        br.close();
-
-        numRatings = scaleDist.size();
-        ratingScale = new ArrayList<>(scaleDist.elementSet());
-        Collections.sort(ratingScale);
-
-        // if min-rate = 0.0, shift upper a scale
-        double minRate = ratingScale.get(0).doubleValue();
-        double epsilon = minRate == 0.0 ? ratingScale.get(1).doubleValue() - minRate : 0;
-        if (epsilon > 0) {
-            // shift upper a scale
-            for (int i = 0, im = ratingScale.size(); i < im; i++) {
-                double val = ratingScale.get(i);
-                ratingScale.set(i, val + epsilon);
-            }
-            // update rating values
-            for (int i = 0; i < vals.size(); i++) {
-                vals.set(i, vals.get(i) + epsilon);
-            }
+        for (int d = 0; d < numDims; d++) {
+            ndLists[d] = new ArrayList<Integer>();
+            ndSets[d] = new HashSet<Integer>();
         }
 
-        // get dimensions
-        int numRows = numUsers(), numCols = numItems();
+        dimensionConditionsList=new HashMap<>();
+
+        for(librec.data.MatrixEntry me:sm){
+            int rowid=me.row();
+            int ctxid=me.column();
+            double rate=me.get();
+            int uid=getUserIdFromUI(rowid);
+            int iid=getItemIdFromUI(rowid);
+
+
+            vals.add(rate);
+            ndLists[0].add(uid); // user dimension
+            ndSets[0].add(uid);
+            ndLists[1].add(iid); // item dimension
+            ndSets[1].add(iid);
+
+            // start recording context dimensions
+            Collection<Integer> listOfConditions=contextConditionsList.get(ctxid);
+            for(int condId: listOfConditions){
+                int dimId = condDimensionMap.get(condId);
+                int index_condId=-1;
+                if(dimensionConditionsList.containsKey(dimId)){
+                    ArrayList<Integer> list=dimensionConditionsList.get(dimId);
+                    index_condId=list.indexOf(condId);
+                    if(index_condId==-1)
+                        list.add(condId);
+                    index_condId=list.size()-1;
+                    dimensionConditionsList.put(dimId, list);
+                }else
+                {
+                    ArrayList<Integer> list=new  ArrayList<>();
+                    list.add(condId);
+                    dimensionConditionsList.put(dimId,list);
+                    index_condId=0;
+                }
+                ndLists[2+dimId].add(index_condId); // since user and item dimensions are the first two dimensions
+                ndSets[2+dimId].add(index_condId);
+            }
+        }
         for (int d = 0; d < numDims; d++) {
             dims[d] = ndSets[d].size();
         }
-
-        // debug info
-        Logs.debug("With Specs: {Users, Items, Ratings, Features} = {{}, {}, {}, {}}, Scale = {{}}", numRows, numCols,
-                numRatings, (numDims - 2), Strings.toString(ratingScale));
-
-        rateTensor = new SparseTensor(dims, ndLists, vals);
-        rateTensor.setUserDimension(cols[0]);
-        rateTensor.setItemDimension(cols[1]);
-
-        return new librec.data.SparseMatrix[] { rateTensor.rateMatrix(), null };
+        SparseTensor st = new SparseTensor(dims, ndLists, vals);
+        st.setUserDimension(0);
+        st.setItemDimension(1);
+        return st;
     }
+
+    /**
+     * Load data as SparseTensor
+     */
+    public void LoadAsTensor()
+    {
+        rateTensor = this.toSparseTensor(rateMatrix);
+    }
+
     /**
      * write the rate data to another data file given by the path {@code toPath}
      *
@@ -624,7 +582,7 @@ public class DataDAO {
      * @return inner dimension id as int
      */
     public int getDimensionByConditionId(int innerId){
-        return this.condDimensionsList.get(innerId).iterator().next();
+        return this.condDimensionMap.get(innerId);
     }
 
     /**
@@ -800,9 +758,9 @@ public class DataDAO {
     public Multimap<Integer, Integer> getURatedList(){return this.uRatedList;}
     public Multimap<Integer, Integer> getIRatedList(){return this.iRatedList;}
     public Multimap<Integer, Integer> getDimConditionsList(){return this.dimConditionsList;}
-    public Multimap<Integer, Integer> getConditionDimensionsList(){return this.condDimensionsList;}
+    public HashMap<Integer, Integer> getConditionDimensionMap(){return this.condDimensionMap;}
     public Multimap<Integer, Integer> getConditionContextsList(){return this.condContextsList;}
-    public Multimap<Integer, Integer> getContextConditionsList(){return this.contextConditionsList;}
+    public HashMap<Integer,  ArrayList<Integer>> getContextConditionsList(){return this.contextConditionsList;}
     public ArrayList<Integer> getEmptyContextConditions(){return this.EmptyContextConditions;}
 
     public int getUserIdFromUI(int uiid)

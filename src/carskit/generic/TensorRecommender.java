@@ -32,7 +32,7 @@ import happy.coding.io.Logs;
 /**
  * Interface for tensor recommenders
  *
- * @author Guo Guibing
+ * @author Yong Zheng
  *
  */
 

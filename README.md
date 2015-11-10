@@ -32,6 +32,7 @@ Please cite the following papers if you use CARSKit in your research:
 If you use CARSKit in your research papers, please let us know. And I will create a list of publications using this toolkit.
 
 ### Downloads
+* **[CARSKit-v0.2.0.jar](https://raw.githubusercontent.com/irecsys/CARSKit/master/jar/CARSKit-v0.2.0.jar)**
 * **[CARSKit-v0.1.0.jar](https://raw.githubusercontent.com/irecsys/CARSKit/master/jar/CARSKit-v0.1.0.jar)**
 
 ### Data Sets
@@ -56,14 +57,15 @@ I would like to show our gratitude to Dr. Guibing Guo (the author of LibRec) for
 ### Release Notes
 ------------------
 
-**2015/11/11, Version 0.2.0 (Coming Soon)**
+**2015/11/09, Version 0.2.0**
 * **What's New**:
- - add Tensor Factorization into CARSKit
+ - add Tensor Factorization (CPTF) into CARSKit
+ - update API documents and the configuration file setting.conf
+ - release user's guide, "A User's Guide to CARSKit"
  - optimize the coding
- - probably add some post-filtering algorithms
 * **To-Do List**: 
   - preparation to integrate with LibRec
-  - may implement more context-aware recommendation algorithms
+  - add some post-filtering algorithms to the kit
 
 **2015/09/25, Initial Release Version 0.1.0**
 

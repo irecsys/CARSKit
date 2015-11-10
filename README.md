@@ -40,7 +40,7 @@ If you use CARSKit in your research papers, please let us know. And I will creat
 
 A list of context-aware data sets can be found here: http://tiny.cc/contextdata <br/>
 
-### User Guide
+### User's Guide
 --------------
 
 Comming soon...
@@ -64,8 +64,9 @@ I would like to show our gratitude to Dr. Guibing Guo (the author of LibRec) for
  - release user's guide, "A User's Guide to CARSKit"
  - optimize the coding
 * **To-Do List**: 
-  - preparation to integrate with LibRec
   - add some post-filtering algorithms to the kit
+  - preparation to integrate with LibRec
+
 
 **2015/09/25, Initial Release Version 0.1.0**
 

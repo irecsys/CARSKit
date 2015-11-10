@@ -65,6 +65,8 @@ I would like to show our gratitude to Dr. Guibing Guo (the author of LibRec) for
  - optimize the coding
 * **To-Do List**: 
   - add some post-filtering algorithms to the kit
+  - some package names may be changed to make sure the kit is well-organized
+  - invite some colleagues to add more context-aware recsys algorithms to the kit
   - preparation to integrate with LibRec
 
 

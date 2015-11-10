@@ -54,10 +54,10 @@ public class UISplitting implements ContextualSplitting {
     public UISplitting(int startIdu, int startIdi, Multimap<Integer, Integer> condContextsList,
                        Multimap<Integer, Integer> userRatingList, Multimap<Integer, Integer> itemRatingList)
     {
-        this.startId_u=startIdu;
-        this.startId_i=startIdi;
-        this.userRatingList=userRatingList;
-        this.itemRatingList=itemRatingList;
-        this.condContextsList=condContextsList;
+        startId_u=startIdu;
+        startId_i=startIdi;
+        UISplitting.userRatingList =userRatingList;
+        UISplitting.itemRatingList =itemRatingList;
+        UISplitting.condContextsList =condContextsList;
     }
 }

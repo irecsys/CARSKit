@@ -107,9 +107,9 @@ public class UserSplitting implements ContextualSplitting {
 
     public UserSplitting(int startId, Multimap<Integer, Integer> condContextsList, Multimap<Integer, Integer> userRatingList)
     {
-        this.startId=startId;
-        this.userRatingList=userRatingList;
-        this.condContextsList=condContextsList;
+        UserSplitting.startId =startId;
+        UserSplitting.userRatingList =userRatingList;
+        UserSplitting.condContextsList =condContextsList;
     }
 
 }

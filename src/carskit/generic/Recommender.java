@@ -464,7 +464,7 @@ public abstract class Recommender implements Runnable{
         if (isResultsOut) {
             preds = new ArrayList<String>(1500);
             preds.add("userId\titemId\tcontexts\trating\tprediction"); // optional: file header
-            toFile = this.workingPath + algoName + "-rating-predictions" + foldInfo + ".txt"; // the output-file name
+            toFile = workingPath + algoName + "-rating-predictions" + foldInfo + ".txt"; // the output-file name
             FileIO.deleteFile(toFile); // delete possibly old files
         }
 
@@ -646,8 +646,8 @@ public abstract class Recommender implements Runnable{
         if (isResultsOut) {
             preds = new ArrayList<String>(1500);
             preds.add("# userId: recommendations in (itemId, ranking score) pairs, where a correct recommendation is denoted by symbol *."); // optional: file header
-            toFile = this.workingPath
-                    + String.format("%s-top-%d-items%s.txt", new Object[] { algoName, numTopNRanks, foldInfo }); // the output-file name
+            toFile = workingPath
+                    + String.format("%s-top-%d-items%s.txt", algoName, numTopNRanks, foldInfo); // the output-file name
             FileIO.deleteFile(toFile); // delete possibly old files
         }
 

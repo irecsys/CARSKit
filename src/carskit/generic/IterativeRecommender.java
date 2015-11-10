@@ -170,12 +170,12 @@ public abstract class IterativeRecommender extends Recommender {
 
             String earlyStop = "";
             if (earlyStopMeasure != null && earlyStopMeasure != Measure.Loss) {
-                earlyStop = String.format(", %s = %.6f, delta_%s = %.6f", new Object[] { earlyStopMeasure,
-                        (float) measure, earlyStopMeasure, delta_measure });
+                earlyStop = String.format(", %s = %.6f, delta_%s = %.6f", earlyStopMeasure,
+                        (float) measure, earlyStopMeasure, delta_measure);
             }
 
-            Logs.debug("{}{} iter {}: loss = {}, delta_loss = {}{}{}", new Object[] { algoName, foldInfo, iter,
-                    (float) loss, delta_loss, earlyStop, learnRate });
+            Logs.debug("{}{} iter {}: loss = {}, delta_loss = {}{}{}", algoName, foldInfo, iter,
+                    (float) loss, delta_loss, earlyStop, learnRate);
         }
 
         if (Double.isNaN(loss) || Double.isInfinite(loss)) {
@@ -248,7 +248,7 @@ public abstract class IterativeRecommender extends Recommender {
 
     protected void saveModel() throws Exception {
         // make a folder
-        String dirPath = FileIO.makeDirectory(this.workingPath, algoName);
+        String dirPath = FileIO.makeDirectory(workingPath, algoName);
 
         // suffix info
         String suffix = foldInfo + ".bin";
@@ -272,7 +272,7 @@ public abstract class IterativeRecommender extends Recommender {
 
     protected void loadModel() throws Exception {
         // make a folder
-        String dirPath = FileIO.makeDirectory(this.workingPath, algoName);
+        String dirPath = FileIO.makeDirectory(workingPath, algoName);
 
         Logs.debug("A recommender model is loaded from {}", dirPath);
 

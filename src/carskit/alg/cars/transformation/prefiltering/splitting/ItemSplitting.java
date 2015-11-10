@@ -105,9 +105,9 @@ public class ItemSplitting implements ContextualSplitting {
 
     public ItemSplitting(int startId, Multimap<Integer, Integer> condContextsList, Multimap<Integer, Integer> itemRatingList)
     {
-        this.startId=startId;
-        this.itemRatingList=itemRatingList;
-        this.condContextsList=condContextsList;
+        ItemSplitting.startId =startId;
+        ItemSplitting.itemRatingList =itemRatingList;
+        ItemSplitting.condContextsList =condContextsList;
     }
 
 

@@ -111,7 +111,7 @@ public class DataDAO {
         this.iRatedList = (iRatedList==null) ? HashMultimap.create() : (HashMultimap)iRatedList;
         this.dimConditionsList = (dimConditionsList==null) ? HashMultimap.create() : (HashMultimap)dimConditionsList;
         this.condContextsList = (condContextsList==null) ? HashMultimap.create() : (HashMultimap)condContextsList;
-        this.contextConditionsList = (contextConditionsList==null) ? new HashMap<Integer,  ArrayList<Integer>>() : (HashMap<Integer,  ArrayList<Integer>>)contextConditionsList;
+        this.contextConditionsList = (contextConditionsList==null) ? new HashMap<Integer,  ArrayList<Integer>>() : contextConditionsList;
 
         this.uiUserIds = (uiUserIds==null)?new HashMap<>():(HashMap)uiUserIds;
         this.uiItemIds = (uiItemIds==null)?new HashMap<>():(HashMap)uiItemIds;

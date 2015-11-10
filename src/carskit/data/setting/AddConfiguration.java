@@ -37,8 +37,8 @@ import java.lang.annotation.Target;
 public @interface AddConfiguration {
 
     /* add more configurations before the main configuration */
-    public String before() default "";
+    String before() default "";
 
     /* add more configurations after the main configuration */
-    public String after() default "";
+    String after() default "";
 }

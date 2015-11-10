@@ -38,5 +38,5 @@ import java.lang.annotation.Target;
 @Inherited
 public @interface Configuration {
 
-    public String value() default "";
+    String value() default "";
 }

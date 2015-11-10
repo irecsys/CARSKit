@@ -31,5 +31,5 @@ import carskit.data.structure.SparseMatrix;
 
 public interface ContextualSplitting {
 
-    public Table<Integer, Integer, Integer> split(SparseMatrix sm, int min);
+    Table<Integer, Integer, Integer> split(SparseMatrix sm, int min);
 }

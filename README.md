@@ -42,12 +42,7 @@ A list of context-aware data sets can be found here: http://tiny.cc/contextdata 
 
 ### User's Guide
 --------------
-
-Comming soon...
-
- - **Data Preparation**
- - **Configuration**
- - **Evaluations**
+The guide can be found and downloaded from http://arxiv.org/abs/1511.03780
 
 ### Acknowledgement
 --------------------

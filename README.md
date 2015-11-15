@@ -42,7 +42,8 @@ A list of context-aware data sets can be found here: http://tiny.cc/contextdata 
 
 ### User's Guide
 --------------
-The guide can be found and downloaded from http://arxiv.org/abs/1511.03780
+The guide can be found and downloaded from http://arxiv.org/abs/1511.03780<br/>
+Note: if there are missing values or EMPTY values in the context information, you should mark those values as NA (i.e., Not Available) which will be viewed as a special context condition in the data.
 
 ### Acknowledgement
 --------------------

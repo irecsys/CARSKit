@@ -59,11 +59,6 @@ I would like to show our gratitude to Dr. Guibing Guo (the author of LibRec) for
  - update API documents and the configuration file setting.conf
  - release user's guide, "A User's Guide to CARSKit"
  - optimize the coding
-* **To-Do List**: 
-  - add some post-filtering algorithms to the kit
-  - some package names may be changed to make sure the kit is well-organized
-  - invite some colleagues to add more context-aware recsys algorithms to the kit
-  - preparation to integrate with LibRec
 
 
 **2015/09/25, Initial Release Version 0.1.0**
@@ -74,13 +69,6 @@ Today is the day -- iPhone 6S/6S+ is released for sales and we have the initial 
   - This is the initial release. 
   - Most algorithms and functions have been completed except the tensor factorization (TF). 
   - For TF, please refer to the latest version of LibRec.
-* **To-Do List**: 
-  - integrate TF with CARSkit; 
-  - create user guide; 
-  - generate a demo; 
-  - incorporate more recommendation algorithms, such as post-filtering ones, etc
-
-
 
 
 

@@ -1,0 +1,33 @@
+<project name="CARSKit" default="jar">
+
+    <property name="version" value="v0.2.1-alpha"/>
+    <property name="src.dir" value="src"/>
+    <property name="build.dir" value="build"/>
+    <property name="jar.dir" value="jar"/>
+    <property name="lib.dir" value="lib" />
+    <path id="lib.path.id">
+        <fileset dir="${lib.dir}" />
+    </path>
+
+    <target name="clean">
+        <delete dir="${build.dir}"/>
+    </target>
+
+    <target name="compile">
+        <mkdir dir="${build.dir}"/>
+        <javac srcdir="${src.dir}" destdir="${build.dir}" classpathref="lib.path.id">
+                <compilerarg value="-XDignore.symbol.file"/>
+        </javac>
+    </target>
+
+    <target name="jar" depends="compile">
+        <mkdir dir="${jar.dir}"/>
+        <jar destfile="${jar.dir}/${ant.project.name}-${version}.jar" basedir="${build.dir}">
+                <zipgroupfileset dir="${lib.dir}" includes="*.jar"/>
+                <manifest>
+                    <attribute name="Main-Class" value="carskit.main.CARSKit"/>
+                </manifest>
+        </jar>
+    </target>
+
+</project>

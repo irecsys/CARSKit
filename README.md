@@ -67,7 +67,7 @@ I would like to show our gratitude to Dr. Guibing Guo (the author of LibRec) for
  - optimize the coding
 
 
-**2015/09/25, Initial Release Version 0.1.0**
+**2015/09/25, Version 0.1.0 (Initial Release)**
 
 
 

@@ -68,11 +68,6 @@ I would like to show our gratitude to Dr. Guibing Guo (the author of LibRec) for
 
 
 **2015/09/25, Initial Release Version 0.1.0**
-* **Notes and updates**: 
-  - This is the initial release. 
-  - Most algorithms and functions have been completed except the tensor factorization (TF). 
-  - For TF, please refer to the latest version of LibRec.
-
 
 
 

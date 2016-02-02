@@ -1,0 +1,790 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ArtifactsWorkspaceSettings">
+    <artifacts-to-build>
+      <artifact name="CARSKit:jar" />
+    </artifacts-to-build>
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" readonly="true" id="10d82e1b-1b6d-4dfa-9cad-19dc6287d1f4" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc_api/carskit/data/setting/AddConfiguration.html" afterPath="$PROJECT_DIR$/doc_api/carskit/data/setting/AddConfiguration.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/carskit/data/setting/AddConfiguration.java" afterPath="$PROJECT_DIR$/src/carskit/data/setting/AddConfiguration.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc_api/carskit/alg/baseline/cf/BPMF.html" afterPath="$PROJECT_DIR$/doc_api/carskit/alg/baseline/cf/BPMF.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc_api/carskit/alg/baseline/ranking/BPR.html" afterPath="$PROJECT_DIR$/doc_api/carskit/alg/baseline/ranking/BPR.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc_api/carskit/alg/baseline/cf/BiasedMF.html" afterPath="$PROJECT_DIR$/doc_api/carskit/alg/baseline/cf/BiasedMF.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc_api/carskit/alg/cars/adaptation/dependent/CAMF.html" afterPath="$PROJECT_DIR$/doc_api/carskit/alg/cars/adaptation/dependent/CAMF.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc_api/carskit/alg/cars/adaptation/dependent/dev/CAMF_C.html" afterPath="$PROJECT_DIR$/doc_api/carskit/alg/cars/adaptation/dependent/dev/CAMF_C.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc_api/carskit/alg/cars/adaptation/dependent/dev/CAMF_CI.html" afterPath="$PROJECT_DIR$/doc_api/carskit/alg/cars/adaptation/dependent/dev/CAMF_CI.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc_api/carskit/alg/cars/adaptation/dependent/dev/CAMF_CU.html" afterPath="$PROJECT_DIR$/doc_api/carskit/alg/cars/adaptation/dependent/dev/CAMF_CU.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc_api/carskit/alg/cars/adaptation/dependent/dev/CAMF_CUCI.html" afterPath="$PROJECT_DIR$/doc_api/carskit/alg/cars/adaptation/dependent/dev/CAMF_CUCI.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc_api/carskit/alg/cars/adaptation/dependent/sim/CAMF_ICS.html" afterPath="$PROJECT_DIR$/doc_api/carskit/alg/cars/adaptation/dependent/sim/CAMF_ICS.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc_api/carskit/alg/cars/adaptation/dependent/sim/CAMF_LCS.html" afterPath="$PROJECT_DIR$/doc_api/carskit/alg/cars/adaptation/dependent/sim/CAMF_LCS.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc_api/carskit/alg/cars/adaptation/dependent/sim/CAMF_MCS.html" afterPath="$PROJECT_DIR$/doc_api/carskit/alg/cars/adaptation/dependent/sim/CAMF_MCS.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc_api/carskit/main/CARSKit.html" afterPath="$PROJECT_DIR$/doc_api/carskit/main/CARSKit.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/CARSKit.iml" afterPath="$PROJECT_DIR$/CARSKit.iml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc_api/carskit/alg/cars/adaptation/independent/CPTF.html" afterPath="$PROJECT_DIR$/doc_api/carskit/alg/cars/adaptation/independent/CPTF.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc_api/carskit/alg/cars/adaptation/dependent/CSLIM.html" afterPath="$PROJECT_DIR$/doc_api/carskit/alg/cars/adaptation/dependent/CSLIM.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc_api/carskit/alg/cars/adaptation/dependent/dev/CSLIM_C.html" afterPath="$PROJECT_DIR$/doc_api/carskit/alg/cars/adaptation/dependent/dev/CSLIM_C.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc_api/carskit/alg/cars/adaptation/dependent/dev/CSLIM_CI.html" afterPath="$PROJECT_DIR$/doc_api/carskit/alg/cars/adaptation/dependent/dev/CSLIM_CI.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc_api/carskit/alg/cars/adaptation/dependent/dev/CSLIM_CU.html" afterPath="$PROJECT_DIR$/doc_api/carskit/alg/cars/adaptation/dependent/dev/CSLIM_CU.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc_api/carskit/alg/cars/adaptation/dependent/dev/CSLIM_CUCI.html" afterPath="$PROJECT_DIR$/doc_api/carskit/alg/cars/adaptation/dependent/dev/CSLIM_CUCI.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc_api/carskit/alg/cars/adaptation/dependent/sim/CSLIM_ICS.html" afterPath="$PROJECT_DIR$/doc_api/carskit/alg/cars/adaptation/dependent/sim/CSLIM_ICS.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc_api/carskit/alg/cars/adaptation/dependent/sim/CSLIM_LCS.html" afterPath="$PROJECT_DIR$/doc_api/carskit/alg/cars/adaptation/dependent/sim/CSLIM_LCS.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc_api/carskit/alg/cars/adaptation/dependent/sim/CSLIM_MCS.html" afterPath="$PROJECT_DIR$/doc_api/carskit/alg/cars/adaptation/dependent/sim/CSLIM_MCS.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc_api/carskit/data/setting/Configuration.html" afterPath="$PROJECT_DIR$/doc_api/carskit/data/setting/Configuration.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/carskit/data/setting/Configuration.java" afterPath="$PROJECT_DIR$/src/carskit/data/setting/Configuration.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc_api/carskit/alg/baseline/avg/ContextAverage.html" afterPath="$PROJECT_DIR$/doc_api/carskit/alg/baseline/avg/ContextAverage.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc_api/carskit/generic/ContextRecommender.html" afterPath="$PROJECT_DIR$/doc_api/carskit/generic/ContextRecommender.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc_api/carskit/alg/cars/transformation/prefiltering/splitting/ContextualSplitting.html" afterPath="$PROJECT_DIR$/doc_api/carskit/alg/cars/transformation/prefiltering/splitting/ContextualSplitting.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/carskit/alg/cars/transformation/prefiltering/splitting/ContextualSplitting.java" afterPath="$PROJECT_DIR$/src/carskit/alg/cars/transformation/prefiltering/splitting/ContextualSplitting.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc_api/carskit/data/processor/DataDAO.html" afterPath="$PROJECT_DIR$/doc_api/carskit/data/processor/DataDAO.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc_api/carskit/data/processor/DataSplitter.html" afterPath="$PROJECT_DIR$/doc_api/carskit/data/processor/DataSplitter.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc_api/carskit/data/processor/DataTransformer.html" afterPath="$PROJECT_DIR$/doc_api/carskit/data/processor/DataTransformer.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc_api/carskit/data/structure/DenseMatrix.html" afterPath="$PROJECT_DIR$/doc_api/carskit/data/structure/DenseMatrix.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc_api/carskit/data/structure/DenseVector.html" afterPath="$PROJECT_DIR$/doc_api/carskit/data/structure/DenseVector.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc_api/carskit/alg/cars/adaptation/dependent/FM.html" afterPath="$PROJECT_DIR$/doc_api/carskit/alg/cars/adaptation/dependent/FM.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc_api/carskit/alg/cars/adaptation/dependent/dev/GCSLIM_CC.html" afterPath="$PROJECT_DIR$/doc_api/carskit/alg/cars/adaptation/dependent/dev/GCSLIM_CC.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc_api/carskit/alg/cars/adaptation/dependent/sim/GCSLIM_ICS.html" afterPath="$PROJECT_DIR$/doc_api/carskit/alg/cars/adaptation/dependent/sim/GCSLIM_ICS.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc_api/carskit/alg/cars/adaptation/dependent/sim/GCSLIM_LCS.html" afterPath="$PROJECT_DIR$/doc_api/carskit/alg/cars/adaptation/dependent/sim/GCSLIM_LCS.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc_api/carskit/alg/cars/adaptation/dependent/sim/GCSLIM_MCS.html" afterPath="$PROJECT_DIR$/doc_api/carskit/alg/cars/adaptation/dependent/sim/GCSLIM_MCS.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc_api/carskit/alg/baseline/avg/GlobalAverage.html" afterPath="$PROJECT_DIR$/doc_api/carskit/alg/baseline/avg/GlobalAverage.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc_api/carskit/alg/baseline/avg/ItemAverage.html" afterPath="$PROJECT_DIR$/doc_api/carskit/alg/baseline/avg/ItemAverage.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc_api/carskit/alg/baseline/avg/ItemContextAverage.html" afterPath="$PROJECT_DIR$/doc_api/carskit/alg/baseline/avg/ItemContextAverage.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc_api/carskit/alg/baseline/cf/ItemKNN.html" afterPath="$PROJECT_DIR$/doc_api/carskit/alg/baseline/cf/ItemKNN.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc_api/carskit/alg/cars/transformation/prefiltering/splitting/ItemSplitting.html" afterPath="$PROJECT_DIR$/doc_api/carskit/alg/cars/transformation/prefiltering/splitting/ItemSplitting.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/carskit/alg/cars/transformation/prefiltering/splitting/ItemSplitting.java" afterPath="$PROJECT_DIR$/src/carskit/alg/cars/transformation/prefiltering/splitting/ItemSplitting.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc_api/carskit/generic/IterativeRecommender.html" afterPath="$PROJECT_DIR$/doc_api/carskit/generic/IterativeRecommender.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/carskit/generic/IterativeRecommender.java" afterPath="$PROJECT_DIR$/src/carskit/generic/IterativeRecommender.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc_api/carskit/alg/baseline/ranking/LRMF.html" afterPath="$PROJECT_DIR$/doc_api/carskit/alg/baseline/ranking/LRMF.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc_api/carskit/alg/baseline/cf/NMF.html" afterPath="$PROJECT_DIR$/doc_api/carskit/alg/baseline/cf/NMF.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc_api/carskit/alg/baseline/cf/PMF.html" afterPath="$PROJECT_DIR$/doc_api/carskit/alg/baseline/cf/PMF.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc_api/carskit/alg/baseline/ranking/RankALS.html" afterPath="$PROJECT_DIR$/doc_api/carskit/alg/baseline/ranking/RankALS.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc_api/carskit/alg/baseline/ranking/RankSGD.html" afterPath="$PROJECT_DIR$/doc_api/carskit/alg/baseline/ranking/RankSGD.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc_api/carskit/generic/Recommender.Measure.html" afterPath="$PROJECT_DIR$/doc_api/carskit/generic/Recommender.Measure.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc_api/carskit/generic/Recommender.html" afterPath="$PROJECT_DIR$/doc_api/carskit/generic/Recommender.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/carskit/generic/Recommender.java" afterPath="$PROJECT_DIR$/src/carskit/generic/Recommender.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc_api/carskit/alg/baseline/ranking/SLIM.html" afterPath="$PROJECT_DIR$/doc_api/carskit/alg/baseline/ranking/SLIM.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc_api/carskit/alg/baseline/cf/SVDPlusPlus.html" afterPath="$PROJECT_DIR$/doc_api/carskit/alg/baseline/cf/SVDPlusPlus.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc_api/carskit/alg/baseline/cf/SlopeOne.html" afterPath="$PROJECT_DIR$/doc_api/carskit/alg/baseline/cf/SlopeOne.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc_api/carskit/data/structure/SparseMatrix.html" afterPath="$PROJECT_DIR$/doc_api/carskit/data/structure/SparseMatrix.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc_api/carskit/data/structure/SparseTensor.html" afterPath="$PROJECT_DIR$/doc_api/carskit/data/structure/SparseTensor.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc_api/carskit/data/structure/SparseVector.html" afterPath="$PROJECT_DIR$/doc_api/carskit/data/structure/SparseVector.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc_api/carskit/generic/TensorRecommender.html" afterPath="$PROJECT_DIR$/doc_api/carskit/generic/TensorRecommender.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc_api/carskit/alg/cars/transformation/prefiltering/splitting/UISplitting.html" afterPath="$PROJECT_DIR$/doc_api/carskit/alg/cars/transformation/prefiltering/splitting/UISplitting.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/carskit/alg/cars/transformation/prefiltering/splitting/UISplitting.java" afterPath="$PROJECT_DIR$/src/carskit/alg/cars/transformation/prefiltering/splitting/UISplitting.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc_api/carskit/alg/baseline/avg/UserAverage.html" afterPath="$PROJECT_DIR$/doc_api/carskit/alg/baseline/avg/UserAverage.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc_api/carskit/alg/baseline/avg/UserContextAverage.html" afterPath="$PROJECT_DIR$/doc_api/carskit/alg/baseline/avg/UserContextAverage.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc_api/carskit/alg/baseline/avg/UserItemAverage.html" afterPath="$PROJECT_DIR$/doc_api/carskit/alg/baseline/avg/UserItemAverage.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc_api/carskit/alg/baseline/cf/UserKNN.html" afterPath="$PROJECT_DIR$/doc_api/carskit/alg/baseline/cf/UserKNN.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc_api/carskit/alg/cars/transformation/prefiltering/splitting/UserSplitting.html" afterPath="$PROJECT_DIR$/doc_api/carskit/alg/cars/transformation/prefiltering/splitting/UserSplitting.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/carskit/alg/cars/transformation/prefiltering/splitting/UserSplitting.java" afterPath="$PROJECT_DIR$/src/carskit/alg/cars/transformation/prefiltering/splitting/UserSplitting.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc_api/allclasses-frame.html" afterPath="$PROJECT_DIR$/doc_api/allclasses-frame.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc_api/allclasses-noframe.html" afterPath="$PROJECT_DIR$/doc_api/allclasses-noframe.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc_api/constant-values.html" afterPath="$PROJECT_DIR$/doc_api/constant-values.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc_api/deprecated-list.html" afterPath="$PROJECT_DIR$/doc_api/deprecated-list.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc_api/help-doc.html" afterPath="$PROJECT_DIR$/doc_api/help-doc.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc_api/index-files/index-1.html" afterPath="$PROJECT_DIR$/doc_api/index-files/index-1.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc_api/index-files/index-10.html" afterPath="$PROJECT_DIR$/doc_api/index-files/index-10.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc_api/index-files/index-11.html" afterPath="$PROJECT_DIR$/doc_api/index-files/index-11.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc_api/index-files/index-12.html" afterPath="$PROJECT_DIR$/doc_api/index-files/index-12.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc_api/index-files/index-13.html" afterPath="$PROJECT_DIR$/doc_api/index-files/index-13.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc_api/index-files/index-14.html" afterPath="$PROJECT_DIR$/doc_api/index-files/index-14.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc_api/index-files/index-15.html" afterPath="$PROJECT_DIR$/doc_api/index-files/index-15.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc_api/index-files/index-16.html" afterPath="$PROJECT_DIR$/doc_api/index-files/index-16.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc_api/index-files/index-17.html" afterPath="$PROJECT_DIR$/doc_api/index-files/index-17.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc_api/index-files/index-18.html" afterPath="$PROJECT_DIR$/doc_api/index-files/index-18.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc_api/index-files/index-19.html" afterPath="$PROJECT_DIR$/doc_api/index-files/index-19.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc_api/index-files/index-2.html" afterPath="$PROJECT_DIR$/doc_api/index-files/index-2.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc_api/index-files/index-20.html" afterPath="$PROJECT_DIR$/doc_api/index-files/index-20.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc_api/index-files/index-21.html" afterPath="$PROJECT_DIR$/doc_api/index-files/index-21.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc_api/index-files/index-22.html" afterPath="$PROJECT_DIR$/doc_api/index-files/index-22.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc_api/index-files/index-23.html" afterPath="$PROJECT_DIR$/doc_api/index-files/index-23.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc_api/index-files/index-3.html" afterPath="$PROJECT_DIR$/doc_api/index-files/index-3.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc_api/index-files/index-4.html" afterPath="$PROJECT_DIR$/doc_api/index-files/index-4.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc_api/index-files/index-5.html" afterPath="$PROJECT_DIR$/doc_api/index-files/index-5.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc_api/index-files/index-6.html" afterPath="$PROJECT_DIR$/doc_api/index-files/index-6.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc_api/index-files/index-7.html" afterPath="$PROJECT_DIR$/doc_api/index-files/index-7.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc_api/index-files/index-8.html" afterPath="$PROJECT_DIR$/doc_api/index-files/index-8.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc_api/index-files/index-9.html" afterPath="$PROJECT_DIR$/doc_api/index-files/index-9.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc_api/index.html" afterPath="$PROJECT_DIR$/doc_api/index.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc_api/overview-frame.html" afterPath="$PROJECT_DIR$/doc_api/overview-frame.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc_api/overview-summary.html" afterPath="$PROJECT_DIR$/doc_api/overview-summary.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc_api/overview-tree.html" afterPath="$PROJECT_DIR$/doc_api/overview-tree.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc_api/carskit/alg/baseline/avg/package-frame.html" afterPath="$PROJECT_DIR$/doc_api/carskit/alg/baseline/avg/package-frame.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc_api/carskit/alg/baseline/cf/package-frame.html" afterPath="$PROJECT_DIR$/doc_api/carskit/alg/baseline/cf/package-frame.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc_api/carskit/alg/baseline/ranking/package-frame.html" afterPath="$PROJECT_DIR$/doc_api/carskit/alg/baseline/ranking/package-frame.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc_api/carskit/alg/cars/adaptation/dependent/package-frame.html" afterPath="$PROJECT_DIR$/doc_api/carskit/alg/cars/adaptation/dependent/package-frame.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc_api/carskit/alg/cars/adaptation/dependent/dev/package-frame.html" afterPath="$PROJECT_DIR$/doc_api/carskit/alg/cars/adaptation/dependent/dev/package-frame.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc_api/carskit/alg/cars/adaptation/dependent/sim/package-frame.html" afterPath="$PROJECT_DIR$/doc_api/carskit/alg/cars/adaptation/dependent/sim/package-frame.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc_api/carskit/alg/cars/adaptation/independent/package-frame.html" afterPath="$PROJECT_DIR$/doc_api/carskit/alg/cars/adaptation/independent/package-frame.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc_api/carskit/alg/cars/transformation/prefiltering/splitting/package-frame.html" afterPath="$PROJECT_DIR$/doc_api/carskit/alg/cars/transformation/prefiltering/splitting/package-frame.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc_api/carskit/data/processor/package-frame.html" afterPath="$PROJECT_DIR$/doc_api/carskit/data/processor/package-frame.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc_api/carskit/data/setting/package-frame.html" afterPath="$PROJECT_DIR$/doc_api/carskit/data/setting/package-frame.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc_api/carskit/data/structure/package-frame.html" afterPath="$PROJECT_DIR$/doc_api/carskit/data/structure/package-frame.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc_api/carskit/generic/package-frame.html" afterPath="$PROJECT_DIR$/doc_api/carskit/generic/package-frame.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc_api/carskit/main/package-frame.html" afterPath="$PROJECT_DIR$/doc_api/carskit/main/package-frame.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc_api/carskit/alg/baseline/avg/package-summary.html" afterPath="$PROJECT_DIR$/doc_api/carskit/alg/baseline/avg/package-summary.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc_api/carskit/alg/baseline/cf/package-summary.html" afterPath="$PROJECT_DIR$/doc_api/carskit/alg/baseline/cf/package-summary.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc_api/carskit/alg/baseline/ranking/package-summary.html" afterPath="$PROJECT_DIR$/doc_api/carskit/alg/baseline/ranking/package-summary.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc_api/carskit/alg/cars/adaptation/dependent/package-summary.html" afterPath="$PROJECT_DIR$/doc_api/carskit/alg/cars/adaptation/dependent/package-summary.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc_api/carskit/alg/cars/adaptation/dependent/dev/package-summary.html" afterPath="$PROJECT_DIR$/doc_api/carskit/alg/cars/adaptation/dependent/dev/package-summary.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc_api/carskit/alg/cars/adaptation/dependent/sim/package-summary.html" afterPath="$PROJECT_DIR$/doc_api/carskit/alg/cars/adaptation/dependent/sim/package-summary.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc_api/carskit/alg/cars/adaptation/independent/package-summary.html" afterPath="$PROJECT_DIR$/doc_api/carskit/alg/cars/adaptation/independent/package-summary.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc_api/carskit/alg/cars/transformation/prefiltering/splitting/package-summary.html" afterPath="$PROJECT_DIR$/doc_api/carskit/alg/cars/transformation/prefiltering/splitting/package-summary.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc_api/carskit/data/processor/package-summary.html" afterPath="$PROJECT_DIR$/doc_api/carskit/data/processor/package-summary.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc_api/carskit/data/setting/package-summary.html" afterPath="$PROJECT_DIR$/doc_api/carskit/data/setting/package-summary.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc_api/carskit/data/structure/package-summary.html" afterPath="$PROJECT_DIR$/doc_api/carskit/data/structure/package-summary.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc_api/carskit/generic/package-summary.html" afterPath="$PROJECT_DIR$/doc_api/carskit/generic/package-summary.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc_api/carskit/main/package-summary.html" afterPath="$PROJECT_DIR$/doc_api/carskit/main/package-summary.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc_api/carskit/alg/baseline/avg/package-tree.html" afterPath="$PROJECT_DIR$/doc_api/carskit/alg/baseline/avg/package-tree.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc_api/carskit/alg/baseline/cf/package-tree.html" afterPath="$PROJECT_DIR$/doc_api/carskit/alg/baseline/cf/package-tree.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc_api/carskit/alg/baseline/ranking/package-tree.html" afterPath="$PROJECT_DIR$/doc_api/carskit/alg/baseline/ranking/package-tree.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc_api/carskit/alg/cars/adaptation/dependent/package-tree.html" afterPath="$PROJECT_DIR$/doc_api/carskit/alg/cars/adaptation/dependent/package-tree.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc_api/carskit/alg/cars/adaptation/dependent/dev/package-tree.html" afterPath="$PROJECT_DIR$/doc_api/carskit/alg/cars/adaptation/dependent/dev/package-tree.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc_api/carskit/alg/cars/adaptation/dependent/sim/package-tree.html" afterPath="$PROJECT_DIR$/doc_api/carskit/alg/cars/adaptation/dependent/sim/package-tree.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc_api/carskit/alg/cars/adaptation/independent/package-tree.html" afterPath="$PROJECT_DIR$/doc_api/carskit/alg/cars/adaptation/independent/package-tree.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc_api/carskit/alg/cars/transformation/prefiltering/splitting/package-tree.html" afterPath="$PROJECT_DIR$/doc_api/carskit/alg/cars/transformation/prefiltering/splitting/package-tree.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc_api/carskit/data/processor/package-tree.html" afterPath="$PROJECT_DIR$/doc_api/carskit/data/processor/package-tree.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc_api/carskit/data/setting/package-tree.html" afterPath="$PROJECT_DIR$/doc_api/carskit/data/setting/package-tree.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc_api/carskit/data/structure/package-tree.html" afterPath="$PROJECT_DIR$/doc_api/carskit/data/structure/package-tree.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc_api/carskit/generic/package-tree.html" afterPath="$PROJECT_DIR$/doc_api/carskit/generic/package-tree.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc_api/carskit/main/package-tree.html" afterPath="$PROJECT_DIR$/doc_api/carskit/main/package-tree.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc_api/serialized-form.html" afterPath="$PROJECT_DIR$/doc_api/serialized-form.html" />
+    </list>
+    <ignored path="CARSKit.iws" />
+    <ignored path=".idea/workspace.xml" />
+    <ignored path="$PROJECT_DIR$/out/" />
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="TRACKING_ENABLED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ChangesViewManager" flattened_view="true" show_ignored="false" />
+  <component name="CreatePatchCommitExecutor">
+    <option name="PATCH_PATH" value="" />
+  </component>
+  <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
+  <component name="FavoritesManager">
+    <favorites_list name="CARSKit" />
+  </component>
+  <component name="FileEditorManager">
+    <leaf />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GradleLocalSettings">
+    <option name="externalProjectsViewState">
+      <projects_view />
+    </option>
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/src/carskit/generic/Recommender.java" />
+        <option value="$PROJECT_DIR$/setting.conf" />
+        <option value="$PROJECT_DIR$/results_all.txt" />
+      </list>
+    </option>
+  </component>
+  <component name="NamedScopeManager">
+    <order />
+  </component>
+  <component name="ProjectFrameBounds">
+    <option name="x" value="-8" />
+    <option name="y" value="-8" />
+    <option name="width" value="1936" />
+    <option name="height" value="1056" />
+  </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="false">
+    <OptionsSetting value="true" id="Add" />
+    <OptionsSetting value="true" id="Remove" />
+    <OptionsSetting value="true" id="Checkout" />
+    <OptionsSetting value="true" id="Update" />
+    <OptionsSetting value="true" id="Status" />
+    <OptionsSetting value="true" id="Edit" />
+    <ConfirmationsSetting value="0" id="Add" />
+    <ConfirmationsSetting value="0" id="Remove" />
+  </component>
+  <component name="ProjectView">
+    <navigator currentView="ProjectPane" proportions="" version="1">
+      <flattenPackages />
+      <showMembers />
+      <showModules />
+      <showLibraryContents />
+      <hideEmptyPackages />
+      <abbreviatePackageNames />
+      <autoscrollToSource />
+      <autoscrollFromSource />
+      <sortByType />
+    </navigator>
+    <panes>
+      <pane id="PackagesPane" />
+      <pane id="Scope" />
+      <pane id="Scratches" />
+      <pane id="ProjectPane">
+        <subPane>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="CARSKit" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="CARSKit" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="CARSKit" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="CARSKit" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="CARSKit" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="resources" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="CARSKit" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="CARSKit" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="META-INF" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="CARSKit" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="CARSKit" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="carskit" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="CARSKit" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="CARSKit" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="carskit" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="generic" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="CARSKit" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="CARSKit" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="carskit" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="data" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="CARSKit" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="CARSKit" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="carskit" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="alg" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="cars" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="CARSKit" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="CARSKit" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="carskit" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="alg" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="cars" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="adaptation" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="CARSKit" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="CARSKit" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="carskit" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="alg" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="recentsLimit" value="5" />
+    <property name="dynamic.classpath" value="false" />
+    <property name="project.structure.last.edited" value="Artifacts" />
+    <property name="project.structure.proportion" value="0.0" />
+    <property name="project.structure.side.proportion" value="0.2" />
+  </component>
+  <component name="RunManager" selected="Application.CARSKit">
+    <configuration default="false" name="CARSKit" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
+        <pattern>
+          <option name="PATTERN" value="carskit.main.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="MAIN_CLASS_NAME" value="carskit.main.CARSKit" />
+      <option name="VM_PARAMETERS" />
+      <option name="PROGRAM_PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="ENABLE_SWING_INSPECTOR" value="false" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <module name="CARSKit" />
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="#org.jetbrains.idea.devkit.run.PluginConfigurationType" factoryName="Plugin">
+      <module name="" />
+      <option name="VM_PARAMETERS" value="-Xmx512m -Xms256m -XX:MaxPermSize=250m -ea" />
+      <option name="PROGRAM_PARAMETERS" />
+      <method />
+    </configuration>
+    <configuration default="true" type="AndroidRunConfigurationType" factoryName="Android Application">
+      <module name="" />
+      <option name="ACTIVITY_CLASS" value="" />
+      <option name="MODE" value="default_activity" />
+      <option name="DEPLOY" value="true" />
+      <option name="ARTIFACT_NAME" value="" />
+      <option name="TARGET_SELECTION_MODE" value="EMULATOR" />
+      <option name="USE_LAST_SELECTED_DEVICE" value="false" />
+      <option name="PREFERRED_AVD" value="" />
+      <option name="USE_COMMAND_LINE" value="true" />
+      <option name="COMMAND_LINE" value="" />
+      <option name="WIPE_USER_DATA" value="false" />
+      <option name="DISABLE_BOOT_ANIMATION" value="false" />
+      <option name="NETWORK_SPEED" value="full" />
+      <option name="NETWORK_LATENCY" value="none" />
+      <option name="CLEAR_LOGCAT" value="false" />
+      <option name="SHOW_LOGCAT_AUTOMATICALLY" value="true" />
+      <option name="FILTER_LOGCAT_AUTOMATICALLY" value="true" />
+      <method />
+    </configuration>
+    <configuration default="true" type="AndroidTestRunConfigurationType" factoryName="Android Tests">
+      <module name="" />
+      <option name="TESTING_TYPE" value="0" />
+      <option name="INSTRUMENTATION_RUNNER_CLASS" value="" />
+      <option name="METHOD_NAME" value="" />
+      <option name="CLASS_NAME" value="" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="TARGET_SELECTION_MODE" value="EMULATOR" />
+      <option name="USE_LAST_SELECTED_DEVICE" value="false" />
+      <option name="PREFERRED_AVD" value="" />
+      <option name="USE_COMMAND_LINE" value="true" />
+      <option name="COMMAND_LINE" value="" />
+      <option name="WIPE_USER_DATA" value="false" />
+      <option name="DISABLE_BOOT_ANIMATION" value="false" />
+      <option name="NETWORK_SPEED" value="full" />
+      <option name="NETWORK_LATENCY" value="none" />
+      <option name="CLEAR_LOGCAT" value="false" />
+      <option name="SHOW_LOGCAT_AUTOMATICALLY" value="true" />
+      <option name="FILTER_LOGCAT_AUTOMATICALLY" value="true" />
+      <method />
+    </configuration>
+    <configuration default="true" type="Applet" factoryName="Applet">
+      <option name="WIDTH" value="400" />
+      <option name="HEIGHT" value="300" />
+      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
+      <module />
+      <method />
+    </configuration>
+    <configuration default="true" type="Application" factoryName="Application">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="VM_PARAMETERS" />
+      <option name="PROGRAM_PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="ENABLE_SWING_INSPECTOR" value="false" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <module name="" />
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="GradleRunConfiguration" factoryName="Gradle">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list />
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <method />
+    </configuration>
+    <configuration default="true" type="JUnit" factoryName="JUnit">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <module name="" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="METHOD_NAME" />
+      <option name="TEST_OBJECT" value="class" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <envs />
+      <patterns />
+      <method />
+    </configuration>
+    <configuration default="true" type="JarApplication" factoryName="JAR Application">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="Remote" factoryName="Remote">
+      <option name="USE_SOCKET_TRANSPORT" value="true" />
+      <option name="SERVER_MODE" value="false" />
+      <option name="SHMEM_ADDRESS" value="javadebug" />
+      <option name="HOST" value="localhost" />
+      <option name="PORT" value="5005" />
+      <method />
+    </configuration>
+    <configuration default="true" type="TestNG" factoryName="TestNG">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <module name="" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="SUITE_NAME" />
+      <option name="PACKAGE_NAME" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="METHOD_NAME" />
+      <option name="GROUP_NAME" />
+      <option name="TEST_OBJECT" value="CLASS" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="OUTPUT_DIRECTORY" />
+      <option name="ANNOTATION_TYPE" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <option name="USE_DEFAULT_REPORTERS" value="false" />
+      <option name="PROPERTIES_FILE" />
+      <envs />
+      <properties />
+      <listeners />
+      <method />
+    </configuration>
+    <list size="1">
+      <item index="0" class="java.lang.String" itemvalue="Application.CARSKit" />
+    </list>
+    <recent_temporary>
+      <list size="1">
+        <item index="0" class="java.lang.String" itemvalue="Application.CARSKit" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="ShelveChangesManager" show_recycled="false" />
+  <component name="SvnConfiguration">
+    <configuration />
+    <supportedVersion>125</supportedVersion>
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="10d82e1b-1b6d-4dfa-9cad-19dc6287d1f4" name="Default" comment="" />
+      <created>1454417475984</created>
+      <option name="number" value="Default" />
+      <updated>1454417475984</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <editor active="false" />
+    <layout>
+      <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32899022" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24947916" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+    </layout>
+  </component>
+  <component name="VcsContentAnnotationSettings">
+    <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager />
+    <watches-manager />
+  </component>
+  <component name="antWorkspaceConfiguration">
+    <option name="IS_AUTOSCROLL_TO_SOURCE" value="false" />
+    <option name="FILTER_TARGETS" value="false" />
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/src/carskit/generic/Recommender.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-149.96552">
+          <caret line="839" column="5" selection-start-line="839" selection-start-column="5" selection-end-line="839" selection-end-column="5" />
+          <folding>
+            <element signature="e#25139#25157#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/setting.conf">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-11.333333">
+          <caret line="27" column="80" selection-start-line="27" selection-start-column="80" selection-end-line="27" selection-end-column="80" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/results_all.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/results.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+  </component>
+  <component name="masterDetails">
+    <states>
+      <state key="ArtifactsStructureConfigurable.UI">
+        <settings>
+          <artifact-editor />
+          <last-edited>CARSKit:jar</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+                <option value="0.5" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="FacetStructureConfigurable.UI">
+        <settings>
+          <last-edited>No facets are configured</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="GlobalLibrariesConfigurable.UI">
+        <settings>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="JdkListConfigurable.UI">
+        <settings>
+          <last-edited>1.7</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ModuleStructureConfigurable.UI">
+        <settings>
+          <last-edited>CARSKit</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+                <option value="0.6" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ProjectJDKs.UI">
+        <settings>
+          <last-edited>1.7</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ProjectLibrariesConfigurable.UI">
+        <settings>
+          <last-edited>context-aware_data_sets</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+    </states>
+  </component>
+</project>

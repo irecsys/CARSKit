@@ -621,6 +621,7 @@ public abstract class Recommender implements Runnable{
     protected Map<Measure, Double> evalRankings() throws Exception {
 
         HashMap<Integer, HashMultimap<Integer, Integer>> uciList=rateDao.getUserCtxList(testMatrix);
+        HashMap<Integer, HashMultimap<Integer, Integer>> uciList_train=rateDao.getUserCtxList(trainMatrix);
         int capacity = uciList.keySet().size();
 
         // initialization capacity to speed up
@@ -690,6 +691,8 @@ public abstract class Recommender implements Runnable{
             List<Double> c_aucs = new ArrayList<>(c_capacity);
             List<Double> c_ndcgs = new ArrayList<>(c_capacity);
 
+            HashMultimap<Integer, Integer> cList_train = (uciList_train.containsKey(u))?uciList_train.get(u):HashMultimap.<Integer, Integer>create();
+
             // for each ctx
             for (int c : cis.keySet()) {
 
@@ -713,18 +716,16 @@ public abstract class Recommender implements Runnable{
                     continue; // no testing data for user u
 
                 // remove rated items from candidate items
-                // in CARS, we do not exclude rateditems, since user may rate a same item for multiple times within different contexts
-                //Set<Integer> ratedItems = trainMatrix.getRatedItemsList(u, idUIs, userRatingList);
+                Set<Integer> ratedItems = (cList_train.containsKey(c))?cList_train.get(c):new HashSet<Integer>();
 
                 // predict the ranking scores (unordered) of all candidate items
                 List<Map.Entry<Integer, Double>> itemScores = new ArrayList<>(Lists.initSize(candItems));
                 for (final Integer j : candItems) {
-                    // item j is not rated; but in CARS, we do not exclude rateditems, since user may rate a same item for multiple times within different contexts
-                    //if (!ratedItems.contains(j)) {
-                    final double rank = ranking(u, j, c);
+                    if (!ratedItems.contains(j)) {
+                        final double rank = ranking(u, j, c);
                         if (!Double.isNaN(rank)) {
                             itemScores.add(new SimpleImmutableEntry<Integer, Double>(j, rank));
-                        //}
+                        }
                     } else {
                         numCands--;
                     }

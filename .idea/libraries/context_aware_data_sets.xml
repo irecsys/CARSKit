@@ -1,0 +1,16 @@
+<component name="libraryTable">
+  <library name="context-aware_data_sets">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/context-aware_data_sets/Travel_TripAdvisor_v1.zip!/" />
+      <root url="jar://$PROJECT_DIR$/context-aware_data_sets/Travel_TripAdvisor_v2.zip!/" />
+      <root url="jar://$PROJECT_DIR$/context-aware_data_sets/Movie_DePaulMovie.zip!/" />
+      <root url="jar://$PROJECT_DIR$/context-aware_data_sets/Travel_STS.zip!/" />
+      <root url="jar://$PROJECT_DIR$/context-aware_data_sets/Restaurant_JapanRestaurant.zip!/" />
+      <root url="jar://$PROJECT_DIR$/context-aware_data_sets/Mobile_Frappe.zip!/" />
+      <root url="jar://$PROJECT_DIR$/context-aware_data_sets/Music_InCarMusic.zip!/" />
+      <root url="jar://$PROJECT_DIR$/context-aware_data_sets/Restaurant_TijuanaRestaurant.zip!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

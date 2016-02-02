@@ -54,7 +54,6 @@ I would like to show our gratitude to Dr. Guibing Guo (the author of LibRec) for
 ------------------
 **2016/02, Version 0.3.0** (Upcoming)
 * **What's New**:
- - fix a bug in ranking evaluation
  - add more context-aware recommendation algorithms
  - add some functions for prediction and ranking
  - rename some packages and algorithms

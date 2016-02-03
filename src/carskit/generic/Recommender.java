@@ -132,6 +132,9 @@ public abstract class Recommender implements Runnable{
     protected String foldInfo;
     // is output recommendation results
     protected boolean isResultsOut = true;
+    // candidateItems filter
+    protected String ratedItemsFilter;
+    private static final Set<String> CANDIDATE_ITEMS_FILTERS = new HashSet<String>(Arrays.asList(new String[] {"none", "user", "user-context"}));
 
     // number of users, items, ratings
     protected int numUsers, numItems, numRates;
@@ -259,6 +262,12 @@ public abstract class Recommender implements Runnable{
         algoName = this.getClass().getSimpleName();
         // get parameters of an algorithm
         algoOptions = getModelParams(algoName);
+        // get the filter parameter
+        ratedItemsFilter = cf.getString("items.filter", "none");
+        if (!CANDIDATE_ITEMS_FILTERS.contains(ratedItemsFilter)) {
+            Logs.error("Filter {} defined in items.filter is invalid", ratedItemsFilter);
+            System.exit(-1);
+        }
 
         // compute item-item correlations
         if (isRankingPred && isDiverseUsed)
@@ -621,6 +630,14 @@ public abstract class Recommender implements Runnable{
     protected Map<Measure, Double> evalRankings() throws Exception {
 
         HashMap<Integer, HashMultimap<Integer, Integer>> uciList=rateDao.getUserCtxList(testMatrix);
+
+        // Create a ratedItems set to enable filtering. Remains empty if no filter enabled (items.filter=none)
+        Set<Integer> ratedItems = new HashSet<Integer>();
+        HashMap<Integer, HashMultimap<Integer, Integer>> uciList_train = null;
+        if (!ratedItemsFilter.equals("none")) {
+            // If filtering is enabled, get all the ratings in the training set
+            uciList_train = rateDao.getUserCtxList(trainMatrix);
+        }
         int capacity = uciList.keySet().size();
 
         // initialization capacity to speed up
@@ -690,6 +707,16 @@ public abstract class Recommender implements Runnable{
             List<Double> c_aucs = new ArrayList<>(c_capacity);
             List<Double> c_ndcgs = new ArrayList<>(c_capacity);
 
+            HashMultimap<Integer, Integer> cList_train = null;
+            if (!ratedItemsFilter.equals("none")) {
+                // Get the ratings in the training set by the current user
+                cList_train = (uciList_train.containsKey(u)) ? uciList_train.get(u) : HashMultimap.<Integer, Integer>create();
+                if (ratedItemsFilter.equals("user")) {
+                    // If the filter is on user, then this is the ratedItems set
+                    ratedItems = Sets.newHashSet(cList_train.values());
+                }
+            }
+
             // for each ctx
             for (int c : cis.keySet()) {
 
@@ -712,19 +739,28 @@ public abstract class Recommender implements Runnable{
                 if (correctItems.size() == 0)
                     continue; // no testing data for user u
 
-                // remove rated items from candidate items
-                // in CARS, we do not exclude rateditems, since user may rate a same item for multiple times within different contexts
-                //Set<Integer> ratedItems = trainMatrix.getRatedItemsList(u, idUIs, userRatingList);
+                if (ratedItemsFilter.equals("user-context")) {
+                    // If filter is on user-context, then get the ratings in this context if present in cList_train
+                    if (cList_train.containsKey(c)) {
+                        ratedItems = cList_train.get(c);
+                    }
+                }
+
+                // Log ratedItems
+                /* String ratedItemsString = "";
+                for (Integer i : ratedItems) {
+                    ratedItemsString += rateDao.getItemId(i).toString() + " ";
+                }
+                Logs.debug("ratedItems user {} (filter {}): {}", rateDao.getUserId(u).toString(), ratedItemsFilter, ratedItemsString); */
 
                 // predict the ranking scores (unordered) of all candidate items
                 List<Map.Entry<Integer, Double>> itemScores = new ArrayList<>(Lists.initSize(candItems));
                 for (final Integer j : candItems) {
-                    // item j is not rated; but in CARS, we do not exclude rateditems, since user may rate a same item for multiple times within different contexts
-                    //if (!ratedItems.contains(j)) {
-                    final double rank = ranking(u, j, c);
+                    if (ratedItemsFilter.equals("none") || !ratedItems.contains(j)) {
+                        final double rank = ranking(u, j, c);
                         if (!Double.isNaN(rank)) {
                             itemScores.add(new SimpleImmutableEntry<Integer, Double>(j, rank));
-                        //}
+                        }
                     } else {
                         numCands--;
                     }

@@ -60,7 +60,7 @@ import carskit.alg.cars.transformation.prefiltering.splitting.*;
 
 public class CARSKit {
     // version: MAJOR version (significant changes), followed by MINOR version (small changes, bug fixes)
-    protected static String version = "0.1.0";
+    protected static String version = "0.2.0";
     protected static String defaultConfigFileName = "setting.conf";
     // is only to print measurements
     public static boolean isMeasuresOnly = false;

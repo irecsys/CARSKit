@@ -19,18 +19,20 @@
 package carskit.alg.cars.adaptation.independent;
 
 import carskit.generic.TensorRecommender;
-import carskit.data.structure.*;
-import happy.coding.io.Logs;
+import carskit.data.structure.SparseMatrix;
+import librec.data.DenseMatrix;
 import librec.data.TensorEntry;
 
-import java.util.Arrays;
-
 /**
+ * CANDECOMP/PARAFAC (CP) Tensor Factorization <br>
+ *
+ * Shao W., <strong>Tensor Completion</strong> (Section 3.2), Saarland University.
+ *
+ * Note: This implementation is modified from the algorithm in LibRec
  *
  * @author Yong Zheng
  *
  */
-
 public class CPTF extends TensorRecommender {
 
     // dimension-feature matrices
@@ -42,14 +44,13 @@ public class CPTF extends TensorRecommender {
 
     @Override
     protected void initModel() throws Exception {
-        Logs.info("Tensor has been initialized, and the number of dimensions is "+numDimensions);
         M = new DenseMatrix[numDimensions];
 
         for (int d = 0; d < numDimensions; d++) {
             M[d] = new DenseMatrix(dimensions[d], numFactors);
-            M[d].init(smallValue); // randomly initialization
+            M[d].init(1, 0.1); // randomly initialization
 
-            normalize(d);
+//			normalize(d);
         }
     }
 
@@ -72,59 +73,37 @@ public class CPTF extends TensorRecommender {
 
     @Override
     protected void buildModel() throws Exception {
-        for (int iter = 1; iter < numIters; iter++) {
-
-            DenseMatrix[] Ms = new DenseMatrix[numDimensions];
-            for (int d = 0; d < numDimensions; d++) {
-                Ms[d] = new DenseMatrix(dimensions[d], numFactors);
-            }
+        for (int iter = 1; iter <=numIters; iter++) {
 
             // SGD Optimization
 
             loss = 0;
-            // Step 1: compute gradients
             for (TensorEntry te : trainTensor) {
                 int[] keys = te.keys();
                 double rate = te.get();
+
                 if (rate <= 0)
                     continue;
 
-
-                //System.out.println("Dimensions: "+Arrays.toString(dimensions)+"\nKeys: "+Arrays.toString(keys));
                 double pred = predict(keys);
                 double e = rate - pred;
 
                 loss += e * e;
 
-                // compute gradients
-                for (int d = 0; d < numDimensions; d++) {
+                for (int f = 0; f < numFactors; f++) {
 
-                    for (int f = 0; f < numFactors; f++) {
-
-                        // multiplication of other dimensions
-                        double sgd = 1;
-                        for (int dd = 0; dd < numDimensions; dd++) {
-                            if (dd == d)
-                                continue;
-
-                            sgd *= M[dd].get(keys[dd], f);
-                        }
-
-                        Ms[d].add(keys[d], f, sgd * e);
+                    double sgd = 1;
+                    for (int dd = 0; dd < numDimensions; dd++) {
+                        sgd *= M[dd].get(keys[dd], f);
                     }
-                }
-            }
 
-            // Step 2: update variables
-            for (int d = 0; d < numDimensions; d++) {
+                    for (int d = 0; d < numDimensions; d++) {
+                        double df = M[d].get(keys[d], f);
 
-                // update each M[d](r, c)
-                for (int r = 0; r < M[d].numRows(); r++) {
-                    for (int c = 0; c < M[d].numColumns(); c++) {
-                        double Mrc = M[d].get(r, c);
-                        M[d].add(r, c, lRate * (Ms[d].get(r, c) - reg * Mrc));
+                        double gdf = sgd / df * e;
+                        M[d].add(keys[d], f, lRate * (gdf - reg * df));
 
-                        loss += reg * Mrc * Mrc;
+                        loss += reg * df * df;
                     }
                 }
             }
@@ -134,6 +113,7 @@ public class CPTF extends TensorRecommender {
                 break;
         }
     }
+
 
     @Override
     protected double predict(int u, int j, int c) throws Exception {
@@ -174,4 +154,3 @@ public class CPTF extends TensorRecommender {
         return pred;
     }
 }
-

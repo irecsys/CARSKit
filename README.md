@@ -52,12 +52,10 @@ I would like to show our gratitude to Dr. Guibing Guo (the author of LibRec) for
 
 ### Release Notes
 ------------------
-**2016/02, Version 0.3.0** (Upcoming)
+**2016/03, Version 0.2.0** (Minor Updates)
 * **What's New**:
- - add more context-aware recommendation algorithms
- - add some functions for prediction and ranking
- - rename some packages and algorithms
- - optimize the coding
+ - BugFix in Tensor Factorization
+ - Update corresponding JavaDoc and JAR library
 
 **2015/11/09, Version 0.2.0**
 * **What's New**:

@@ -38,7 +38,7 @@ If you use CARSKit in your research papers, please let us know. And I will creat
 ### Data Sets
 --------------
 
-A list of context-aware data sets can be found here: http://tiny.cc/contextdata <br/>
+A list of context-aware data sets can be found here: http://tiny.cc/datacars <br/>
 
 ### User's Guide
 --------------

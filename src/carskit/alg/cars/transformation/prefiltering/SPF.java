@@ -1,4 +1,3 @@
-
 // Copyright (C) 2015 Yong Zheng
 //
 // This file is part of CARSKit.
@@ -263,7 +262,7 @@ public class SPF extends ContextRecommender {
     }
 
     protected DenseVector getContextVector(int ctx){
-       Collection<Integer> css= rateDao.getContextConditionsList().get(ctx);
+        Collection<Integer> css= rateDao.getContextConditionsList().get(ctx);
         DenseVector v_ctx = new DenseVector(C.numColumns());
         for(int index_cs:css){
             v_ctx=v_ctx.add(C.row(index_cs));
@@ -274,7 +273,7 @@ public class SPF extends ContextRecommender {
     }
 
     protected double cosineSimilarity(DenseVector v1, DenseVector v2){
-       int size = v1.getData().length;
+        int size = v1.getData().length;
         double sum1=0, sum2=0, sum3=0;
         for(int i=0;i<size;++i)
         {
@@ -320,7 +319,7 @@ public class SPF extends ContextRecommender {
             for (Cell<Integer, Integer, Double> cell : dataTable_ui.cellSet()) {
                 int uu = cell.getRowKey();
                 int jj = cell.getColumnKey();
-                dataTable_ui.put(uu, jj, cell.getValue() / (beta + dataTable_ui_count.get(uu, jj)));
+                dataTable_ui.put(uu, jj, cell.getValue() / dataTable_ui_count.get(uu, jj));
                 colMap.put(jj, uu);
             }
         }

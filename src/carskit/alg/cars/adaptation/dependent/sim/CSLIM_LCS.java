@@ -33,8 +33,8 @@ public class CSLIM_LCS extends CSLIM {
         isCARSRecommender=false; // this option is used to allow the algorithm to call 2D rating matrix "train"
         this.algoName = "CSLIM_LCS";
 
-        regLw1 = algoOptions.getFloat("-lw1");
-        regLw2 = algoOptions.getFloat("-lw2");
+        regLw1 =  algoOptions.getFloat("-lw1");
+        regLw2 =  algoOptions.getFloat("-lw2");
 
         knn = algoOptions.getInt("-k");
     }
@@ -190,11 +190,22 @@ public class CSLIM_LCS extends CSLIM {
         Collection<Integer> nns = knn > 0 ? itemNNs.get(j) : allItems;
         SparseVector Ru = userCache.get(u);
 
+
+
         List<Integer> conditions=getConditions(c);
         double sim=1.0;
         for(int i=0;i<conditions.size();++i)
         {
-            sim*=DenseMatrix.rowMult(cfMatrix_LCS, conditions.get(i), cfMatrix_LCS, EmptyContextConditions.get(i));
+            double[] dv1=cfMatrix_LCS.row(conditions.get(i)).getData();
+            double[] dv2=cfMatrix_LCS.row(EmptyContextConditions.get(i)).getData();
+            double sum1=0,sum2=0;
+            for(int h=0;h<dv1.length;++h){
+                sum1+=dv1[h]*dv1[h];
+                sum2+=dv2[h]*dv2[h];
+            }
+            sum1=Math.sqrt(sum1);
+            sum2=Math.sqrt(sum2);
+            sim*=DenseMatrix.rowMult(cfMatrix_LCS, conditions.get(i), cfMatrix_LCS, EmptyContextConditions.get(i))/(sum1*sum2);
         }
 
         double pred = 0;

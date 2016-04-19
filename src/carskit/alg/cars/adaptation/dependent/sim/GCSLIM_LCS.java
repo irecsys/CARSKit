@@ -213,27 +213,36 @@ public class GCSLIM_LCS extends CSLIM {
             if (Ru.contains(k)) {if(exclude==true && k == excluded_item)
                 continue;
             else {
-                    // extract a random contextual rating by user u and item k
-                    String key=u+","+k;
-                    int uiid=rateDao.getUserItemId(key);
-                    List<Integer> ctxid=this.trainMatrix.getColumns(uiid);
+                // extract a random contextual rating by user u and item k
+                String key=u+","+k;
+                int uiid=rateDao.getUserItemId(key);
+                List<Integer> ctxid=this.trainMatrix.getColumns(uiid);
 
-                    Random r = new Random();
-                    int index = r.nextInt(ctxid.size());
-                    int ctx=ctxid.get(index);
-                    List<Integer> conditions_from=getConditions(ctx);
+                Random r = new Random();
+                int index = r.nextInt(ctxid.size());
+                int ctx=ctxid.get(index);
+                List<Integer> conditions_from=getConditions(ctx);
 
-                    // get rating for u, k, ctx
-                    double ruk = this.trainMatrix.get(uiid, ctx);
+                // get rating for u, k, ctx
+                double ruk = this.trainMatrix.get(uiid, ctx);
 
-                    double sim=1.0;
-                    for(int i=0;i<conditions.size();++i)
-                    {
-                        sim*=DenseMatrix.rowMult(cfMatrix_LCS, conditions.get(i), cfMatrix_LCS, conditions_from.get(i));
+                double sim=1.0;
+                for(int i=0;i<conditions.size();++i)
+                {
+                    double[] dv1=cfMatrix_LCS.row(conditions.get(i)).getData();
+                    double[] dv2=cfMatrix_LCS.row(EmptyContextConditions.get(i)).getData();
+                    double sum1=0,sum2=0;
+                    for(int h=0;h<dv1.length;++h){
+                        sum1+=dv1[h]*dv1[h];
+                        sum2+=dv2[h]*dv2[h];
                     }
-
-                    pred += ruk * W.get(k, j)*sim;
+                    sum1=Math.sqrt(sum1);
+                    sum2=Math.sqrt(sum2);
+                    sim*=DenseMatrix.rowMult(cfMatrix_LCS, conditions.get(i), cfMatrix_LCS, EmptyContextConditions.get(i))/(sum1*sum2);
                 }
+
+                pred += ruk * W.get(k, j)*sim;
+            }
             }
         }
         return pred;

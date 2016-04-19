@@ -38,8 +38,18 @@ public class CAMF_LCS extends CAMF{
     protected double predict(int u, int j, int c) throws Exception {
         double pred=DenseMatrix.rowMult(P, u, Q, j);
         List<Integer> conditions=getConditions(c);
-        for(int i=0;i<conditions.size();++i)
-            pred=pred*DenseMatrix.rowMult(cfMatrix_LCS, conditions.get(i), cfMatrix_LCS, EmptyContextConditions.get(i));
+        for(int i=0;i<conditions.size();++i){
+            double[] dv1=cfMatrix_LCS.row(conditions.get(i)).getData();
+            double[] dv2=cfMatrix_LCS.row(EmptyContextConditions.get(i)).getData();
+            double sum1=0,sum2=0;
+            for(int h=0;h<dv1.length;++h){
+                sum1+=dv1[h]*dv1[h];
+                sum2+=dv2[h]*dv2[h];
+            }
+            sum1=Math.sqrt(sum1);
+            sum2=Math.sqrt(sum2);
+            pred=pred*DenseMatrix.rowMult(cfMatrix_LCS, conditions.get(i), cfMatrix_LCS, EmptyContextConditions.get(i))/(sum1*sum2);
+        }
         return pred;
     }
 

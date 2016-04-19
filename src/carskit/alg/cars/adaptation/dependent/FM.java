@@ -215,7 +215,7 @@ public class FM extends ContextRecommender {
                     // copy new Vlf to Vlf
                     V.set(l,f,update_Vlf);
                 }
-            loss *= 0.5;
+            loss *= 0.05;
         }
     }
 

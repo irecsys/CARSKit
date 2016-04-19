@@ -253,7 +253,7 @@ public class DataDAO {
         // release memory of data table
         dataTable = null;
 
-            Logs.info("Rating data set has been successfully loaded.");
+        Logs.info("Rating data set has been successfully loaded.");
         return rateMatrix;
     }
 
@@ -824,6 +824,35 @@ public class DataDAO {
             }
         }
         return uciList;
+    }
+
+    public HashMap<Integer, HashMultimap<Integer, Integer>> getCtxUserList(SparseMatrix sm)
+    {
+        HashMap<Integer, HashMultimap<Integer, Integer>> cuiList=new HashMap<>();
+        for(int c:sm.columns())
+        {
+            SparseVector sv = sm.column(c);
+            if(sv.getCount()>0) {
+                int[] uis = sv.getIndex();
+                for(int uiid:uis){
+                    int uid = this.getUserIdFromUI(uiid);
+                    int itemid = this.getItemIdFromUI(uiid);
+                    if(cuiList.containsKey(c))
+                    {
+                        cuiList.get(c).put(uid,itemid);
+                    }else
+                    {
+                        HashMultimap<Integer, Integer> uiss=HashMultimap.create();
+                        uiss.put(uid,itemid);
+                        cuiList.put(c, uiss);
+                    }
+                }
+            }
+
+
+        }
+
+        return cuiList;
     }
 
     public Set<Integer> getRatedItemsList(SparseMatrix sm, int uid)

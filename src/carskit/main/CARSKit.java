@@ -25,6 +25,7 @@ import carskit.alg.cars.adaptation.dependent.FM;
 import carskit.alg.cars.adaptation.dependent.dev.*;
 import carskit.alg.cars.adaptation.dependent.sim.*;
 import carskit.alg.cars.adaptation.independent.CPTF;
+import carskit.alg.cars.transformation.prefiltering.SPF;
 import carskit.alg.cars.transformation.prefiltering.splitting.UserSplitting;
 import com.google.common.collect.*;
 
@@ -60,7 +61,7 @@ import carskit.alg.cars.transformation.prefiltering.splitting.*;
 
 public class CARSKit {
     // version: MAJOR version (significant changes), followed by MINOR version (small changes, bug fixes)
-    protected static String version = "0.2.0";
+    protected static String version = "0.2.4";
     protected static String defaultConfigFileName = "setting.conf";
     // is only to print measurements
     public static boolean isMeasuresOnly = false;
@@ -643,6 +644,11 @@ public class CARSKit {
                     recsys.setIdMappers(userIdMapper, itemIdMapper);
                     return recsys;
                 }
+            }
+
+            case "spf":
+            {
+                return new SPF(trainMatrix, testMatrix, fold);
             }
 
             ///////// Context-aware recommender: Tensor Factorization //////////////////////////////////////////////////////////

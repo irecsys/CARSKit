@@ -32,6 +32,7 @@ Please cite the following papers if you use CARSKit in your research:
 If you use CARSKit in your research papers, please let us know. And I will create a list of publications using this toolkit.
 
 ### Downloads
+* **[CARSKit-v0.2.0.jar](https://github.com/irecsys/CARSKit/raw/master/jar/CARSKit-v0.2.4.jar)**
 * **[CARSKit-v0.2.0.jar](https://raw.githubusercontent.com/irecsys/CARSKit/master/jar/CARSKit-v0.2.0.jar)**
 * **[CARSKit-v0.1.0.jar](https://raw.githubusercontent.com/irecsys/CARSKit/master/jar/CARSKit-v0.1.0.jar)**
 
@@ -52,9 +53,10 @@ I would like to show our gratitude to Dr. Guibing Guo (the author of LibRec) for
 
 ### Release Notes
 ------------------
-**2016/03, Version 0.2.0** (Minor Updates)
+**2016/04/18, Version 0.2.4**
 * **What's New**:
  - BugFix in Tensor Factorization
+ - Add a contextual PreFiltering algorithm: SPF (Semantic PreFiltering)
  - Update corresponding JavaDoc and JAR library
 
 **2015/11/09, Version 0.2.0**
@@ -63,7 +65,6 @@ I would like to show our gratitude to Dr. Guibing Guo (the author of LibRec) for
  - update API documents and the configuration file setting.conf
  - release user's guide, "A User's Guide to CARSKit"
  - optimize the coding
-
 
 **2015/09/25, Version 0.1.0 (Initial Release)**
 

@@ -32,7 +32,7 @@ Please cite the following papers if you use CARSKit in your research:
 If you use CARSKit in your research papers, please let us know. And I will create a list of publications using this toolkit.
 
 ### Downloads
-* **[CARSKit-v0.2.0.jar](https://github.com/irecsys/CARSKit/raw/master/jar/CARSKit-v0.2.4.jar)**
+* **[CARSKit-v0.2.4.jar](https://github.com/irecsys/CARSKit/raw/master/jar/CARSKit-v0.2.4.jar)**
 * **[CARSKit-v0.2.0.jar](https://raw.githubusercontent.com/irecsys/CARSKit/master/jar/CARSKit-v0.2.0.jar)**
 * **[CARSKit-v0.1.0.jar](https://raw.githubusercontent.com/irecsys/CARSKit/master/jar/CARSKit-v0.1.0.jar)**
 

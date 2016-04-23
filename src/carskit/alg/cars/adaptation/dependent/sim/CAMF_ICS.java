@@ -28,7 +28,9 @@ public class CAMF_ICS extends CAMF{
     protected void initModel() throws Exception {
 
         super.initModel();
-
+        
+        P.init(1,0.1);
+        Q.init(1,0.1);
 
         ccMatrix_ICS=new SymmMatrix(numConditions);
         for(int i=0;i<numConditions;++i)

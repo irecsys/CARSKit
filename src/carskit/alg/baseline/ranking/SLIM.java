@@ -70,6 +70,8 @@ public class SLIM extends IterativeRecommender {
 
         regL1 = algoOptions.getFloat("-l1");
         regL2 = algoOptions.getFloat("-l2");
+        
+        knn= algoOptions.getInt("-k");
     }
 
     @Override

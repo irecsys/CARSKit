@@ -105,15 +105,8 @@ public class ItemKNN extends Recommender {
         }
 
         if (nns.size() == 0)
-            return isRankingPred ? 0 : globalMean;
-
-        if (isRankingPred) {
-            // for recommendation task: item ranking
-
-            return Stats.sum(nns.values());
-        } else {
-            // for recommendation task: rating prediction
-
+            return globalMean;
+        else {
             double sum = 0, ws = 0;
             for (Entry<Integer, Double> en : nns.entrySet()) {
                 int i = en.getKey();
@@ -126,6 +119,7 @@ public class ItemKNN extends Recommender {
 
             return ws > 0 ? itemMeans.get(j) + sum / ws : globalMean;
         }
+
     }
 
     @Override

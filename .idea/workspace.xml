@@ -9,9 +9,8 @@
     <list default="true" id="964dbfa3-9dfc-42e9-9d37-4708635eca54" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/debug.log" afterPath="$PROJECT_DIR$/debug.log" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/carskit/alg/cars/adaptation/dependent/sim/CAMF_LCS.java" afterPath="$PROJECT_DIR$/src/carskit/alg/cars/adaptation/dependent/sim/CAMF_LCS.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/carskit/alg/cars/adaptation/dependent/sim/CSLIM_LCS.java" afterPath="$PROJECT_DIR$/src/carskit/alg/cars/adaptation/dependent/sim/CSLIM_LCS.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/carskit/alg/cars/adaptation/dependent/sim/GCSLIM_LCS.java" afterPath="$PROJECT_DIR$/src/carskit/alg/cars/adaptation/dependent/sim/GCSLIM_LCS.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/carskit/alg/baseline/cf/ItemKNN.java" afterPath="$PROJECT_DIR$/src/carskit/alg/baseline/cf/ItemKNN.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/carskit/alg/baseline/cf/UserKNN.java" afterPath="$PROJECT_DIR$/src/carskit/alg/baseline/cf/UserKNN.java" />
     </list>
     <ignored path="CARSKit.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -32,7 +31,7 @@
     <favorites_list name="CARSKit" />
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300" />
+    <leaf />
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -49,12 +48,14 @@
         <option value="$PROJECT_DIR$/src/carskit/alg/cars/adaptation/dependent/sim/GCSLIM_LCS.java" />
         <option value="$PROJECT_DIR$/src/carskit/alg/cars/adaptation/dependent/sim/CSLIM_LCS.java" />
         <option value="$PROJECT_DIR$/src/carskit/alg/cars/adaptation/dependent/sim/CAMF_LCS.java" />
+        <option value="$PROJECT_DIR$/src/carskit/alg/baseline/cf/ItemKNN.java" />
+        <option value="$PROJECT_DIR$/src/carskit/alg/baseline/cf/UserKNN.java" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="248" />
-    <option name="y" value="33" />
+    <option name="x" value="473" />
+    <option name="y" value="71" />
     <option name="width" value="1400" />
     <option name="height" value="1000" />
   </component>
@@ -83,7 +84,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scratches" />
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -246,19 +247,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="cars" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="adaptation" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="dependent" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="sim" />
+              <option name="myItemId" value="baseline" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -283,11 +272,19 @@
               <option name="myItemId" value="alg" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="baseline" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="cf" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
           </PATH>
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
       <pane id="Scope" />
+      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -548,7 +545,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="248" y="33" width="1400" height="1000" extended-state="0" />
+    <frame x="473" y="71" width="1400" height="1000" extended-state="0" />
     <editor active="false" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -601,10 +598,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#26416#0" expanded="true" />
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -619,7 +612,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="828">
           <caret line="270" column="0" selection-start-line="270" selection-start-column="0" selection-end-line="270" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -627,7 +619,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="828">
           <caret line="245" column="0" selection-start-line="245" selection-start-column="0" selection-end-line="245" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -635,7 +626,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="828">
           <caret line="139" column="0" selection-start-line="139" selection-start-column="0" selection-end-line="139" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -643,10 +633,22 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#26416#0" expanded="true" />
-            <element signature="imports" expanded="true" />
-          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/carskit/alg/baseline/cf/ItemKNN.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="641">
+          <caret line="120" column="9" selection-start-line="120" selection-start-column="9" selection-end-line="120" selection-end-column="9" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/carskit/alg/baseline/cf/UserKNN.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="80">
+          <caret line="90" column="22" selection-start-line="0" selection-start-column="0" selection-end-line="133" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>

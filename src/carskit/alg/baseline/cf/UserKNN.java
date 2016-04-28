@@ -107,14 +107,9 @@ public class UserKNN extends Recommender {
         }
 
         if (nns.size() == 0)
-            return isRankingPred ? 0 : globalMean;
+            return  globalMean;
 
-        if (isRankingPred) {
-            // for item ranking
-
-            return Stats.sum(nns.values());
-        } else {
-            // for rating prediction
+            else {
 
             double sum = 0, ws = 0;
             for (Entry<Integer, Double> en : nns.entrySet()) {

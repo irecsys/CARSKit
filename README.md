@@ -31,10 +31,8 @@ Please cite the following papers if you use CARSKit in your research:
 
 If you use CARSKit in your research papers, please let us know. And I will create a list of publications using this toolkit.
 
-### Downloads
+### Downloads (Latest)
 * **[CARSKit-v0.2.4.jar](https://github.com/irecsys/CARSKit/raw/master/jar/CARSKit-v0.2.4.jar)**
-* **[CARSKit-v0.2.0.jar](https://raw.githubusercontent.com/irecsys/CARSKit/master/jar/CARSKit-v0.2.0.jar)**
-* **[CARSKit-v0.1.0.jar](https://raw.githubusercontent.com/irecsys/CARSKit/master/jar/CARSKit-v0.1.0.jar)**
 
 ### Data Sets
 --------------
@@ -58,6 +56,8 @@ I would like to show our gratitude to Dr. Guibing Guo (the author of LibRec) for
  - BugFix in Tensor Factorization
  - Add a contextual PreFiltering algorithm: SPF (Semantic PreFiltering)
  - Update corresponding JavaDoc and JAR library
+ - Change the evaluation process if you'd like to set a rating threshold for TopN recommendation
+ - Bug Fix in some algorithms
 
 **2015/11/09, Version 0.2.0**
 * **What's New**:

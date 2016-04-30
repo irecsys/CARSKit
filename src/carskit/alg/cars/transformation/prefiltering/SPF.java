@@ -1,3 +1,4 @@
+
 // Copyright (C) 2015 Yong Zheng
 //
 // This file is part of CARSKit.
@@ -27,6 +28,7 @@ import com.google.common.collect.Table;
 import happy.coding.io.FileIO;
 import happy.coding.io.Lists;
 import happy.coding.io.Logs;
+import happy.coding.io.Strings;
 import happy.coding.math.Measures;
 import happy.coding.math.Stats;
 import librec.data.*;
@@ -330,7 +332,7 @@ public class SPF extends ContextRecommender {
     @Override
     protected Map<Measure, Double> evalRankings() throws Exception {
 
-        HashMap<Integer, HashMultimap<Integer, Integer>> cuiList=rateDao.getCtxUserList(testMatrix);
+        HashMap<Integer, HashMultimap<Integer, Integer>> cuiList=rateDao.getCtxUserList(testMatrix, binThold);
         HashMap<Integer, HashMultimap<Integer, Integer>> cuiList_train=rateDao.getCtxUserList(trainMatrix);
         int capacity = cuiList.keySet().size();
 
@@ -442,7 +444,8 @@ public class SPF extends ContextRecommender {
                     if (!ratedItems.contains(j)) {
                         final double rank = ranking(u, j, ctx);
                         if (!Double.isNaN(rank)) {
-                            itemScores.add(new AbstractMap.SimpleImmutableEntry<Integer, Double>(j, rank));
+                            if(rank>binThold)
+                                itemScores.add(new AbstractMap.SimpleImmutableEntry<Integer, Double>(j, rank));
                         }
                     } else {
                         numCands--;
@@ -660,4 +663,9 @@ public class SPF extends ContextRecommender {
         return globalMean + userBias.get(u) + itemBias.get(j) + DenseMatrix.rowMult(P, u, Q, j);
     }
 
+    @Override
+    public String toString() {
+        return Strings.toString(new Object[]{"numFactors: " + numFactors, "numIter: " + numIters, "lrate: " + initLRate, "maxlrate: " + maxLRate, "regB: " + regB, "regU: " + regU, "regI: " + regI, "regC: " + regC,
+                "knn: "+knn, "-i: "+this.itembased, "-b: "+this.beta, "-th: "+this.th, "isBoldDriver: " + isBoldDriver});
+    }
 }

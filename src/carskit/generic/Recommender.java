@@ -350,7 +350,7 @@ public abstract class Recommender implements Runnable{
             evalInfo += "\tView: " + view;
 
         if (fold > 0)
-        Logs.debug(evalInfo);
+            Logs.debug(evalInfo);
 
         if (isSaveModel)
             saveModel();
@@ -618,9 +618,10 @@ public abstract class Recommender implements Runnable{
      * @return the evaluation results of ranking predictions
      */
 
+
     protected Map<Measure, Double> evalRankings() throws Exception {
 
-        HashMap<Integer, HashMultimap<Integer, Integer>> uciList=rateDao.getUserCtxList(testMatrix);
+        HashMap<Integer, HashMultimap<Integer, Integer>> uciList=rateDao.getUserCtxList(testMatrix, binThold); // retrieve positive user-items (rate>threshold) list from test set
         HashMap<Integer, HashMultimap<Integer, Integer>> uciList_train=rateDao.getUserCtxList(trainMatrix);
         int capacity = uciList.keySet().size();
 
@@ -724,7 +725,9 @@ public abstract class Recommender implements Runnable{
                     if (!ratedItems.contains(j)) {
                         final double rank = ranking(u, j, c);
                         if (!Double.isNaN(rank)) {
-                            itemScores.add(new SimpleImmutableEntry<Integer, Double>(j, rank));
+                            // add rating threshold as a filter
+                            if(rank>binThold)
+                                itemScores.add(new SimpleImmutableEntry<Integer, Double>(j, rank));
                         }
                     } else {
                         numCands--;

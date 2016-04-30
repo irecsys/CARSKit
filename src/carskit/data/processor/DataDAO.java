@@ -41,6 +41,7 @@ import com.google.common.collect.Multimap;
 import com.google.common.collect.Multiset;
 import com.google.common.collect.Table;
 import librec.data.SparseVector;
+import org.apache.commons.math3.analysis.function.Max;
 
 /**
  * A data access object (DAO) to a data file
@@ -60,6 +61,8 @@ public class DataDAO {
     private SparseMatrix rateMatrix;
     // store rate data as a sparse tensor
     private SparseTensor rateTensor;
+
+    private double MaxRate=-1, MinRate=-1;
 
 
     // is first head line
@@ -185,8 +188,8 @@ public class DataDAO {
             Double rate = Double.valueOf(data[2]);
 
             // binarize the rating for item recommendation task
-            if (binThold >= 0)
-                rate = rate > binThold ? 1.0 : 0.0;
+            //if (binThold >= 0)
+            //rate = rate > binThold ? 1.0 : 0.0;
 
             scaleDist.add(rate);
 
@@ -343,31 +346,31 @@ public class DataDAO {
      *            the sparator of the written data file
 
     public void writeData(String toPath, String sep) throws Exception {
-        FileIO.deleteFile(toPath);
+    FileIO.deleteFile(toPath);
 
-        List<String> lines = new ArrayList<>(1500);
-        for (MatrixEntry me : rateMatrix) {
-            String line = Strings.toString(new Object[] { me.row() + 1, me.column() + 1, (float) me.get() }, sep);
-            lines.add(line);
+    List<String> lines = new ArrayList<>(1500);
+    for (MatrixEntry me : rateMatrix) {
+    String line = Strings.toString(new Object[] { me.row() + 1, me.column() + 1, (float) me.get() }, sep);
+    lines.add(line);
 
-            if (lines.size() >= 1000) {
-                FileIO.writeList(toPath, lines, null, true);
-                lines.clear();
-            }
-        }
+    if (lines.size() >= 1000) {
+    FileIO.writeList(toPath, lines, null, true);
+    lines.clear();
+    }
+    }
 
-        if (lines.size() > 0)
-            FileIO.writeList(toPath, lines, null, true);
+    if (lines.size() > 0)
+    FileIO.writeList(toPath, lines, null, true);
 
-        Logs.debug("Data has been exported to {}", toPath);
+    Logs.debug("Data has been exported to {}", toPath);
     } */
 
     /**
      * Default sep=" " is adopted
 
-    public void writeData(String toPath) throws Exception {
-        writeData(toPath, " ");
-    } */
+     public void writeData(String toPath) throws Exception {
+     writeData(toPath, " ");
+     } */
 
 
     /**
@@ -776,6 +779,19 @@ public class DataDAO {
     public HashMap<Integer, Integer> getUiUserIds(){return this.uiUserIds;}
     public HashMap<Integer, Integer> getUiItemIds(){return this.uiItemIds;}
 
+    public double getRatingMax()
+    {
+        if(MaxRate==-1)
+            MaxRate=Collections.max(getRatingScale());
+        return MaxRate;
+    }
+    public double getRatingMin()
+    {
+        if(MaxRate==-1)
+            MinRate=Collections.min(getRatingScale());
+        return MinRate;
+    }
+
 
     /**
      * @return name of the data file with file type extension
@@ -826,6 +842,33 @@ public class DataDAO {
         return uciList;
     }
 
+    public HashMap<Integer, HashMultimap<Integer, Integer>> getUserCtxList(SparseMatrix sm, double rateThreshold)
+    {
+        HashMap<Integer, HashMultimap<Integer, Integer>> uciList=new HashMap<>();
+        for(int uiid:sm.rows()){
+            int uid=this.getUserIdFromUI(uiid);
+            SparseVector sv=sm.row(uiid);
+            if(sv.getCount()>0){
+                int[] ctx=sv.getIndex();
+                for(int c:ctx){
+                    if(sv.get(c)>rateThreshold) {
+
+                        int itemid = this.getItemIdFromUI(uiid);
+                        if (uciList.containsKey(uid)) {
+                            uciList.get(uid).put(c, itemid);
+                        } else {
+                            HashMultimap<Integer, Integer> cis = HashMultimap.create();
+                            cis.put(c, itemid);
+                            uciList.put(uid, cis);
+                        }
+                    }
+
+                }
+            }
+        }
+        return uciList;
+    }
+
     public HashMap<Integer, HashMultimap<Integer, Integer>> getCtxUserList(SparseMatrix sm)
     {
         HashMap<Integer, HashMultimap<Integer, Integer>> cuiList=new HashMap<>();
@@ -845,6 +888,35 @@ public class DataDAO {
                         HashMultimap<Integer, Integer> uiss=HashMultimap.create();
                         uiss.put(uid,itemid);
                         cuiList.put(c, uiss);
+                    }
+                }
+            }
+
+
+        }
+
+        return cuiList;
+    }
+
+    public HashMap<Integer, HashMultimap<Integer, Integer>> getCtxUserList(SparseMatrix sm, double rateThreshold)
+    {
+        HashMap<Integer, HashMultimap<Integer, Integer>> cuiList=new HashMap<>();
+        for(int c:sm.columns())
+        {
+            SparseVector sv = sm.column(c);
+            if(sv.getCount()>0) {
+                int[] uis = sv.getIndex();
+                for(int uiid:uis){
+                    if(sv.get(uiid)>rateThreshold) {
+                        int uid = this.getUserIdFromUI(uiid);
+                        int itemid = this.getItemIdFromUI(uiid);
+                        if (cuiList.containsKey(c)) {
+                            cuiList.get(c).put(uid, itemid);
+                        } else {
+                            HashMultimap<Integer, Integer> uiss = HashMultimap.create();
+                            uiss.put(uid, itemid);
+                            cuiList.put(c, uiss);
+                        }
                     }
                 }
             }

@@ -56,7 +56,7 @@ I would like to show our gratitude to Dr. Guibing Guo (the author of LibRec) for
  - BugFix in Tensor Factorization
  - Add a contextual PreFiltering algorithm: SPF (Semantic PreFiltering)
  - Update corresponding JavaDoc and JAR library
- - Change the evaluation process if you'd like to set a rating threshold for TopN recommendation
+ - Change the evaluation process when you set a rating threshold for TopN recommendation
 
 **2015/11/09, Version 0.2.0**
 * **What's New**:

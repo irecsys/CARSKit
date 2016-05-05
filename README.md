@@ -54,7 +54,7 @@ I would like to show our gratitude to Dr. Guibing Guo (the author of LibRec) for
 **2016/05/04, Version 0.3.0**
 * BugFix in some algorithms
 * Add two contextual filtering algorithms: DCR and DCW (may support multi-threading in future)
- *Update corresponding JavaDoc and JAR library
+* Update corresponding JavaDoc and JAR library
 
 **2016/04/18, Version 0.2.4**
 * BugFix in Tensor Factorization

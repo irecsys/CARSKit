@@ -27,12 +27,12 @@ CARSKit is [free software](http://www.gnu.org/philosophy/free-sw.html): you can 
 
 Please cite the following papers if you use CARSKit in your research:
 
-1. Yong Zheng, Bamshad Mobasher, Robin Burke. "CARSKit: A Java-Based Context-aware Recommendation Engine", Proceedings of the 15th IEEE International Conference on Data Mining (ICDM) Workshops, Atlantic City, NJ, USA, Nov 2015
+1. Yong Zheng, Bamshad Mobasher, Robin Burke. "CARSKit: A Java-Based Context-aware Recommendation Engine", Proceedings of the 15th IEEE International Conference on Data Mining (ICDM) Workshops, pp. 1668-1671, Atlantic City, NJ, USA, Nov 2015
 
 If you use CARSKit in your research papers, please let us know. And I will create a list of publications using this toolkit.
 
 ### Downloads (Latest)
-* **[CARSKit-v0.2.4.jar](https://github.com/irecsys/CARSKit/raw/master/jar/CARSKit-v0.2.4.jar)**
+* **[CARSKit-v0.3.0.jar](https://github.com/irecsys/CARSKit/raw/master/jar/CARSKit-v0.3.0.jar)**
 
 ### Data Sets
 --------------
@@ -51,19 +51,22 @@ I would like to show our gratitude to Dr. Guibing Guo (the author of LibRec) for
 
 ### Release Notes
 ------------------
+**2016/05/04, Version 0.3.0**
+* BugFix in some algorithms
+* Add two contextual filtering algorithms: DCR and DCW (may support multi-threading in future)
+* Update corresponding JavaDoc and JAR library
+
 **2016/04/18, Version 0.2.4**
-* **What's New**:
- - BugFix in Tensor Factorization
- - Add a contextual PreFiltering algorithm: SPF (Semantic PreFiltering)
- - Update corresponding JavaDoc and JAR library
- - Change the evaluation process when you set a rating threshold for TopN recommendation
+* BugFix in Tensor Factorization
+* Add a contextual PreFiltering algorithm: SPF (Semantic PreFiltering)
+* Update corresponding JavaDoc and JAR library
+* Change the evaluation process when you set a rating threshold for TopN recommendation
 
 **2015/11/09, Version 0.2.0**
-* **What's New**:
- - add Tensor Factorization (CPTF) into CARSKit
- - update API documents and the configuration file setting.conf
- - release user's guide, "A User's Guide to CARSKit"
- - optimize the coding
+* add Tensor Factorization (CPTF) into CARSKit
+* update API documents and the configuration file setting.conf
+* release user's guide, "A User's Guide to CARSKit"
+* optimize the coding
 
 **2015/09/25, Version 0.1.0 (Initial Release)**
 

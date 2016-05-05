@@ -27,6 +27,7 @@ import carskit.alg.cars.adaptation.dependent.sim.*;
 import carskit.alg.cars.adaptation.independent.CPTF;
 import carskit.alg.cars.transformation.hybridfiltering.DCR;
 import carskit.alg.cars.transformation.hybridfiltering.DCW;
+import carskit.alg.cars.transformation.prefiltering.ExactFiltering;
 import carskit.alg.cars.transformation.prefiltering.SPF;
 import carskit.alg.cars.transformation.prefiltering.splitting.UserSplitting;
 import com.google.common.collect.*;
@@ -646,6 +647,11 @@ public class CARSKit {
                     recsys.setIdMappers(userIdMapper, itemIdMapper);
                     return recsys;
                 }
+            }
+
+            case "exactfiltering":
+            {
+                return new ExactFiltering(trainMatrix, testMatrix, fold);
             }
 
             case "dcr":

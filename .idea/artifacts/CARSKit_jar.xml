@@ -3,7 +3,7 @@
     <output-path>$PROJECT_DIR$/out/artifacts/CARSKit_jar</output-path>
     <root id="archive" name="CARSKit.jar">
       <element id="module-output" name="CARSKit" />
-      <element id="extracted-dir" path="$PROJECT_DIR$/jar/CARSKit-v0.2.4.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/jar/CARSKit-v0.3.0.jar" path-in-jar="/" />
       <element id="extracted-dir" path="$PROJECT_DIR$/lib/slf4j-api-1.6.4.jar" path-in-jar="/" />
       <element id="extracted-dir" path="$PROJECT_DIR$/lib/log4j-1.2.16.jar" path-in-jar="/" />
       <element id="extracted-dir" path="$PROJECT_DIR$/lib/happy.coding.utils-1.2.6.jar" path-in-jar="/" />

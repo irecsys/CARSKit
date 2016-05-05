@@ -529,7 +529,10 @@ public class DataDAO {
      * @return inner user-item id as int
      */
     public int getUserItemId(String rawId) {
-        return uiIds.get(rawId);
+        if(uiIds.containsKey(rawId))
+            return uiIds.get(rawId);
+        else
+            return -1;
     }
 
     /**

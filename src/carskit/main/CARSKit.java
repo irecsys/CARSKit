@@ -25,6 +25,8 @@ import carskit.alg.cars.adaptation.dependent.FM;
 import carskit.alg.cars.adaptation.dependent.dev.*;
 import carskit.alg.cars.adaptation.dependent.sim.*;
 import carskit.alg.cars.adaptation.independent.CPTF;
+import carskit.alg.cars.transformation.hybridfiltering.DCR;
+import carskit.alg.cars.transformation.hybridfiltering.DCW;
 import carskit.alg.cars.transformation.prefiltering.SPF;
 import carskit.alg.cars.transformation.prefiltering.splitting.UserSplitting;
 import com.google.common.collect.*;
@@ -61,7 +63,7 @@ import carskit.alg.cars.transformation.prefiltering.splitting.*;
 
 public class CARSKit {
     // version: MAJOR version (significant changes), followed by MINOR version (small changes, bug fixes)
-    protected static String version = "0.2.4";
+    protected static String version = "0.3.0";
     protected static String defaultConfigFileName = "setting.conf";
     // is only to print measurements
     public static boolean isMeasuresOnly = false;
@@ -279,9 +281,9 @@ public class CARSKit {
     }
 
 
-        /**
-         * write a matrix data into a file
-         */
+    /**
+     * write a matrix data into a file
+     */
 
 
 
@@ -646,6 +648,16 @@ public class CARSKit {
                 }
             }
 
+            case "dcr":
+            {
+                return new DCR(trainMatrix, testMatrix, fold);
+            }
+
+            case "dcw":
+            {
+                return new DCW(trainMatrix, testMatrix, fold);
+            }
+
             case "spf":
             {
                 return new SPF(trainMatrix, testMatrix, fold);
@@ -714,35 +726,35 @@ public class CARSKit {
 
 
     /**
-         * set the configuration file to be used
-         */
-        public void setConfigFiles(String... configurations) {
-            configFiles = Arrays.asList(configurations);
-        }
+     * set the configuration file to be used
+     */
+    public void setConfigFiles(String... configurations) {
+        configFiles = Arrays.asList(configurations);
+    }
 
-        /**
-         * Print out software information
-         */
-        private void about() {
-            String about = "\nCARSKit version " + version + ", copyright (C) 2015-2016 Yong Zheng \n\n"
+    /**
+     * Print out software information
+     */
+    private void about() {
+        String about = "\nCARSKit version " + version + ", copyright (C) 2015-2016 Yong Zheng \n\n"
 
 		        /* Description */
-                    + "CARSKit is free software: you can redistribute it and/or modify \n"
-                    + "it under the terms of the GNU General Public License as published by \n"
-                    + "the Free Software Foundation, either version 3 of the License, \n"
-                    + "or (at your option) any later version. \n\n"
+                + "CARSKit is free software: you can redistribute it and/or modify \n"
+                + "it under the terms of the GNU General Public License as published by \n"
+                + "the Free Software Foundation, either version 3 of the License, \n"
+                + "or (at your option) any later version. \n\n"
 
 				/* Usage */
-                    + "CARSKit is distributed in the hope that it will be useful, \n"
-                    + "but WITHOUT ANY WARRANTY; without even the implied warranty of \n"
-                    + "MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the \n"
-                    + "GNU General Public License for more details. \n\n"
+                + "CARSKit is distributed in the hope that it will be useful, \n"
+                + "but WITHOUT ANY WARRANTY; without even the implied warranty of \n"
+                + "MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the \n"
+                + "GNU General Public License for more details. \n\n"
 
 				/* licence */
-                    + "You should have received a copy of the GNU General Public License \n"
-                    + "along with CARSKit. If not, see <http://www.gnu.org/licenses/>.";
+                + "You should have received a copy of the GNU General Public License \n"
+                + "along with CARSKit. If not, see <http://www.gnu.org/licenses/>.";
 
-            System.out.println(about);
-        }
+        System.out.println(about);
+    }
 
 }

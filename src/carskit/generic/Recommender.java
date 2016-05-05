@@ -927,6 +927,31 @@ public abstract class Recommender implements Runnable{
         return corrs;
     }
 
+    protected SymmMatrix buildCorrs(boolean isUser, SparseMatrix train) {
+        Logs.debug("Build {} similarity matrix ...", isUser ? "user" : "item");
+
+        int count = isUser ? numUsers : numItems;
+        SymmMatrix corrs = new SymmMatrix(count);
+
+        for (int i = 0; i < count; i++) {
+            SparseVector iv = isUser ? train.row(i) : train.column(i);
+            if (iv.getCount() == 0)
+                continue;
+            // user/item itself exclusive
+            for (int j = i + 1; j < count; j++) {
+                SparseVector jv = isUser ? train.row(j) : train.column(j);
+                if(jv.getCount() == 0 )
+                    continue;
+                double sim = correlation(iv, jv);
+
+                if (!Double.isNaN(sim))
+                    corrs.set(i, j, sim);
+            }
+        }
+
+        return corrs;
+    }
+
 
     /**
      * initilize recommender model

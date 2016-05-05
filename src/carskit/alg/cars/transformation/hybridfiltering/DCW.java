@@ -328,7 +328,7 @@ public class DCW extends IterativeRecommender {
 
     @Override
     public String toString() {
-        return Strings.toString(new Object[] { "knn: "+knn, similarityMeasure, similarityShrinkage });
+        return Strings.toString(new Object[] { "p: "+p, "lp: "+lp, "lg: "+lg, "wt: "+wt, "wd: "+wd, "th: "+th});
     }
 
 }

@@ -32,7 +32,7 @@ Please cite the following papers if you use CARSKit in your research:
 If you use CARSKit in your research papers, please let us know. And I will create a list of publications using this toolkit.
 
 ### Downloads (Latest)
-* **[CARSKit-v0.2.4.jar](https://github.com/irecsys/CARSKit/raw/master/jar/CARSKit-v0.2.4.jar)**
+* **[CARSKit-v0.3.0.jar](https://github.com/irecsys/CARSKit/raw/master/jar/CARSKit-v0.3.0.jar)**
 
 ### Data Sets
 --------------
@@ -51,6 +51,12 @@ I would like to show our gratitude to Dr. Guibing Guo (the author of LibRec) for
 
 ### Release Notes
 ------------------
+**2016/05/04, Version 0.3.0**
+* **What's New**:
+ - BugFix in some algorithms
+ - Add two contextual filtering algorithms: DCR and DCW (may support multi-threading in future)
+ - Update corresponding JavaDoc and JAR library
+
 **2016/04/18, Version 0.2.4**
 * **What's New**:
  - BugFix in Tensor Factorization

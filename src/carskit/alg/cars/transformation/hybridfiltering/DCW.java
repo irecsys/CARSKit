@@ -156,7 +156,7 @@ public class DCW extends IterativeRecommender {
             }
         }else{
             // load solution to memory
-            String[] strs=sol.split(",",-1);
+            String[] strs=sol.split(";",-1);
             if(strs.length!=this.len){
                 Logs.error("Error: the length of your solution should be "+this.len);
                 return;

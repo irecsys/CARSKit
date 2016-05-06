@@ -58,6 +58,7 @@ public class DCR extends IterativeRecommender {
     private Particle_BPSO[] swarm;
     private int len;
     private int start=-1;
+    private String sol="";
 
 
     public DCR(carskit.data.structure.SparseMatrix trainMatrix, carskit.data.structure.SparseMatrix testMatrix, int fold) {
@@ -70,6 +71,7 @@ public class DCR extends IterativeRecommender {
         wt = algoOptions.getDouble("-wt");
         wd = algoOptions.getDouble("-wd");
         p = algoOptions.getInt("-p");
+        sol = algoOptions.getString("-sol","");
     }
 
 
@@ -96,85 +98,98 @@ public class DCR extends IterativeRecommender {
     @Override
     protected void buildModel() throws Exception {
 
-        for(int i=0;i<p;++i){ // for each particle
-            Particle_BPSO bp = swarm[i];
-            // let this particle run a number of iterations
-            for (int iter = 1; iter <= numIters; iter++) { // for each iteration
-                double loss=0;
-                for (MatrixEntry me : trainMatrix) {
-                    int ui = me.row(); // user-item
-                    int u= rateDao.getUserIdFromUI(ui);
-                    int j= rateDao.getItemIdFromUI(ui);
-                    int ctx = me.column(); // context
-                    double rujc = me.get(); // real rating
-                    double predication = predict(u, j, ctx, bp.pos);
-                    loss+= Math.pow((rujc - predication),2);
-                }
+        if(sol.equals("")) {
+            for (int i = 0; i < p; ++i) { // for each particle
+                Particle_BPSO bp = swarm[i];
+                // let this particle run a number of iterations
+                for (int iter = 1; iter <= numIters; iter++) { // for each iteration
+                    double loss = 0;
+                    for (MatrixEntry me : trainMatrix) {
+                        int ui = me.row(); // user-item
+                        int u = rateDao.getUserIdFromUI(ui);
+                        int j = rateDao.getItemIdFromUI(ui);
+                        int ctx = me.column(); // context
+                        double rujc = me.get(); // real rating
+                        double predication = predict(u, j, ctx, bp.pos);
+                        loss += Math.pow((rujc - predication), 2);
+                    }
 
-                if(start==-1) {
-                    start=0;
+                    if (start == -1) {
+                        start = 0;
+                        // update global best position and fitness
+                        if (loss < fitness_gbest) {
+                            fitness_gbest = loss;
+                            pos_gbest = bp.pos.clone();
+                        }
+                    }
+
+                    DenseVector tmp = bp.pos.clone();
+
+                    // update partcile best position and fitness
+                    if (loss < bp.fitness_best) {
+                        bp.fitness_best = loss;
+                        bp.pos_best = bp.pos.clone();
+
+                        // update its position for the next iteration
+                        w = wd + (wt - wd) * (numIters - iter) / numIters;
+                        for (int j = 0; j < len; ++j) {
+                            double d11 = 0, d01 = 0, d12 = 0, d02 = 0;
+                            double r1 = Math.random();
+                            if (bp.pos.get(j) == 1) {
+                                d11 = lp * r1;
+                                d01 = 0 - d11;
+                            } else {
+                                d01 = lp * r1;
+                                d11 = 0 - d01;
+                            }
+                            double r2 = Math.random();
+                            if (pos_gbest.get(j) == 1) {
+                                d12 = lg * r2;
+                                d02 = 0 - d12;
+                            } else {
+                                d02 = lg * r2;
+                                d12 = 0 - d02;
+                            }
+
+                            bp.volocity_1.set(j, w * bp.volocity_1.get(j) + d11 + d12);
+                            bp.volocity_0.set(j, w * bp.volocity_0.get(j) + d01 + d02);
+
+                            double v = 0;
+                            if (bp.pos.get(j) == 0)
+                                v = bp.volocity_1.get(j);
+                            else
+                                v = bp.volocity_0.get(j);
+                            double sv = 1.0 / (1.0 + Math.exp(0 - v));
+                            if (Math.random() < sv) {
+                                if (bp.pos.get(j) == 1)
+                                    bp.pos.set(j, 0);
+                                else
+                                    bp.pos.set(j, 1);
+                            }
+                        }
+                    }
+
                     // update global best position and fitness
                     if (loss < fitness_gbest) {
                         fitness_gbest = loss;
-                        pos_gbest = bp.pos.clone();
+                        pos_gbest = tmp;
                     }
+
+                    Logs.info("Fold[" + fold + "]: current particle: " + (i + 1) + ", current iteration: " + iter + ", current loss: " + loss + ", lowest loss: " + fitness_gbest);
                 }
-
-                DenseVector tmp=bp.pos.clone();
-
-                // update partcile best position and fitness
-                if(loss<bp.fitness_best){
-                    bp.fitness_best=loss;
-                    bp.pos_best = bp.pos.clone();
-
-                    // update its position for the next iteration
-                    w = wd + (wt-wd)*(numIters - iter)/numIters;
-                    for(int j=0;j<len;++j){
-                        double d11=0, d01=0, d12=0, d02=0;
-                        double r1 = Math.random();
-                        if(bp.pos.get(j) == 1){
-                            d11 = lp*r1;
-                            d01 = 0-d11;
-                        }else
-                        {
-                            d01=lp*r1;
-                            d11 = 0-d01;
-                        }
-                        double r2 = Math.random();
-                        if(pos_gbest.get(j) == 1){
-                            d12 = lg*r2;
-                            d02 = 0-d12;
-                        }else
-                        {
-                            d02 = lg*r2;
-                            d12 = 0-d02;
-                        }
-
-                        bp.volocity_1.set(j, w*bp.volocity_1.get(j) + d11 + d12);
-                        bp.volocity_0.set(j, w*bp.volocity_0.get(j) + d01 + d02);
-
-                        double v=0;
-                        if(bp.pos.get(j)==0)
-                            v = bp.volocity_1.get(j);
-                        else
-                            v = bp.volocity_0.get(j);
-                        double sv = 1.0/(1.0 + Math.exp(0-v));
-                        if(Math.random()<sv){
-                            if(bp.pos.get(j) == 1)
-                                bp.pos.set(j, 0);
-                            else
-                                bp.pos.set(j, 1);
-                        }
-                    }
+            }
+        }else{
+            // load solution to memory
+            String[] strs=sol.split(";",-1);
+            if(strs.length!=this.len){
+                Logs.error("Error: the length of your solution should be "+this.len);
+                return;
+            }else{
+                for(int i=0;i<this.len;++i){
+                    int bit = Integer.parseInt(strs[i].trim());
+                    pos_gbest.set(i, bit);
                 }
-
-                // update global best position and fitness
-                if(loss<fitness_gbest){
-                    fitness_gbest=loss;
-                    pos_gbest=tmp;
-                }
-
-                Logs.info("Fold["+fold+"]: current particle: "+(i+1)+", current iteration: "+iter+", current loss: "+loss+", lowest loss: "+fitness_gbest);
+                Logs.info("You solution has been successfully loaded.");
             }
         }
     }
@@ -348,7 +363,7 @@ public class DCR extends IterativeRecommender {
 
     @Override
     public String toString() {
-        return Strings.toString(new Object[] { "p: "+p, "lp: "+lp, "lg: "+lg, "wt: "+wt, "wd: "+wd});
+        return Strings.toString(new Object[] { "p: "+p, "lp: "+lp, "lg: "+lg, "wt: "+wt, "wd: "+wd, "sol: "+pos_gbest.toString()});
     }
 
 }

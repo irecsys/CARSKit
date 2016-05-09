@@ -20,7 +20,9 @@ package carskit.data.processor;
 
 
 import carskit.main.CARSKit;
+import com.google.common.primitives.Doubles;
 import happy.coding.io.FileIO;
+import happy.coding.io.Lists;
 import happy.coding.io.Logs;
 import happy.coding.io.Strings;
 import happy.coding.math.Stats;
@@ -64,9 +66,25 @@ public class DataDAO {
 
     private double MaxRate=-1, MinRate=-1;
 
-
     // is first head line
     private boolean isHeadline = true;
+
+    // variables for full data statistics
+    private boolean fullStat = false;
+    private SparseMatrix rateMatrix_UI;
+    private SparseMatrix rateMatrix_UC;
+    private SparseMatrix rateMatrix_IC;
+    private double density_unique_ui;
+    private double density_unique_uc;
+    private double density_unique_ic;
+    private HashMap<Integer, Double> rates_c;
+    private HashMap<Integer, Double> rates_c_count;
+    private HashMap<Integer, Double> rates_u_count;
+    private HashMap<Integer, Double> rates_i_count;
+    private Collection<Double> ratingDist_ui;
+    private Collection<Double> ratingDist_uc;
+    private Collection<Double> ratingDist_ic;
+
 
     // data scales
     private List<Double> ratingScale;
@@ -153,9 +171,26 @@ public class DataDAO {
 
         // Table {row-id, col-id, rate}
         Table<Integer, Integer, Double> dataTable = HashBasedTable.create();
-
         // Map {col-id, multiple row-id}: used to fast build a rating matrix
         Multimap<Integer, Integer> colMap = HashMultimap.create();
+
+
+        Table<Integer, Integer, Double> dataTable_ui=null, dataTable_uc=null, dataTable_ic=null, dataTable_ui_counter=null, dataTable_uc_counter=null, dataTable_ic_counter=null;
+        Multimap<Integer, Integer> colMap_ui=null, colMap_uc=null, colMap_ic=null;
+
+        if(fullStat){
+            dataTable_ui=HashBasedTable.create();
+            dataTable_uc=HashBasedTable.create();
+            dataTable_ic=HashBasedTable.create();
+            dataTable_ui_counter=HashBasedTable.create();
+            dataTable_uc_counter=HashBasedTable.create();
+            dataTable_ic_counter=HashBasedTable.create();
+
+            colMap_ui = HashMultimap.create();
+            colMap_uc = HashMultimap.create();
+            colMap_ic = HashMultimap.create();
+        }
+
 
         EmptyContextConditions=new ArrayList<>();
         Logs.info("DataPath: "+dataPath);
@@ -178,6 +213,10 @@ public class DataDAO {
                 EmptyContextConditions.add(i-3);
         }
 
+        rates_c = new HashMap<>();
+        rates_c_count = new HashMap<>();
+        rates_u_count = new HashMap<>();
+        rates_i_count = new HashMap<>();
 
         while ((line = br.readLine()) != null) {
             //data = line.trim().split("[\t,]+");
@@ -199,6 +238,28 @@ public class DataDAO {
 
             int col = itemIds.containsKey(item) ? itemIds.get(item) : itemIds.size();
             itemIds.put(item, col);
+
+            // create UI matrix
+            if(fullStat){
+                if(dataTable_ui.contains(row,col)){
+                    dataTable_ui.put(row,col,rate+dataTable_ui.get(row,col));
+                    dataTable_ui_counter.put(row,col,1+dataTable_ui_counter.get(row,col));
+                }else{
+                    dataTable_ui.put(row,col,rate);
+                    dataTable_ui_counter.put(row,col,1.0);
+                    colMap_ui.put(col,row);
+                }
+
+                if(rates_u_count.containsKey(row))
+                    rates_u_count.put(row, 1.0+rates_u_count.get(row));
+                else
+                    rates_u_count.put(row, 1.0);
+
+                if(rates_i_count.containsKey(col))
+                    rates_i_count.put(col, 1.0+rates_i_count.get(col));
+                else
+                    rates_i_count.put(col, 1.0);
+            }
 
             // also, indexing (user,item); note: user inner id as key
             String useritem=row+","+col;
@@ -225,7 +286,45 @@ public class DataDAO {
                     if (sb_ctx.length() > 0) sb_ctx.append(",");
                     sb_ctx.append(i - 3);
                     condList.add(i-3);
+
+                    if(fullStat && !EmptyContextConditions.contains(i-3)){
+                        // create UC matrix
+                        if(dataTable_uc.contains(row, i-3)){
+                            dataTable_uc.put(row, i-3, rate+dataTable_uc.get(row, i-3));
+                            dataTable_uc_counter.put(row, i-3, 1.0+dataTable_uc_counter.get(row, i-3));
+                        }else
+                        {
+                            dataTable_uc.put(row, i-3, rate);
+                            dataTable_uc_counter.put(row, i-3, 1.0);
+                            colMap_uc.put(i-3, row);
+                        }
+
+                        // create IC matrix
+                        if(dataTable_ic.contains(col, i-3)){
+                            dataTable_ic.put(col, i-3, rate+dataTable_ic.get(col, i-3));
+                            dataTable_ic_counter.put(col, i-3, 1.0+dataTable_ic_counter.get(col, i-3));
+                        }else
+                        {
+                            dataTable_ic.put(col, i-3, rate);
+                            dataTable_ic_counter.put(col, i-3, 1.0);
+                            colMap_ic.put(i-3, col);
+                        }
+
+                        // collect ratings for each context condition
+                        if(rates_c.containsKey(i-3)){
+                            rates_c.put(i-3, rate+rates_c.get(i-3));
+                            rates_c_count.put(i-3, 1.0+rates_c_count.get(i-3));
+                        }else
+                        {
+                            rates_c.put(i-3, rate);
+                            rates_c_count.put(i-3, 1.0);
+                        }
+                    }
                 }
+
+
+
+
             }
             String ctx=sb_ctx.toString();
             // inner id starting from 0
@@ -253,8 +352,59 @@ public class DataDAO {
         // build rating matrix
         rateMatrix = new SparseMatrix(numUserItems(), numContexts(), dataTable, colMap);
 
+        // build other matrices
+        if(fullStat){
+            density_unique_ui = 0;
+            density_unique_uc = 0;
+            density_unique_ic = 0;
+
+
+            // UI Matrix
+            for(int row:dataTable_ui.rowKeySet())
+                for(int col:dataTable_ui.columnKeySet()){
+                    if(dataTable_ui.contains(row, col)) {
+                        double counter = dataTable_ui_counter.get(row, col);
+                        if(counter>1) density_unique_ui+=1.0;
+                        dataTable_ui.put(row, col, dataTable_ui.get(row, col) / counter);
+                    }
+                }
+            rateMatrix_UI = new SparseMatrix(numUsers(), numItems(), dataTable_ui, colMap_ui);
+
+            // UC matrix
+            for(int row:dataTable_uc.rowKeySet())
+                for(int col:dataTable_uc.columnKeySet()){
+                    if(dataTable_uc.contains(row, col)) {
+                        double counter = dataTable_uc_counter.get(row, col);
+                        if(counter>1) density_unique_uc+=1.0;
+                        dataTable_uc.put(row, col, dataTable_uc.get(row, col) / counter);
+                    }
+                }
+            rateMatrix_UC = new SparseMatrix(numUsers(), numConditions(), dataTable_uc, colMap_uc);
+
+            // IC matrix
+            for(int row:dataTable_ic.rowKeySet())
+                for(int col:dataTable_ic.columnKeySet()){
+                    if(dataTable_ic.contains(row, col)) {
+                        double counter = dataTable_ic_counter.get(row, col);
+                        if (counter > 1) density_unique_ic += 1.0;
+                        dataTable_ic.put(row, col, dataTable_ic.get(row, col) / counter);
+                    }
+                }
+            rateMatrix_IC = new SparseMatrix(numItems(), numConditions(), dataTable_ic, colMap_ic);
+
+            ratingDist_ui=dataTable_ui_counter.values();
+            ratingDist_uc=dataTable_uc_counter.values();
+            ratingDist_ic=dataTable_ic_counter.values();
+        }
+
         // release memory of data table
         dataTable = null;
+        dataTable_ui = null;
+        dataTable_ui_counter=null;
+        dataTable_uc = null;
+        dataTable_uc_counter = null;
+        dataTable_ic = null;
+        dataTable_ic_counter = null;
 
         Logs.info("Rating data set has been successfully loaded.");
         return rateMatrix;
@@ -372,6 +522,10 @@ public class DataDAO {
      writeData(toPath, " ");
      } */
 
+    public void setFullStat(boolean full){
+        this.fullStat = full;
+    }
+
 
     /**
      * print out specifications of the dataset
@@ -389,6 +543,7 @@ public class DataDAO {
         int dims = numContextDims();
         int conds=numConditions();
         int numctx=numContexts();
+        int cdims = 1;
 
         StringBuilder condcount=new StringBuilder();
         StringBuilder sdims=new StringBuilder();
@@ -397,19 +552,22 @@ public class DataDAO {
             int counter=dimConditionsList.get(dim).size();
             if(condcount.length()>0) condcount.append(", ");
             condcount.append(sdim+": "+counter);
+            cdims*=counter;
             if(sdims.length()>0) sdims.append(", ");
             sdims.append(sdim);
         }
 
 
         sps.add(String.format("Dataset: %s", dataPath));
+        sps.add("");
+        sps.add("Statistics of U-I-C Matrix:");
         sps.add("User amount: " + users);
         sps.add("Item amount: " + items);
         sps.add("Rate amount: " + numRatings());
         sps.add("Context dimensions: " + dims +" ("+sdims.toString()+")");
         sps.add("Context conditions: " + conds + " ("+condcount.toString()+")");
         sps.add("Context situations: " + numctx);
-        sps.add(String.format("Contextual Data density: %.4f%%", (numRates + 0.0) / users / items / dims * 100));
+        sps.add(String.format("Data density: %.4f%%", (numRates + 0.0) / users / items / cdims * 100));
         sps.add("Scale distribution: " + scaleDist.toString());
 
         // user/item mean
@@ -418,12 +576,85 @@ public class DataDAO {
         float std = (float) Stats.sd(data);
         float mode = (float) Stats.mode(data);
         float median = (float) Stats.median(data);
-
-        sps.add("");
         sps.add(String.format("Average value of all ratings: %f", mean));
         sps.add(String.format("Standard deviation of all ratings: %f", std));
         sps.add(String.format("Mode of all rating values: %f", mode));
         sps.add(String.format("Median of all rating values: %f", median));
+
+        if(fullStat){
+
+            sps.add("");
+            Collection<Double> ratingDist_c=rates_c_count.values();
+            Collection<Double> ratingDist_u=rates_u_count.values();
+            Collection<Double> ratingDist_i=rates_i_count.values();
+            sps.add("Distribution of rate counts per user: mean = "+Stats.mean(ratingDist_u)+", median = "+Stats.median(ratingDist_u)+", sd = "+Stats.sd(ratingDist_u));
+            sps.add("Distribution of rate counts per item: mean = "+Stats.mean(ratingDist_i)+", median = "+Stats.median(ratingDist_i)+", sd = "+Stats.sd(ratingDist_i));
+            sps.add("Distribution of rate counts per context condition: mean = "+Stats.mean(ratingDist_c)+", median = "+Stats.median(ratingDist_c)+", sd = "+Stats.sd(ratingDist_c));
+            sps.add("");
+            sps.add("Average rating in each context condition: (Average, Counts)");
+            Lists.sortMap(rates_c,false);
+            for(int c:rates_c.keySet()){
+                sps.add(this.getContextConditionId(c)+" - "+String.format("%.6f", rates_c.get(c)/rates_c_count.get(c)) + ", "+rates_c_count.get(c).intValue());
+            }
+
+            data = rateMatrix_UI.getData();
+            double numRates_M = data.length;
+            sps.add("");
+            sps.add("Statistics of UI Matrix:");
+            sps.add("User amount: " + users);
+            sps.add("Item amount: " + items);
+            sps.add("Rate amount: " + numRates_M);
+            sps.add(String.format("Data density: %.4f%%", (numRates_M + 0.0) / users / items * 100));
+            sps.add(String.format("Data density (unique pairs): %.4f%%", density_unique_ui / numRates_M * 100));
+            mean = (float) (Stats.sum(data) / numRates_M);
+            std = (float) Stats.sd(data);
+            mode = (float) Stats.mode(data);
+            median = (float) Stats.median(data);
+            sps.add(String.format("Average value of all ratings: %f", mean));
+            sps.add(String.format("Standard deviation of all ratings: %f", std));
+            sps.add(String.format("Mode of all rating values: %f", mode));
+            sps.add(String.format("Median of all rating values: %f", median));
+            sps.add("Distribution of rate counts per UI pair: mean = "+Stats.mean(ratingDist_ui)+", median = "+Stats.median(ratingDist_ui)+", sd = "+Stats.sd(ratingDist_ui));
+
+
+            data = rateMatrix_UC.getData();
+            numRates_M = data.length;
+            sps.add("");
+            sps.add("Statistics of UC Matrix:");
+            sps.add("User amount: " + users);
+            sps.add("Condition amount: " + conds);
+            sps.add("Rate amount: " + numRates_M);
+            sps.add(String.format("Data density: %.4f%%", (numRates_M + 0.0) / users / numConditions() * 100));
+            sps.add(String.format("Data density (unique pairs): %.4f%%", density_unique_uc / numRates_M * 100));
+            mean = (float) (Stats.sum(data) / numRates_M);
+            std = (float) Stats.sd(data);
+            mode = (float) Stats.mode(data);
+            median = (float) Stats.median(data);
+            sps.add(String.format("Average value of all ratings: %f", mean));
+            sps.add(String.format("Standard deviation of all ratings: %f", std));
+            sps.add(String.format("Mode of all rating values: %f", mode));
+            sps.add(String.format("Median of all rating values: %f", median));
+            sps.add("Distribution of rate counts per UC pair: mean = "+Stats.mean(ratingDist_uc)+", median = "+Stats.median(ratingDist_uc)+", sd = "+Stats.sd(ratingDist_uc));
+
+            data = rateMatrix_IC.getData();
+            numRates_M = data.length;
+            sps.add("");
+            sps.add("Statistics of IC Matrix:");
+            sps.add("Item amount: " + items);
+            sps.add("Condition amount: " + conds);
+            sps.add("Rate amount: " + numRates_M);
+            sps.add(String.format("Data density: %.4f%%", (numRates_M + 0.0) / items / numConditions() * 100));
+            sps.add(String.format("Data density (unique pairs): %.4f%%", density_unique_ic / numRates_M * 100));
+            mean = (float) (Stats.sum(data) / numRates_M);
+            std = (float) Stats.sd(data);
+            mode = (float) Stats.mode(data);
+            median = (float) Stats.median(data);
+            sps.add(String.format("Average value of all ratings: %f", mean));
+            sps.add(String.format("Standard deviation of all ratings: %f", std));
+            sps.add(String.format("Mode of all rating values: %f", mode));
+            sps.add(String.format("Median of all rating values: %f", median));
+            sps.add("Distribution of rate counts per IC pair: mean = "+Stats.mean(ratingDist_ic)+", median = "+Stats.median(ratingDist_ic)+", sd = "+Stats.sd(ratingDist_ic));
+        }
 
         Logs.info(Strings.toSection(sps));
     }

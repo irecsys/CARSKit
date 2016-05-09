@@ -79,6 +79,7 @@ public class CARSKit {
     protected String algorithm;
 
     protected float binThold;
+    private boolean fullStat = false;
 
     // DAO
     protected DataDAO rateDao;
@@ -239,14 +240,15 @@ public class CARSKit {
         }
 
         rateDao = new DataDAO(WorkingPath+"ratings_binary.txt");
-        rateDao.printSpecs();
-
-
 
         // rating threshold
         binThold = ratingOptions.getFloat("-threshold");
+        // print full stat?
+        fullStat = (ratingOptions.getInt("-fullstat",-1) > 0)?true:false;
+        rateDao.setFullStat(fullStat);
 
         rateMatrix = rateDao.readData(binThold);
+        rateDao.printSpecs();
 
         Recommender.rateMatrix = rateMatrix;
         Recommender.rateDao = rateDao;

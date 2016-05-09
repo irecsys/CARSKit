@@ -54,6 +54,7 @@ I would like to show our gratitude to Dr. Guibing Guo (the author of LibRec) for
 **2016/05/04, Version 0.3.0**
 * BugFix in some algorithms
 * Add more contextual filtering algorithms: ExactFiltering, DCR and DCW
+* Add "-fullstat" in configuration which allows the kit to present more details on data statistics
 * Update corresponding JavaDoc and JAR library
 
 **2016/04/18, Version 0.2.4**

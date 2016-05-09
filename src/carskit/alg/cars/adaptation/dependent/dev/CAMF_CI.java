@@ -53,10 +53,12 @@ public class CAMF_CI extends CAMF{
         super.initModel();
 
         userBias = new DenseVector(numUsers);
-        userBias.init(initMean, initStd);
+        userBias.init(initMean,initStd);
+        //userBias.init(0.5,0.001);
 
         icBias=new DenseMatrix(numItems, numConditions);
         icBias.init();
+        //icBias.init(0,0.01);
 
     }
 

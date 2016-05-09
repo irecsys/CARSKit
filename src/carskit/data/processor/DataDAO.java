@@ -44,6 +44,7 @@ import com.google.common.collect.Multiset;
 import com.google.common.collect.Table;
 import librec.data.SparseVector;
 import org.apache.commons.math3.analysis.function.Max;
+import org.apache.commons.math3.stat.inference.TTest;
 
 /**
  * A data access object (DAO) to a data file
@@ -654,6 +655,40 @@ public class DataDAO {
             sps.add(String.format("Mode of all rating values: %f", mode));
             sps.add(String.format("Median of all rating values: %f", median));
             sps.add("Distribution of rate counts per IC pair: mean = "+Stats.mean(ratingDist_ic)+", median = "+Stats.median(ratingDist_ic)+", sd = "+Stats.sd(ratingDist_ic));
+
+            sps.add("");
+            ArrayList<Double> urates = new ArrayList<>();
+            ArrayList<Double> urates_c = new ArrayList<>();
+            ArrayList<Double> irates = new ArrayList<>();
+            ArrayList<Double> irates_c = new ArrayList<>();
+
+            for(int u:rateMatrix_UI.rows())
+            {
+                if(rateMatrix_UC.rows().contains(u)){
+                    SparseVector sv=rateMatrix_UI.row(u);
+                    SparseVector svc=rateMatrix_UC.row(u);
+                    if(sv.size()!=0 && svc.size()!=0){
+                        urates.add(sv.mean());
+                        urates_c.add(svc.mean());
+                    }
+                }
+            }
+
+            for(int i:rateMatrix_UI.columns())
+            {
+                if(rateMatrix_IC.rows().contains(i)){
+                    SparseVector sv=rateMatrix_UI.column(i);
+                    SparseVector svc=rateMatrix_IC.row(i);
+                    if(sv.size()!=0 && svc.size()!=0){
+                        irates.add(sv.mean());
+                        irates_c.add(svc.mean());
+                    }
+                }
+            }
+
+            TTest tt = new TTest();
+            sps.add("Paired t-test on user's average rating between UI and UC matrix: absolute mean diff = "+Math.abs(Stats.mean(urates)-Stats.mean(urates_c))+", p-value = "+tt.pairedTTest(Doubles.toArray(urates), Doubles.toArray(urates_c)));
+            sps.add("Paired t-test on item's average rating between UI and IC matrix: absolute mean diff = "+Math.abs(Stats.mean(irates)-Stats.mean(irates_c))+", p-value = "+tt.pairedTTest(Doubles.toArray(irates), Doubles.toArray(irates_c)));
         }
 
         Logs.info(Strings.toSection(sps));

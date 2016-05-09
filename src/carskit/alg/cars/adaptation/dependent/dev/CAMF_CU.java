@@ -51,9 +51,11 @@ public class CAMF_CU extends CAMF{
 
         itemBias = new DenseVector(numItems);
         itemBias.init(initMean, initStd);
+        //itemBias.init(0.01,0.0001);
 
         ucBias= new DenseMatrix(numUsers, numConditions);
         ucBias.init();
+        //ucBias.init(0,0.0001);
 
     }
 

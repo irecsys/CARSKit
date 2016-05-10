@@ -56,6 +56,8 @@ public class SPF extends ContextRecommender {
     protected HashMap<Integer, Double> bi;
     //protected SymmMatrix SimMatrix;
     protected DenseMatrix C, E;
+    protected int f, t;
+    protected double r, l;
 
     public SPF(SparseMatrix trainMatrix, SparseMatrix testMatrix, int fold) {
         super(trainMatrix, testMatrix, fold);
@@ -66,6 +68,11 @@ public class SPF extends ContextRecommender {
         th = algoOptions.getDouble("-th");
         itembased = algoOptions.getInt("-i");
         beta = algoOptions.getDouble("-b");
+
+        f=algoOptions.getInt("-f",10);
+        t=algoOptions.getInt("-t",90);
+        r=algoOptions.getDouble("-r",0.01);
+        l=algoOptions.getDouble("-l",0.01);
 
         // calculate globalMean, user and item bias
         mean=this.globalMean;
@@ -104,8 +111,8 @@ public class SPF extends ContextRecommender {
         eBias.init(initMean, initStd);
 
 
-        C = new DenseMatrix(sm.numRows(), numFactors);
-        E = new DenseMatrix(sm.numColumns(), numFactors);
+        C = new DenseMatrix(sm.numRows(), f);
+        E = new DenseMatrix(sm.numColumns(), f);
 
         // initialize model
         if (initByNorm) {
@@ -116,7 +123,7 @@ public class SPF extends ContextRecommender {
             E.init(); // Q.init(smallValue);
         }
 
-        trainMF(sm, cBias, eBias, C, E);
+        trainMF(sm, cBias, eBias, C, E, f, t, l, r, r, r);
         // after training, the C matrix is the context matrix.
 
         /*
@@ -128,7 +135,8 @@ public class SPF extends ContextRecommender {
     }
 
 
-    protected void trainMF(SparseMatrix train,DenseVector cBias, DenseVector eBias, DenseMatrix C, DenseMatrix E){
+    protected void trainMF(SparseMatrix train,DenseVector cBias, DenseVector eBias, DenseMatrix C, DenseMatrix E,
+                           int numFactors, int numIters, double lRate, double regB, double regU, double regI){
 
         for (int iter = 1; iter <= numIters; iter++) {
             loss = 0;
@@ -411,7 +419,7 @@ public class SPF extends ContextRecommender {
             itemBias= new DenseVector(numItems);
             userBias.init(initMean, initStd);
             itemBias.init(initMean, initStd);
-            trainMF(UIM, userBias, itemBias, P, Q);
+            trainMF(UIM, userBias, itemBias, P, Q, numFactors, numIters, lRate, regB, regU, regI);
 
             // for each user
             for (int u : uis.keySet()) {
@@ -585,7 +593,7 @@ public class SPF extends ContextRecommender {
             itemBias= new DenseVector(numItems);
             userBias.init(initMean, initStd);
             itemBias.init(initMean, initStd);
-            trainMF(UIM, userBias, itemBias, P, Q);
+            trainMF(UIM, userBias, itemBias, P, Q, numFactors, numIters, lRate, regB, regU, regI);
 
             for(VectorEntry en:testMatrix.column(ctx)){
                 int ui = en.index();

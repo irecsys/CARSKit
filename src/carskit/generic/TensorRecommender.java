@@ -69,8 +69,9 @@ public class TensorRecommender extends IterativeRecommender {
         testTensor.setItemDimension(itemDimension);
 
         for (MatrixEntry me : testMatrix) {
-            int u = me.row();
-            int i = me.column();
+            int ui = me.row();
+            int u = rateDao.getUserIdFromUI(ui);
+            int i = rateDao.getItemIdFromUI(ui);
 
             List<Integer> indices = rateTensor.getIndices(u, i);
 

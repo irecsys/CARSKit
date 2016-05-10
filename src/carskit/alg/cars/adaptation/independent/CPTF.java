@@ -48,9 +48,9 @@ public class CPTF extends TensorRecommender {
 
         for (int d = 0; d < numDimensions; d++) {
             M[d] = new DenseMatrix(dimensions[d], numFactors);
+            //M[d].init(initMean,initStd);
+            //normalize(d);
             M[d].init(1, 0.1); // randomly initialization
-
-//			normalize(d);
         }
     }
 

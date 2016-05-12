@@ -464,9 +464,9 @@ public class CARSKit {
             case "usersplitting":
             {
                 String recsys_traditional=algOptions.getString("-traditional").trim().toLowerCase();
-                int minListLength=algOptions.getInt("-minlength", 2);
+                int minListLenU=algOptions.getInt("-minlenu", 2);
                 UserSplitting usp=new UserSplitting(rateDao.numUsers(),rateDao.getConditionContextsList(), rateDao.getURatedList());
-                Table<Integer, Integer, Integer> userIdMapper=usp.split(trainMatrix, minListLength);
+                Table<Integer, Integer, Integer> userIdMapper=usp.split(trainMatrix, minListLenU);
                 Logs.info("User Splitting is done... Algorithm '"+recsys_traditional+"' will be applied to the transformed data set.");
                 Recommender recsys=null;
                 switch(recsys_traditional)
@@ -528,9 +528,9 @@ public class CARSKit {
             case "itemsplitting":
             {
                 String recsys_traditional=algOptions.getString("-traditional").trim().toLowerCase();
-                int minListLength=algOptions.getInt("-minlength", 2);
+                int minListLenI=algOptions.getInt("-minleni", 2);
                 ItemSplitting isp=new ItemSplitting(rateDao.numItems(),rateDao.getConditionContextsList(), rateDao.getIRatedList());
-                Table<Integer, Integer, Integer> itemIdMapper=isp.split(trainMatrix, minListLength);
+                Table<Integer, Integer, Integer> itemIdMapper=isp.split(trainMatrix, minListLenI);
                 Logs.info("Item Splitting is done... Algorithm '"+recsys_traditional+"' will be applied to the transformed data set.");
                 Recommender recsys=null;
                 switch(recsys_traditional)
@@ -590,10 +590,11 @@ public class CARSKit {
             case "uisplitting":
             {
                 String recsys_traditional=algOptions.getString("-traditional").trim().toLowerCase();
-                int minListLength=algOptions.getInt("-minlength", 2);
+                int minListLenU=algOptions.getInt("-minlenu", 2);
+                int minListLenI=algOptions.getInt("-minleni", 2);
                 UISplitting sp=new UISplitting(rateDao.numUsers(), rateDao.numItems(), rateDao.getConditionContextsList(), rateDao.getURatedList(), rateDao.getIRatedList());
-                Table<Integer, Integer, Integer> itemIdMapper=sp.splitItem(trainMatrix, minListLength);
-                Table<Integer, Integer, Integer> userIdMapper=sp.splitUser(trainMatrix, minListLength);
+                Table<Integer, Integer, Integer> itemIdMapper=sp.splitItem(trainMatrix, minListLenI);
+                Table<Integer, Integer, Integer> userIdMapper=sp.splitUser(trainMatrix, minListLenU);
                 Logs.info("UI Splitting is done... Algorithm '"+recsys_traditional+"' will be applied to the transformed data set.");
                 Recommender recsys=null;
                 switch(recsys_traditional)

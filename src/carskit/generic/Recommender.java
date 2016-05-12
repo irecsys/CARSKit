@@ -479,6 +479,11 @@ public abstract class Recommender implements Runnable{
             int u=rateDao.getUserIdFromUI(ui);
             int j=rateDao.getItemIdFromUI(ui);
 
+            if(isUserSplitting)
+                u = userIdMapper.contains(u,ctx) ? userIdMapper.get(u,ctx) : u;
+            if(isItemSplitting)
+                j = itemIdMapper.contains(j,ctx) ? itemIdMapper.get(j,ctx) : j;
+
             double pred = predict(u,j, ctx, true);
             if (Double.isNaN(pred))
                 continue;
@@ -605,6 +610,7 @@ public abstract class Recommender implements Runnable{
 
         //Logs.debug("Fold["+fold+"]: numUsers = "+numUsers + ", numItems = "+numItems);
         librec.data.SparseMatrix sm=new librec.data.SparseMatrix(numUsers, numItems, newtable, colMap);
+        Logs.info("Density of transformed 2D rating matrix ============================== "+(sm.getData().length+0.0)/(sm.numRows()*sm.numColumns()));
         return sm;
     }
 
@@ -719,10 +725,18 @@ public abstract class Recommender implements Runnable{
                 // remove rated items from candidate items
                 Set<Integer> ratedItems = (cList_train.containsKey(c))?cList_train.get(c):new HashSet<Integer>();
 
+
+
                 // predict the ranking scores (unordered) of all candidate items
                 List<Map.Entry<Integer, Double>> itemScores = new ArrayList<>(Lists.initSize(candItems));
-                for (final Integer j : candItems) {
+                for (Integer j : candItems) {
                     if (!ratedItems.contains(j)) {
+
+                        if(isUserSplitting)
+                            u = userIdMapper.contains(u,c) ? userIdMapper.get(u,c) : u;
+                        if(isItemSplitting)
+                            j = itemIdMapper.contains(j,c) ? itemIdMapper.get(j,c) : j;
+
                         final double rank = ranking(u, j, c);
                         if (!Double.isNaN(rank)) {
                             // add rating threshold as a filter

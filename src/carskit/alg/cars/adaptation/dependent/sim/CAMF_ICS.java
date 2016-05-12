@@ -31,7 +31,11 @@ public class CAMF_ICS extends CAMF{
         if(isRankingPred==false) {
             P.init(1,0.1);
             Q.init(1,0.1);
+        }else {
+            P.init();
+            Q.init();
         }
+
 
         ccMatrix_ICS=new SymmMatrix(numConditions);
         for(int i=0;i<numConditions;++i)
@@ -115,7 +119,7 @@ public class CAMF_ICS extends CAMF{
             loss *= 0.5;
 
             if (isConverged(iter))
-                break;
+                 break;
 
         }// end of training
 

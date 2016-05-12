@@ -55,6 +55,7 @@ I would like to show our gratitude to Dr. Guibing Guo (the author of LibRec) for
 * BugFix in some algorithms
 * Add more contextual filtering algorithms: ExactFiltering, DCR and DCW
 * Add "-fullstat" in configuration which allows the kit to present more details on data statistics
+* Add "-minlenu" and "-minleni" to setup "recommender=usersplitting -traditional biasedmf -minlenu 2 -minleni 2"
 * Update corresponding JavaDoc and JAR library
 
 **2016/04/18, Version 0.2.4**

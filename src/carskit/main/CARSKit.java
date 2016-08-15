@@ -41,6 +41,7 @@ import happy.coding.math.Randoms;
 import happy.coding.system.Dates;
 
 import java.io.BufferedReader;
+import java.io.File;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
@@ -156,13 +157,8 @@ public class CARSKit {
             outputOptions = cf.getParamOptions("output.setup");
             if (outputOptions != null) {
                 isMeasuresOnly = outputOptions.contains("--measures-only");
-                WorkingFolder = outputOptions.getString("-folder");
-                if (WorkingFolder == null)
-                    WorkingFolder = DefaultWorkingFolder;
-            } else {
-                WorkingFolder = DefaultWorkingFolder;
             }
-
+            WorkingFolder = outputOptions.getString("-folder", DefaultWorkingFolder);
             // make output directory
             WorkingPath = currentFilePath + WorkingFolder + separator;
             Logs.info("WorkingPath: "+WorkingPath);

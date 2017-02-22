@@ -681,7 +681,7 @@ public abstract class Recommender implements Runnable{
 
         // for each test user
         for (int u:uciList.keySet()) {
-
+            int uu=u;
             Multimap<Integer, Integer> cis = uciList.get(u);
 
             int c_capacity = cis.keySet().size();
@@ -730,6 +730,7 @@ public abstract class Recommender implements Runnable{
                 // predict the ranking scores (unordered) of all candidate items
                 List<Map.Entry<Integer, Double>> itemScores = new ArrayList<>(Lists.initSize(candItems));
                 for (Integer j : candItems) {
+                    int jj=j;
                     if (!ratedItems.contains(j)) {
 
                         if(isUserSplitting)
@@ -741,7 +742,7 @@ public abstract class Recommender implements Runnable{
                         if (!Double.isNaN(rank)) {
                             // add rating threshold as a filter
                             if(rank>binThold)
-                                itemScores.add(new SimpleImmutableEntry<Integer, Double>(j, rank));
+                                itemScores.add(new SimpleImmutableEntry<Integer, Double>(jj, rank));
                         }
                     } else {
                         numCands--;
@@ -812,7 +813,7 @@ public abstract class Recommender implements Runnable{
                 // output predictions
                 if (isResultsOut) {
                     // restore back to the original user id
-                    preds.add(rateDao.getUserId(u) + ", " + rateDao.getContextSituationFromInnerId(c) + ": " + sb.toString());
+                    preds.add(rateDao.getUserId(uu) + ", " + rateDao.getContextSituationFromInnerId(c) + ": " + sb.toString());
                     if (preds.size() >= 1000) {
                         FileIO.writeList(toFile, preds, true);
                         preds.clear();

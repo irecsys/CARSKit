@@ -49,6 +49,22 @@ Note: if there are missing values or EMPTY values in the context information, yo
 
 I would like to show our gratitude to Dr. Guibing Guo (the author of LibRec) for his comments and suggestions on the development of CARSKit.
 
+### Who uses CARSKit
+--------------------
+* Universidad del Bío-Bío, Chile
+* Shanghai Jiao Tong University, China
+* South China Agricultural University, China
+* Polytechnic University of Bari, Italy
+* Gdansk University of Technology, Poland 
+* Universidad Autónoma de Madrid, Spain
+* University of Manouba, Tunisia
+* University Tunis El-Manar, Tunisia
+* National Institute of Applied Science and Technology of Tunis, Tunisia
+* DePaul University, USA
+
+[Contact me if you want to be listed here]
+
+
 ### Release Notes
 ------------------
 **2016/05/04, Version 0.3.0**

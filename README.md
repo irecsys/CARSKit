@@ -14,7 +14,7 @@ CARSKit is [free software](http://www.gnu.org/philosophy/free-sw.html): you can 
 ### Architecture and Design
 ----------------------------
 
-![CARSKit Structure](http://students.depaul.edu/~yzheng8/images/CARSKit_Design.png)
+![CARSKit Structure](https://raw.githubusercontent.com/irecsys/CARSKit/master/CARSKit_Design.png)
 
 ### Algorithms
 ---------------
@@ -37,7 +37,7 @@ If you use CARSKit in your research papers, please let us know. And I will creat
 ### Data Sets
 --------------
 
-A list of context-aware data sets can be found here: http://tiny.cc/datacars <br/>
+A list of context-aware data sets can be found here: https://github.com/irecsys/CARSKit/tree/master/context-aware_data_sets <br/>
 
 ### User's Guide
 --------------

@@ -71,9 +71,9 @@ I would like to show our gratitude to Dr. Guibing Guo (the author of LibRec) for
 ### Release Notes
 ------------------
 **January 2019, Version 0.3.5 (coming soon)**
-* Fix the issue in the evaluations in top-N recommendations. It evaluates top-5 and top-10 by default. In addition, you can set up a new value for N, so that CARSKit will produce top-N recommendation results based on top-5, 10 and N.
-* Fix the issue in the evaluations when you explicitly supply training and testing set in the configuration file. In CARSKit v0.3.5, the transformation process will go through both training and testing set, and produce transformed files with consistent formats.
-* Set similarity-based context-aware recommendation algorithms as top-N recommendation methods. Due to that fact that we did not use projected or bounded gradient method in the ICS/LCS/MCS methods, the predicted scores will not be in the original scale. The score can be used for rank items, but it is not appropriate to evaluate these methods in the rating prediction task.
+* Fix the issue in top-N recommendation evaluations. It evaluates top-5 and top-10 by default. In addition, you can set up a new value for N, so that CARSKit will produce top-N recommendation results based on top-5, 10 and N.
+* Fix the issue in the train-test evaluations when you explicitly supply training and testing set in the configuration file. In CARSKit v0.3.5, the transformation process will go through both training and testing set, and produce transformed files with consistent formats.
+* Set similarity-based context-aware recommendation algorithms as top-N recommendation methods. Due to that fact that we did not use projected or bounded gradient method in the ICS/LCS/MCS methods, the predicted scores will not be in the original scale. The score can be used to rank items, but it is not appropriate to evaluate these methods in the rating prediction task.
 
 **2016/05/04, Version 0.3.0**
 * BugFix in some algorithms

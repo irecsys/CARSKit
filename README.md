@@ -32,7 +32,7 @@ Please cite the following papers if you use CARSKit in your research:
 If you use CARSKit in your research papers, please let us know. And I will create a list of publications using this toolkit.
 
 ### Downloads (Latest)
-* **[CARSKit-v0.3.0.jar](https://github.com/irecsys/CARSKit/raw/master/jar/CARSKit-v0.3.0.jar)**
+* **[CARSKit-v0.3.5.jar](https://github.com/irecsys/CARSKit/raw/master/jar/CARSKit-v0.3.5.jar)**
 
 ### Data Sets
 --------------
@@ -70,9 +70,10 @@ I would like to show our gratitude to Dr. Guibing Guo (the author of LibRec) for
 
 ### Release Notes
 ------------------
-**January 2019, Version 0.3.5 (coming soon)**
+**2019/02/18, Version 0.3.5**
 * Fix the issue in top-N recommendation evaluations. It evaluates top-5 and top-10 by default. In addition, you can set up a new value for N, so that CARSKit will produce top-N recommendation results based on top-5, 10 and N.
 * Fix the issue in the train-test evaluations when you explicitly supply training and testing set in the configuration file. In CARSKit v0.3.5, the transformation process will go through both training and testing set, and produce transformed files with consistent formats.
+* Add a new folder "sampleData" in which you can find the data sets in different formats. CARSKit is able to handle all types of the data formats now.
 * Set similarity-based context-aware recommendation algorithms as top-N recommendation methods. Due to that fact that we did not use projected or bounded gradient method in the ICS/LCS/MCS methods, the predicted scores will not be in the original scale. The score can be used to rank items, but it is not appropriate to evaluate these methods in the rating prediction task.
 
 **2016/05/04, Version 0.3.0**

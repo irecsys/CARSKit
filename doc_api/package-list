@@ -11,5 +11,6 @@ carskit.alg.cars.transformation.prefiltering.splitting
 carskit.data.processor
 carskit.data.setting
 carskit.data.structure
+carskit.eval
 carskit.generic
 carskit.main

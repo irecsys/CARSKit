@@ -3,14 +3,14 @@
     <output-path>$PROJECT_DIR$/out/artifacts/CARSKit_jar</output-path>
     <root id="archive" name="CARSKit.jar">
       <element id="module-output" name="CARSKit" />
-      <element id="extracted-dir" path="$PROJECT_DIR$/jar/CARSKit-v0.3.0.jar" path-in-jar="/" />
+      <element id="library" level="project" name="CARSKit" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/lib/commons-math3-3.5.jar" path-in-jar="/" />
       <element id="extracted-dir" path="$PROJECT_DIR$/lib/slf4j-api-1.6.4.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/lib/slf4j-log4j12-1.6.4.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/lib/guava-18.0.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/lib/librec-v1.4-alpha.jar" path-in-jar="/" />
       <element id="extracted-dir" path="$PROJECT_DIR$/lib/log4j-1.2.16.jar" path-in-jar="/" />
       <element id="extracted-dir" path="$PROJECT_DIR$/lib/happy.coding.utils-1.2.6.jar" path-in-jar="/" />
-      <element id="extracted-dir" path="$PROJECT_DIR$/lib/librec-v1.4-alpha.jar" path-in-jar="/" />
-      <element id="extracted-dir" path="$PROJECT_DIR$/lib/slf4j-log4j12-1.6.4.jar" path-in-jar="/" />
-      <element id="extracted-dir" path="$PROJECT_DIR$/lib/commons-math3-3.5.jar" path-in-jar="/" />
-      <element id="extracted-dir" path="$PROJECT_DIR$/lib/guava-18.0.jar" path-in-jar="/" />
       <element id="extracted-dir" path="$PROJECT_DIR$/lib/commons-lang3-3.4.jar" path-in-jar="/" />
     </root>
   </artifact>

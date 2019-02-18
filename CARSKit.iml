@@ -7,7 +7,7 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="library" name="CARSKit-v0.3.0" level="project" />
+    <orderEntry type="library" name="CARSKit" level="project" />
     <orderEntry type="library" name="lib" level="project" />
   </component>
 </module>

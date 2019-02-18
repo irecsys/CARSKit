@@ -16,6 +16,11 @@ import librec.data.*;
 import java.util.*;
 import java.util.Map.Entry;
 
+/**
+ * Yong Zheng, Bamshad Mobasher, Robin Burke. "Integrating Context Similarity with Sparse Linear Recommendation Model", Proceedings of the 23rd Conference on User Modeling, Adaptation and Personalization (UMAP), pp. 370-376, Dublin, Ireland, June 2015
+ */
+
+
 @Configuration("binThold, knn, regLw2, regLw1, similarity, iters, rc")
 public class GCSLIM_ICS extends CSLIM {
     private DenseMatrix W;

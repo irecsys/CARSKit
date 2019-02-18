@@ -16,6 +16,9 @@ import librec.data.SymmMatrix;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Yong Zheng, Bamshad Mobasher, Robin Burke. "Similarity-Based Context-aware Recommendation", Proceedings of the 16th International Conference on Web Information System Engineering (WISE), pp. 431-447
+ */
 
 public class CAMF_LCS extends CAMF{
 
@@ -24,6 +27,8 @@ public class CAMF_LCS extends CAMF{
     public CAMF_LCS(SparseMatrix trainMatrix, SparseMatrix testMatrix, int fold) {
         super(trainMatrix, testMatrix, fold);
         this.algoName = "CAMF_LCS";
+        // it is an algorithm for top-N recommendations, since the predicted score is used to rank the items. The predicted score is not guaranteed to stay in the original rating scale.
+        isRankingPred = true;
     }
 
     protected void initModel() throws Exception {

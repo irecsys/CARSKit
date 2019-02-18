@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="CARSKit">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/out/artifacts/CARSKit_jar/CARSKit.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

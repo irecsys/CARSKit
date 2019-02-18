@@ -26,7 +26,7 @@ import happy.coding.io.FileIO;
 import happy.coding.io.LineConfiger;
 import happy.coding.io.Lists;
 import happy.coding.io.Logs;
-import happy.coding.math.Measures;
+//import happy.coding.math.Measures;
 import happy.coding.math.Randoms;
 import happy.coding.math.Sims;
 import happy.coding.math.Stats;
@@ -40,6 +40,7 @@ import java.util.concurrent.TimeUnit;
 import carskit.data.processor.DataDAO;
 import carskit.data.structure.SparseMatrix;
 import carskit.data.setting.*;
+import carskit.eval.Measures;
 import librec.data.SparseVector;
 import librec.data.SymmMatrix;
 import librec.data.MatrixEntry;
@@ -94,7 +95,7 @@ public abstract class Recommender implements Runnable{
 
 
     // number of recommended items
-    protected static int numRecs, numIgnore;
+    protected static int numIgnore, numRecs;
 
     // a list of rating scales
     protected static List<Double> ratingScale;
@@ -165,7 +166,7 @@ public abstract class Recommender implements Runnable{
         /* prediction-based measures */
         MAE, RMSE, NMAE, rMAE, rRMSE, MPE, Perplexity,
         /* ranking-based measures */
-        D5, D10, Pre5, Pre10, Rec5, Rec10, MAP, MRR, NDCG, AUC,
+        D5, D10,DN, Pre5, Pre10, PreN, Rec5, Rec10,RecN, MAP5, MAP10, MAPN, MRR5,MRR10, MRRN, NDCG5,NDCG10, NDCGN, AUC5,AUC10, AUCN,
         /* execution time */
         TrainTime, TestTime,
         /* loss value */
@@ -180,6 +181,8 @@ public abstract class Recommender implements Runnable{
             Logs.error("Recommender is not well configed");
             System.exit(-1);
         }
+
+
 
         numUsers = rateDao.numUsers();
         numItems = rateDao.numItems();
@@ -205,7 +208,9 @@ public abstract class Recommender implements Runnable{
             rankOptions = cf.getParamOptions("item.ranking");
             isRankingPred = rankOptions.isMainOn();
             isDiverseUsed = rankOptions.contains("-diverse");
-            numRecs = rankOptions.getInt("-topN", -1);
+            numRecs= rankOptions.getInt("-topN", -1);
+            if(numRecs<0)
+                numRecs=10;
             numIgnore = rankOptions.getInt("-ignore", -1);
 
             LineConfiger evalOptions = cf.getParamOptions("evaluation.setup");
@@ -428,17 +433,52 @@ public abstract class Recommender implements Runnable{
     public static String getEvalInfo(Map<Measure, Double> measures) {
         String evalInfo = null;
         if (isRankingPred) {
-            if (isDiverseUsed)
-                evalInfo = String.format("Pre5: %.6f,Pre10: %.6f, Rec5: %.6f, Rec10: %.6f, AUC: %.6f, MAP: %.6f, NDCG: %.6f, MRR: %.6f, D5: %.6f, D10: %.6f",
-                        measures.get(Measure.Pre5), measures.get(Measure.Pre10), measures.get(Measure.Rec5),
-                        measures.get(Measure.Rec10), measures.get(Measure.AUC), measures.get(Measure.MAP),
-                        measures.get(Measure.NDCG), measures.get(Measure.MRR), measures.get(Measure.D5),
-                        measures.get(Measure.D10));
-            else
-                evalInfo = String.format("Pre5: %.6f,Pre10: %.6f, Rec5: %.6f, Rec10: %.6f, AUC: %.6f, MAP: %.6f, NDCG: %.6f, MRR: %.6f", measures.get(Measure.Pre5),
-                        measures.get(Measure.Pre10), measures.get(Measure.Rec5), measures.get(Measure.Rec10),
-                        measures.get(Measure.AUC), measures.get(Measure.MAP), measures.get(Measure.NDCG),
-                        measures.get(Measure.MRR));
+            if(numRecs!=10){
+                if (isDiverseUsed){
+                    evalInfo = String.format("Pre5: %.6f,Pre10: %.6f, Pre"+numRecs+": %.6f, Rec5: %.6f, Rec10: %.6f, Rec"+numRecs+": %.6f, "+
+                                    "AUC5: %.6f, AUC10: %.6f, AUC"+numRecs+": %.6f, MAP5: %.6f, MAP10: %.6f, MAP"+numRecs+": %.6f, "+
+                                    "NDCG5: %.6f, NDCG10: %.6f,NDCG"+numRecs+": %.6f,MRR5: %.6f, MRR10: %.6f,MRR"+numRecs+": %.6f,D5: %.6f, D10: %.6f, D"+numRecs+": %.6f",
+                            measures.get(Measure.Pre5), measures.get(Measure.Pre10), measures.get(Measure.PreN),
+                            measures.get(Measure.Rec5), measures.get(Measure.Rec10), measures.get(Measure.RecN),
+                            measures.get(Measure.AUC5), measures.get(Measure.AUC10),measures.get(Measure.AUCN),
+                            measures.get(Measure.MAP5),measures.get(Measure.MAP10),measures.get(Measure.MAPN),
+                            measures.get(Measure.NDCG5),measures.get(Measure.NDCG10),measures.get(Measure.NDCGN),
+                            measures.get(Measure.MRR5), measures.get(Measure.MRR10),measures.get(Measure.MRRN),
+                            measures.get(Measure.D5), measures.get(Measure.D10), measures.get(Measure.DN));
+                }
+                else
+                evalInfo = String.format("Pre5: %.6f,Pre10: %.6f, Pre"+numRecs+": %.6f, Rec5: %.6f, Rec10: %.6f, Rec"+numRecs+": %.6f, "+
+                                "AUC5: %.6f, AUC10: %.6f, AUC"+numRecs+": %.6f, MAP5: %.6f, MAP10: %.6f, MAP"+numRecs+": %.6f, "+
+                                "NDCG5: %.6f, NDCG10: %.6f,NDCG"+numRecs+": %.6f,MRR5: %.6f, MRR10: %.6f,MRR"+numRecs+": %.6f",
+                        measures.get(Measure.Pre5), measures.get(Measure.Pre10), measures.get(Measure.PreN),
+                        measures.get(Measure.Rec5), measures.get(Measure.Rec10), measures.get(Measure.RecN),
+                        measures.get(Measure.AUC5), measures.get(Measure.AUC10),measures.get(Measure.AUCN),
+                        measures.get(Measure.MAP5),measures.get(Measure.MAP10),measures.get(Measure.MAPN),
+                        measures.get(Measure.NDCG5),measures.get(Measure.NDCG10),measures.get(Measure.NDCGN),
+                        measures.get(Measure.MRR5), measures.get(Measure.MRR10),measures.get(Measure.MRRN));
+            }else
+            {
+                if (isDiverseUsed){
+                    evalInfo = String.format("Pre5: %.6f,Pre10: %.6f, Rec5: %.6f, Rec10: %.6f, AUC5: %.6f, AUC10: %.6f, MAP5: %.6f, MAP10: %.6f,"+
+                                    "NDCG5: %.6f, NDCG10: %.6f,MRR5: %.6f, MRR10: %.6f,D5: %.6f, D10: %.6f",
+                            measures.get(Measure.Pre5), measures.get(Measure.Pre10),
+                            measures.get(Measure.Rec5), measures.get(Measure.Rec10),
+                            measures.get(Measure.AUC5), measures.get(Measure.AUC10),
+                            measures.get(Measure.MAP5),measures.get(Measure.MAP10),
+                            measures.get(Measure.NDCG5),measures.get(Measure.NDCG10),
+                            measures.get(Measure.MRR5), measures.get(Measure.MRR10),
+                            measures.get(Measure.D5), measures.get(Measure.D10));
+                }
+                else
+                    evalInfo = String.format("Pre5: %.6f,Pre10: %.6f, Rec5: %.6f, Rec10: %.6f, AUC5: %.6f, AUC10: %.6f, MAP5: %.6f, MAP10: %.6f,"+
+                                    "NDCG5: %.6f, NDCG10: %.6f,MRR5: %.6f, MRR10: %.6f",
+                            measures.get(Measure.Pre5), measures.get(Measure.Pre10),
+                            measures.get(Measure.Rec5), measures.get(Measure.Rec10),
+                            measures.get(Measure.AUC5), measures.get(Measure.AUC10),
+                            measures.get(Measure.MAP5),measures.get(Measure.MAP10),
+                            measures.get(Measure.NDCG5),measures.get(Measure.NDCG10),
+                            measures.get(Measure.MRR5), measures.get(Measure.MRR10));
+            }
 
         } else {
             evalInfo = String.format("MAE: %.6f, RMSE: %.6f, NAME: %.6f, rMAE: %.6f, rRMSE: %.6f, MPE: %.6f", measures.get(Measure.MAE),
@@ -634,15 +674,26 @@ public abstract class Recommender implements Runnable{
         // initialization capacity to speed up
         List<Double> ds5 = new ArrayList<>(isDiverseUsed ? capacity : 0);
         List<Double> ds10 = new ArrayList<>(isDiverseUsed ? capacity : 0);
+        List<Double> dsN = new ArrayList<>(isDiverseUsed ? capacity : 0);
 
         List<Double> precs5 = new ArrayList<>(capacity);
         List<Double> precs10 = new ArrayList<>(capacity);
+        List<Double> precsN = new ArrayList<>(capacity);
         List<Double> recalls5 = new ArrayList<>(capacity);
         List<Double> recalls10 = new ArrayList<>(capacity);
-        List<Double> aps = new ArrayList<>(capacity);
-        List<Double> rrs = new ArrayList<>(capacity);
-        List<Double> aucs = new ArrayList<>(capacity);
-        List<Double> ndcgs = new ArrayList<>(capacity);
+        List<Double> recallsN = new ArrayList<>(capacity);
+        List<Double> aps5 = new ArrayList<>(capacity);
+        List<Double> aps10 = new ArrayList<>(capacity);
+        List<Double> apsN = new ArrayList<>(capacity);
+        List<Double> rrs5 = new ArrayList<>(capacity);
+        List<Double> rrs10 = new ArrayList<>(capacity);
+        List<Double> rrsN = new ArrayList<>(capacity);
+        List<Double> aucs5 = new ArrayList<>(capacity);
+        List<Double> aucs10 = new ArrayList<>(capacity);
+        List<Double> aucsN = new ArrayList<>(capacity);
+        List<Double> ndcgs5 = new ArrayList<>(capacity);
+        List<Double> ndcgs10 = new ArrayList<>(capacity);
+        List<Double> ndcgsN = new ArrayList<>(capacity);
 
         // candidate items for all users: here only training items
         // use HashSet instead of ArrayList to speedup removeAll() and contains() operations: HashSet: O(1); ArrayList: O(log n).
@@ -688,15 +739,26 @@ public abstract class Recommender implements Runnable{
 
             List<Double> c_ds5 = new ArrayList<>(isDiverseUsed ? c_capacity : 0);
             List<Double> c_ds10 = new ArrayList<>(isDiverseUsed ? c_capacity : 0);
+            List<Double> c_dsN = new ArrayList<>(isDiverseUsed ? c_capacity : 0);
 
             List<Double> c_precs5 = new ArrayList<>(c_capacity);
             List<Double> c_precs10 = new ArrayList<>(c_capacity);
+            List<Double> c_precsN = new ArrayList<>(c_capacity);
             List<Double> c_recalls5 = new ArrayList<>(c_capacity);
             List<Double> c_recalls10 = new ArrayList<>(c_capacity);
-            List<Double> c_aps = new ArrayList<>(c_capacity);
-            List<Double> c_rrs = new ArrayList<>(c_capacity);
-            List<Double> c_aucs = new ArrayList<>(c_capacity);
-            List<Double> c_ndcgs = new ArrayList<>(c_capacity);
+            List<Double> c_recallsN = new ArrayList<>(c_capacity);
+            List<Double> c_aps5 = new ArrayList<>(c_capacity);
+            List<Double> c_aps10 = new ArrayList<>(c_capacity);
+            List<Double> c_apsN = new ArrayList<>(c_capacity);
+            List<Double> c_rrs5 = new ArrayList<>(c_capacity);
+            List<Double> c_rrs10 = new ArrayList<>(c_capacity);
+            List<Double> c_rrsN = new ArrayList<>(c_capacity);
+            List<Double> c_aucs5 = new ArrayList<>(c_capacity);
+            List<Double> c_aucs10 = new ArrayList<>(c_capacity);
+            List<Double> c_aucsN = new ArrayList<>(c_capacity);
+            List<Double> c_ndcgs5 = new ArrayList<>(c_capacity);
+            List<Double> c_ndcgs10 = new ArrayList<>(c_capacity);
+            List<Double> c_ndcgsN = new ArrayList<>(c_capacity);
 
             HashMultimap<Integer, Integer> cList_train = (uciList_train.containsKey(u))?uciList_train.get(u):HashMultimap.<Integer, Integer>create();
 
@@ -781,33 +843,47 @@ public abstract class Recommender implements Runnable{
                 }
 
                 int numDropped = numCands - rankedItems.size();
-                double AUC = Measures.AUC(rankedItems, correctItems, numDropped);
-                double AP = Measures.AP(rankedItems, correctItems);
-                double nDCG = Measures.nDCG(rankedItems, correctItems);
-                double RR = Measures.RR(rankedItems, correctItems);
 
-                List<Integer> cutoffs = Arrays.asList(5, 10);
+
+                List<Integer> cutoffs = Arrays.asList(5, 10, numRecs);
                 Map<Integer, Double> precs = Measures.PrecAt(rankedItems, correctItems, cutoffs);
                 Map<Integer, Double> recalls = Measures.RecallAt(rankedItems, correctItems, cutoffs);
+                Map<Integer, Double> aucs = Measures.AUCAt(rankedItems, correctItems, numDropped,cutoffs);
+                Map<Integer, Double> aps = Measures.APAt(rankedItems, correctItems, cutoffs);
+                Map<Integer, Double> ndcgs = Measures.nDCGAt(rankedItems, correctItems, cutoffs);
+                Map<Integer, Double> rrs = Measures.RRAt(rankedItems, correctItems, cutoffs);
 
                 c_precs5.add(precs.get(5));
                 c_precs10.add(precs.get(10));
+                c_precsN.add(precs.get(numRecs));
                 c_recalls5.add(recalls.get(5));
                 c_recalls10.add(recalls.get(10));
+                c_recallsN.add(recalls.get(numRecs));
 
-                c_aucs.add(AUC);
-                c_aps.add(AP);
-                c_rrs.add(RR);
-                c_ndcgs.add(nDCG);
+
+                c_aucs5.add(aucs.get(5));
+                c_aps5.add(aps.get(5));
+                c_rrs5.add(rrs.get(5));
+                c_ndcgs5.add(ndcgs.get(5));
+                c_aucs10.add(aucs.get(10));
+                c_aps10.add(aps.get(10));
+                c_rrs10.add(rrs.get(10));
+                c_ndcgs10.add(ndcgs.get(10));
+                c_aucsN.add(aucs.get(numRecs));
+                c_apsN.add(aps.get(numRecs));
+                c_rrsN.add(rrs.get(numRecs));
+                c_ndcgsN.add(ndcgs.get(numRecs));
 
 
                 // diversity
                 if (isDiverseUsed) {
                     double d5 = diverseAt(rankedItems, 5);
                     double d10 = diverseAt(rankedItems, 10);
+                    double dN = diverseAt(rankedItems, numRecs);
 
                     c_ds5.add(d5);
                     c_ds10.add(d10);
+                    c_dsN.add(dN);
                 }
 
                 // output predictions
@@ -824,14 +900,25 @@ public abstract class Recommender implements Runnable{
             // calculate metrics for a specific user averaged by contexts
             ds5.add(isDiverseUsed ? Stats.mean(c_ds5) : 0.0);
             ds10.add(isDiverseUsed ? Stats.mean(c_ds10) : 0.0);
+            dsN.add(isDiverseUsed ? Stats.mean(c_dsN) : 0.0);
             precs5.add(Stats.mean(c_precs5));
             precs10.add(Stats.mean(c_precs10));
+            precsN.add(Stats.mean(c_precsN));
             recalls5.add(Stats.mean(c_recalls5));
             recalls10.add(Stats.mean(c_recalls10));
-            aucs.add(Stats.mean(c_aucs));
-            ndcgs.add(Stats.mean(c_ndcgs));
-            aps.add(Stats.mean(c_aps));
-            rrs.add(Stats.mean(c_rrs));
+            recallsN.add(Stats.mean(c_recallsN));
+            aucs5.add(Stats.mean(c_aucs5));
+            ndcgs5.add(Stats.mean(c_ndcgs5));
+            aps5.add(Stats.mean(c_aps5));
+            rrs5.add(Stats.mean(c_rrs5));
+            aucs10.add(Stats.mean(c_aucs10));
+            ndcgs10.add(Stats.mean(c_ndcgs10));
+            aps10.add(Stats.mean(c_aps10));
+            rrs10.add(Stats.mean(c_rrs10));
+            aucsN.add(Stats.mean(c_aucsN));
+            ndcgsN.add(Stats.mean(c_ndcgsN));
+            apsN.add(Stats.mean(c_apsN));
+            rrsN.add(Stats.mean(c_rrsN));
         }
 
 
@@ -845,14 +932,25 @@ public abstract class Recommender implements Runnable{
         Map<Measure, Double> measures = new HashMap<>();
         measures.put(Measure.D5, isDiverseUsed ? Stats.mean(ds5) : 0.0);
         measures.put(Measure.D10, isDiverseUsed ? Stats.mean(ds10) : 0.0);
+        measures.put(Measure.DN, isDiverseUsed ? Stats.mean(dsN) : 0.0);
         measures.put(Measure.Pre5, Stats.mean(precs5));
         measures.put(Measure.Pre10, Stats.mean(precs10));
+        measures.put(Measure.PreN, Stats.mean(precsN));
         measures.put(Measure.Rec5, Stats.mean(recalls5));
         measures.put(Measure.Rec10, Stats.mean(recalls10));
-        measures.put(Measure.AUC, Stats.mean(aucs));
-        measures.put(Measure.NDCG, Stats.mean(ndcgs));
-        measures.put(Measure.MAP, Stats.mean(aps));
-        measures.put(Measure.MRR, Stats.mean(rrs));
+        measures.put(Measure.RecN, Stats.mean(recallsN));
+        measures.put(Measure.AUC5, Stats.mean(aucs5));
+        measures.put(Measure.NDCG5, Stats.mean(ndcgs5));
+        measures.put(Measure.MAP5, Stats.mean(aps5));
+        measures.put(Measure.MRR5, Stats.mean(rrs5));
+        measures.put(Measure.AUC10, Stats.mean(aucs10));
+        measures.put(Measure.NDCG10, Stats.mean(ndcgs10));
+        measures.put(Measure.MAP10, Stats.mean(aps10));
+        measures.put(Measure.MRR10, Stats.mean(rrs10));
+        measures.put(Measure.AUCN, Stats.mean(aucsN));
+        measures.put(Measure.NDCGN, Stats.mean(ndcgsN));
+        measures.put(Measure.MAPN, Stats.mean(apsN));
+        measures.put(Measure.MRRN, Stats.mean(rrsN));
 
         return measures;
     }

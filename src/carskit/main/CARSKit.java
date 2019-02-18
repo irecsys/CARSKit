@@ -65,7 +65,7 @@ import carskit.alg.cars.transformation.prefiltering.splitting.*;
 
 public class CARSKit {
     // version: MAJOR version (significant changes), followed by MINOR version (small changes, bug fixes)
-    protected static String version = "0.3.0";
+    protected static String version = "0.3.5";
     protected static String defaultConfigFileName = "setting.conf";
     // is only to print measurements
     public static boolean isMeasuresOnly = false;
@@ -227,15 +227,31 @@ public class CARSKit {
         int dataTransformation = ratingOptions.getInt("-datatransformation");
         if(dataTransformation>0) {
 
+            // check whether the evaluation method is the way of train-test validation by manually supplying train and test sets
+            // If yes, we may need to transferform both the training and testing set
+            String setup = cf.getString("evaluation.setup");
+            LineConfiger evalOptions = new LineConfiger(setup);
+            String evMethod = evalOptions.getMainParam().toLowerCase().trim();
+            boolean testTransfer=false;
+            String testPath=null;
+            if(evMethod.equals("test-set"))
+            {
+                testTransfer = true;
+                testPath = evalOptions.getString("-f");
+            }
+
             DataTransformer transformer = new DataTransformer();
-            int flag = validateDataFormat(OriginalRatingDataPath);
-            transformer.setParameters(flag, OriginalRatingDataPath, WorkingPath);
+            int flag_train = validateDataFormat(OriginalRatingDataPath);
+            int flag_test = -1;
+            if(testTransfer)
+                flag_test = validateDataFormat(testPath);
+            transformer.setParameters(flag_train, OriginalRatingDataPath, flag_test, testPath, WorkingPath);
             Thread t = new Thread(transformer);
             t.start();
             t.join(); // for large data, the transformation and output to external file may take time!
         }
 
-        rateDao = new DataDAO(WorkingPath+"ratings_binary.txt");
+        rateDao = new DataDAO(WorkingPath+"train.csv");
 
         // rating threshold
         binThold = ratingOptions.getFloat("-threshold");
@@ -268,7 +284,7 @@ public class CARSKit {
 
         LineConfiger paramOptions = new LineConfiger(args);
         configFiles = paramOptions.contains("-c") ? paramOptions.getOptions("-c") : Arrays.asList(defaultConfigFileName);
-        if(paramOptions.contains("--version")){
+        if(paramOptions.contains("-version")){
             about();
             System.exit(0);
         }
@@ -311,7 +327,7 @@ public class CARSKit {
                 runCrossValidation(evalOptions);
                 return;
             case "test-set":
-                DataDAO testDao = new DataDAO(evalOptions.getString("-f"), rateDao.getUserIds(), rateDao.getItemIds(), rateDao.getContextIds(), rateDao.getUserItemIds(),
+                DataDAO testDao = new DataDAO(WorkingPath+"test.csv", rateDao.getUserIds(), rateDao.getItemIds(), rateDao.getContextIds(), rateDao.getUserItemIds(),
                         rateDao.getContextDimensionIds(), rateDao.getContextConditionIds(), rateDao.getURatedList(), rateDao.getIRatedList(),
                         rateDao.getDimConditionsList(), rateDao.getConditionDimensionMap(), rateDao.getConditionContextsList(), rateDao.getContextConditionsList(),
                         rateDao.getUiUserIds(), rateDao.getUiItemIds());
@@ -741,7 +757,7 @@ public class CARSKit {
      * Print out software information
      */
     private void about() {
-        String about = "\nCARSKit version " + version + ", copyright (C) 2015-2016 Yong Zheng \n\n"
+        String about = "\nCARSKit version " + version + ", copyright (C) 2015-2019 Yong Zheng \n\n"
 
 		        /* Description */
                 + "CARSKit is free software: you can redistribute it and/or modify \n"

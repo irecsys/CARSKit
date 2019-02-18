@@ -16,6 +16,9 @@ import librec.data.SymmMatrix;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Yong Zheng, Bamshad Mobasher, Robin Burke. "Similarity-Based Context-aware Recommendation", Proceedings of the 16th International Conference on Web Information System Engineering (WISE), pp. 431-447
+ */
 
 // To guarantee the distance value is in range [0,1], it is better to use projected or bounded gradient method, see "Projected Gradient Methods for Non-negative Matrix Factorization"
 // In this paper, we use a simple rule as constraint to limit the distance value.
@@ -29,6 +32,8 @@ public class CAMF_MCS extends CAMF{
     public CAMF_MCS(SparseMatrix trainMatrix, SparseMatrix testMatrix, int fold) {
         super(trainMatrix, testMatrix, fold);
         this.algoName = "CAMF_MCS";
+        // it is an algorithm for top-N recommendations, since the predicted score is used to rank the items. The predicted score is not guaranteed to stay in the original rating scale.
+        isRankingPred = true;
     }
 
     protected void initModel() throws Exception {

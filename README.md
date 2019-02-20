@@ -41,7 +41,7 @@ A list of context-aware data sets can be found here: https://github.com/irecsys/
 
 ### User's Guide
 --------------
-The guide can be found and downloaded from http://arxiv.org/abs/1511.03780<br/>
+The CARSKit guide can be found and downloaded from http://arxiv.org/abs/1511.03780<br/>
 Note: if there are missing values or EMPTY values in the context information, you should mark those values as NA (i.e., Not Available) which will be viewed as a special context condition in the data.
 
 ### Acknowledgement
@@ -75,6 +75,7 @@ I would like to show our gratitude to Dr. Guibing Guo (the author of LibRec) for
 * Fix the issue in the train-test evaluations when you explicitly supply training and testing set in the configuration file. In CARSKit v0.3.5, the transformation process will go through both training and testing set, and produce transformed files with consistent formats.
 * Add a new folder "sampleData" in which you can find the data sets in different formats. CARSKit is able to handle all types of the data formats now.
 * Set similarity-based context-aware recommendation algorithms as top-N recommendation methods. Due to that fact that we did not use projected or bounded gradient method in the ICS/LCS/MCS methods, the predicted scores will not be in the original scale. The score can be used to rank items, but it is not appropriate to evaluate these methods in the rating prediction task.
+* API documents and CARSKit guide (http://arxiv.org/abs/1511.03780) have been updated.
 
 **2016/05/04, Version 0.3.0**
 * BugFix in some algorithms

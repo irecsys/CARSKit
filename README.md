@@ -33,6 +33,7 @@ If you use CARSKit in your research papers, please let us know. And I will creat
 
 ### Downloads (Latest)
 * **[CARSKit-v0.3.5.jar](https://github.com/irecsys/CARSKit/raw/master/jar/CARSKit-v0.3.5.jar)**
+* **[Configuration file](https://raw.githubusercontent.com/irecsys/CARSKit/master/setting.conf)**
 
 ### Data Sets
 --------------

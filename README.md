@@ -67,6 +67,7 @@ I would like to show our gratitude to Dr. Guibing Guo (the author of LibRec) for
 * University College Cork, Ireland
 * Polytechnic University of Bari, Italy
 * Nagaoka University of Technology, Japan
+* Delft University of Technology, Netherlands
 * Gdansk University of Technology, Poland
 * University of Jeddah, Saudi arabia
 * Universidad Autónoma de Madrid, Spain

@@ -52,14 +52,24 @@ I would like to show our gratitude to Dr. Guibing Guo (the author of LibRec) for
 
 ### Who uses CARSKit
 --------------------
+* University of Wollongong, Australia
 * Universidad del Bío-Bío, Chile
 * Pontiﬁcia Universidad Católica de Chile, Chile
 * Shanghai Jiao Tong University, China
+* China Jiliang University, China
 * South China Agricultural University, China
+* Shandong University, China
+* University of Cyprus, Cyprus
+* Frederick University, Cyprus
+* Université PSL, France
+* Université Paris-Dauphine, France
 * University College Cork, Ireland
 * Polytechnic University of Bari, Italy
-* Gdansk University of Technology, Poland 
+* Nagaoka University of Technology, Japan
+* Gdansk University of Technology, Poland
+* University of Jeddah, Saudi arabia
 * Universidad Autónoma de Madrid, Spain
+* University of Carthage, Tunisia
 * University of Manouba, Tunisia
 * University Tunis El-Manar, Tunisia
 * National Institute of Applied Science and Technology of Tunis, Tunisia

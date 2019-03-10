@@ -74,6 +74,7 @@ I would like to show our gratitude to Dr. Guibing Guo (the author of LibRec) for
 * University Tunis El-Manar, Tunisia
 * National Institute of Applied Science and Technology of Tunis, Tunisia
 * DePaul University, USA
+* Illinois Institute of Technology, USA
 * University of California - Santa Barbara, USA
 
 [Contact me if you want to be listed here]

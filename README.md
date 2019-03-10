@@ -53,6 +53,7 @@ I would like to show our gratitude to Dr. Guibing Guo (the author of LibRec) for
 ### Who uses CARSKit
 --------------------
 * University of Wollongong, Australia
+* Universidade Estadual de Maringá, Brazil
 * Universidad del Bío-Bío, Chile
 * Pontiﬁcia Universidad Católica de Chile, Chile
 * Shanghai Jiao Tong University, China

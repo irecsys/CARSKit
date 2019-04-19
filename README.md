@@ -63,6 +63,7 @@ I would like to show our gratitude to Dr. Guibing Guo (the author of LibRec) for
 * National Key Laboratory, Hisense Co., Ltd., China
 * University of Cyprus, Cyprus
 * Frederick University, Cyprus
+* Aalborg University, Denmark
 * Université PSL, France
 * Université Paris-Dauphine, France
 * University College Cork, Ireland

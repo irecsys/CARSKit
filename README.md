@@ -94,6 +94,8 @@ There are currently 36 instutitions from 21 countries using CARSKit for research
 
 [Contact me if you want to be listed here]
 
+![Map](https://raw.githubusercontent.com/irecsys/CARSKit/master/Map.jpg)
+
 
 ### Release Notes
 ------------------

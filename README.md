@@ -52,6 +52,8 @@ I would like to show our gratitude to Dr. Guibing Guo (the author of LibRec) for
 
 ### Who uses CARSKit
 --------------------
+There are currently 35 instutitions from 20 countries using CARSKit for research.
+
 * University Abu Bekr Belkaid, Algeria
 * Ecole Superieure en Informatique, Algeria
 * University of Wollongong, Australia

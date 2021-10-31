@@ -25,6 +25,8 @@ import carskit.alg.cars.adaptation.dependent.FM;
 import carskit.alg.cars.adaptation.dependent.dev.*;
 import carskit.alg.cars.adaptation.dependent.sim.*;
 import carskit.alg.cars.adaptation.independent.CPTF;
+import carskit.alg.cars.adaptation.independent.Chen1;
+import carskit.alg.cars.adaptation.independent.Chen2;
 import carskit.alg.cars.transformation.hybridfiltering.DCR;
 import carskit.alg.cars.transformation.hybridfiltering.DCW;
 import carskit.alg.cars.transformation.prefiltering.ExactFiltering;
@@ -736,6 +738,10 @@ public class CARSKit {
             ////////////// Other context-aware recommendation algorithms /////////////////////////////////////////
             case "fm":
                 return new FM(trainMatrix, testMatrix, fold);
+            case "chen1":
+                return new Chen1(trainMatrix, testMatrix, fold);
+            case "chen2":
+                return new Chen2(trainMatrix, testMatrix, fold);
 
 
             default:

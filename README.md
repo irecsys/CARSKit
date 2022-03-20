@@ -50,52 +50,6 @@ Note: if there are missing values or EMPTY values in the context information, yo
 
 I would like to show our gratitude to Dr. Guibing Guo (the author of LibRec) for his comments and suggestions on the development of CARSKit.
 
-### Who uses CARSKit
---------------------
-There are currently 36 instutitions from 21 countries using CARSKit for research.
-
-* University Abu Bekr Belkaid, Algeria
-* Ecole Superieure en Informatique, Algeria
-* University of Wollongong, Australia
-* Universidade Estadual de Maringá, Brazil
-* Federal University of Juiz de Fora, Brazil
-* Ryerson University, Canada
-* Universidad del Bío-Bío, Chile
-* Pontiﬁcia Universidad Católica de Chile, Chile
-* Shanghai Jiao Tong University, China
-* China Jiliang University, China
-* South China Agricultural University, China
-* Shandong University, China
-* National Key Laboratory, Hisense Co., Ltd., China
-* University of Cyprus, Cyprus
-* Frederick University, Cyprus
-* Aalborg University, Denmark
-* Université PSL, France
-* Université Paris-Dauphine, France
-* Claude Bernard University Lyon 1, France
-* University College Cork, Ireland
-* Polytechnic University of Bari, Italy
-* University of Milano-Bicocca, Milan, Italy
-* Nagaoka University of Technology, Japan
-* Delft University of Technology, Netherlands
-* Gdansk University of Technology, Poland
-* University of Porto, Portugal
-* University of Jeddah, Saudi arabia
-* Universidad Autónoma de Madrid, Spain
-* University of Carthage, Tunisia
-* University of Manouba, Tunisia
-* University Tunis El-Manar, Tunisia
-* National Institute of Applied Science and Technology of Tunis, Tunisia
-* V.N.Karazin Kharkiv National University, Ukraine
-* DePaul University, USA
-* Illinois Institute of Technology, USA
-* University of California - Santa Barbara, USA
-* Posts and Telecommunications Institute of Technology, Vietnam
-
-[Contact me if you want to be listed here]
-
-![Map](https://raw.githubusercontent.com/irecsys/CARSKit/master/Map.jpg)
-
 
 ### Release Notes
 ------------------

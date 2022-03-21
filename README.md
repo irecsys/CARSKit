@@ -42,8 +42,10 @@ A list of context-aware data sets can be found here: https://github.com/irecsys/
 
 ### User's Guide
 --------------
-The CARSKit guide can be found and downloaded from http://arxiv.org/abs/1511.03780<br/>
+The CARSKit guide can be found and downloaded from [here](http://arxiv.org/abs/1511.03780). The Java API doc can be found and viewed from [here](https://carskit.github.io/doc/CARSKit).
+
 Note: if there are missing values or EMPTY values in the context information, you should mark those values as NA (i.e., Not Available) which will be viewed as a special context condition in the data.
+
 
 ### Acknowledgement
 --------------------

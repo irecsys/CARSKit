@@ -1,5 +1,11 @@
 # CARSKit
 
+*A Java Based Context-Aware Recommendation Engine*
+
+[![GPLv3 license](https://img.shields.io/badge/License-GPLv3-blue.svg)](http://perso.crans.org/besson/LICENSE.html)
+[![Website carskit.github.io](https://img.shields.io/website-up-down-green-red/http/monip.org.svg)](https://carskit.github.io/)
+
+
 ### Introduction
 -------------------
 

@@ -3,9 +3,10 @@
 *A Java Based Context-Aware Recommendation Engine*
 
 [![GPLv3 license](https://img.shields.io/badge/License-GPLv3-blue.svg)](http://perso.crans.org/besson/LICENSE.html)
+[![java](https://badges.aleen42.com/src/java.svg)](https://badges.aleen42.com/src/java.svg)
 [![Website carskit.github.io](https://img.shields.io/website-up-down-green-red/http/monip.org.svg)](https://carskit.github.io/)
-
-
+[![Citation Badge](https://api.juleskreuer.eu/citation-badge.php?doi=10.1109/ICDMW.2015.222)](https://juleskreuer.eu/projekte/citation-badge/)
+[![DOI:10.1007/978-3-319-76207-4_15](https://zenodo.org/badge/DOI/10.1109/ICDMW.2015.222.svg)](https://doi.org/10.1109/ICDMW.2015.222)
 ### Introduction
 -------------------
 

@@ -34,10 +34,18 @@ CARSKit is [free software](http://www.gnu.org/philosophy/free-sw.html): you can 
 
 Please cite the following papers if you use CARSKit in your research:
 
-1. Yong Zheng, Bamshad Mobasher, Robin Burke. "CARSKit: A Java-Based Context-aware Recommendation Engine", Proceedings of the 15th IEEE International Conference on Data Mining (ICDM) Workshops, pp. 1668-1671, Atlantic City, NJ, USA, Nov 2015
+* Yong Zheng, Bamshad Mobasher, Robin Burke. "CARSKit: A Java-Based Context-aware Recommendation Engine", Proceedings of the 15th IEEE International Conference on Data Mining (ICDM) Workshops, pp. 1668-1671, Atlantic City, NJ, USA, Nov 2015
 
-If you use CARSKit in your research papers, please let us know. And I will create a list of publications using this toolkit.
-
+```
+@inproceedings{zheng2015carskit,
+  title={Carskit: A java-based context-aware recommendation engine},
+  author={Zheng, Yong and Mobasher, Bamshad and Burke, Robin},
+  booktitle={2015 IEEE International Conference on Data Mining Workshop (ICDMW)},
+  pages={1668--1671},
+  year={2015},
+  organization={IEEE}
+}
+```
 ### Downloads (Latest)
 * **[CARSKit-v0.3.5.jar](https://github.com/irecsys/CARSKit/raw/master/jar/CARSKit-v0.3.5.jar)**
 * **[Configuration file](https://raw.githubusercontent.com/irecsys/CARSKit/master/setting.conf)**

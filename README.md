@@ -25,7 +25,7 @@ CARSKit is [free software](http://www.gnu.org/philosophy/free-sw.html): you can 
 ### Architecture and Design
 ----------------------------
 
-![CARSKit Structure](images/CARSKit_Design.png)
+[![CARSKit Structure](images/CARSKit_Design.png)](https://carskit.github.io/)
 
 ### Algorithms
 ---------------

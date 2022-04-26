@@ -9,7 +9,7 @@
 [![DOI:10.1007/978-3-319-76207-4_15](https://zenodo.org/badge/DOI/10.1109/ICDMW.2015.222.svg)](https://doi.org/10.1109/ICDMW.2015.222)
 [![Twitter](https://img.shields.io/twitter/url/https/twitter.com/cloudposse.svg?style=social&label=Follow%20%40DeepCARSKit)](https://twitter.com/DeepCARSKit)
 
-![alt text](images/intro-img1.jpg)
+[![CARSKit Website](images/intro-img1.jpg)](https://carskit.github.io/)
 
 ### Introduction
 -------------------

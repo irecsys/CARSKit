@@ -14,7 +14,14 @@
 ### Introduction
 -------------------
 
-**[CARSKit](https://github.com/irecsys/CARSKit/)** is an open-source Java-based context-aware recommendation engine, where it can be used, modified and distributed under the terms of the GNU General Public License. (Java version 1.7 or higher required). It is specifically designed for context-aware recommendations. 
+**[CARSKit](https://github.com/irecsys/CARSKit/)** is an open-source Java-based context-aware recommendation engine, where it can be used, modified and distributed under the terms of the GNU General Public License. (JDK 7 or higher required). It is specifically designed for context-aware recommendations. 
+
+System Requirements & Compilation:
+
+* Java Version: JDK 7 or higher is required.
+
+* Note on Modern JDKs: The latest version, CARSKit v0.4.0, allows you to use newer JDKs (up to JDK 19) as your compilation environment. However, to ensure compatibility, you must configure your compiler's source and target release levels (bytecode version) to Java 1.7.
+
 
 **[DeepCARSKit](https://github.com/irecsys/DeepCARSKit/)** is an open-source deep-learning based context-aware recommendation library under MIT License.  It is specifically designed for context-aware recommendations. 
 
@@ -53,7 +60,7 @@ Please cite the following papers if you use CARSKit in your research:
 }
 ```
 ### Downloads (Latest)
-* **[CARSKit-v0.3.5.jar](https://github.com/irecsys/CARSKit/raw/master/jar/CARSKit-v0.3.5.jar)**
+* **[CARSKit-v0.4.0.jar](https://github.com/irecsys/CARSKit/raw/refs/heads/master/jar/CARSKit-v0.4.0.jar)**
 * **[Configuration file](https://raw.githubusercontent.com/irecsys/CARSKit/master/setting.conf)**
 
 ### Data Sets
@@ -76,6 +83,10 @@ I would like to show our gratitude to Dr. Guibing Guo (the author of LibRec) for
 
 ### Release Notes
 ------------------
+**2026/04/29, Version 0.4.0**
+* DK Compatibility: Supports compilation using JDK 7 to 19, provided that the target bytecode version is set to JDK 7.
+* New Evaluation Strategy: Introduces the "eval.strategy" configuration in setting.conf with ucu and uc options, where the uc mode aligns with the evaluation logic used in DeepCARSKit.
+
 **2019/02/18, Version 0.3.5**
 * Fix the issue in top-N recommendation evaluations. It evaluates top-5 and top-10 by default. In addition, you can set up a new value for N, so that CARSKit will produce top-N recommendation results based on top-5, 10 and N.
 * Fix the issue in the train-test evaluations when you explicitly supply training and testing set in the configuration file. In CARSKit v0.3.5, the transformation process will go through both training and testing set, and produce transformed files with consistent formats.

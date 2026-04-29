@@ -2,5 +2,7 @@
 *.log
 *.txt
 *.zip
-out\
-.idea\
+out/
+.idea/
+*.html
+*.iml

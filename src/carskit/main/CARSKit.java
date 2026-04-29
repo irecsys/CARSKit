@@ -67,7 +67,7 @@ import carskit.alg.cars.transformation.prefiltering.splitting.*;
 
 public class CARSKit {
     // version: MAJOR version (significant changes), followed by MINOR version (small changes, bug fixes)
-    protected static String version = "0.3.5";
+    protected static String version = "0.4.0";
     protected static String defaultConfigFileName = "setting.conf";
     // is only to print measurements
     public static boolean isMeasuresOnly = false;
@@ -107,6 +107,9 @@ public class CARSKit {
      * run the library
      */
     protected void execute(String[] args) throws Exception {
+
+        Logs.info("Welcome to CARSKit version " + version + ".");
+
         // process librec arguments
         cmdLine(args);
 

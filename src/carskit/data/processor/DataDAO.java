@@ -122,22 +122,22 @@ public class DataDAO {
                    HashMap<Integer,  ArrayList<Integer>> contextConditionsList, HashMap<Integer, Integer> uiUserIds, HashMap<Integer, Integer>  uiItemIds) {
         dataPath = path;
 
-        this.userIds = (userIds==null) ? HashBiMap.create() : (HashBiMap)userIds;
-        this.itemIds = (itemIds==null) ? HashBiMap.create() : (HashBiMap)itemIds;
-        this.ctxIds = (ctxIds==null) ? HashBiMap.create() : (HashBiMap)ctxIds;
-        this.uiIds = (uiIds==null) ? HashBiMap.create() : (HashBiMap)uiIds;
-        this.dimIds = (dimIds==null) ? HashBiMap.create() : (HashBiMap)dimIds;
-        this.condIds = (condIds==null) ? HashBiMap.create() : (HashBiMap)condIds;
+        this.userIds = (userIds==null) ? HashBiMap.<String, Integer>create() : (HashBiMap<String, Integer>)userIds;
+        this.itemIds = (itemIds==null) ? HashBiMap.<String, Integer>create() : (HashBiMap<String, Integer>)itemIds;
+        this.ctxIds = (ctxIds==null) ? HashBiMap.<String, Integer>create() : (HashBiMap<String, Integer>)ctxIds;
+        this.uiIds = (uiIds==null) ? HashBiMap.<String, Integer>create() : (HashBiMap<String, Integer>)uiIds;
+        this.dimIds = (dimIds==null) ? HashBiMap.<String, Integer>create() : (HashBiMap<String, Integer>)dimIds;
+        this.condIds = (condIds==null) ? HashBiMap.<String, Integer>create() : (HashBiMap<String, Integer>)condIds;
 
-        this.uRatedList = (uRatedList==null) ? HashMultimap.create() : (HashMultimap)uRatedList;
-        this.iRatedList = (iRatedList==null) ? HashMultimap.create() : (HashMultimap)iRatedList;
-        this.dimConditionsList = (dimConditionsList==null) ? HashMultimap.create() : (HashMultimap)dimConditionsList;
-        this.condContextsList = (condContextsList==null) ? HashMultimap.create() : (HashMultimap)condContextsList;
-        this.contextConditionsList = (contextConditionsList==null) ? new HashMap<Integer,  ArrayList<Integer>>() : contextConditionsList;
+        this.uRatedList = (uRatedList==null) ? HashMultimap.<Integer, Integer>create() : (HashMultimap<Integer, Integer>)uRatedList;
+        this.iRatedList = (iRatedList==null) ? HashMultimap.<Integer, Integer>create() : (HashMultimap<Integer, Integer>)iRatedList;
+        this.dimConditionsList = (dimConditionsList==null) ? HashMultimap.<Integer, Integer>create() : (HashMultimap<Integer, Integer>)dimConditionsList;
+        this.condContextsList = (condContextsList==null) ? HashMultimap.<Integer, Integer>create() : (HashMultimap<Integer, Integer>)condContextsList;
 
-        this.uiUserIds = (uiUserIds==null)?new HashMap<>():(HashMap)uiUserIds;
-        this.uiItemIds = (uiItemIds==null)?new HashMap<>():(HashMap)uiItemIds;
-        this.condDimensionMap = (condDimensionMap==null)?new HashMap<>():(HashMap)condDimensionMap;
+        this.uiUserIds = (uiUserIds==null)?new HashMap<Integer, Integer>():(HashMap<Integer, Integer>)uiUserIds;
+        this.uiItemIds = (uiItemIds==null)?new HashMap<Integer, Integer>():(HashMap<Integer, Integer>)uiItemIds;
+        this.condDimensionMap = (condDimensionMap==null)?new HashMap<Integer, Integer>():(HashMap<Integer, Integer>)condDimensionMap;
+        this.contextConditionsList = (contextConditionsList==null) ? new HashMap<Integer, ArrayList<Integer>>() : (HashMap<Integer, ArrayList<Integer>>)contextConditionsList;
 
         scaleDist = HashMultiset.create();
     }

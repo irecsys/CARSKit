@@ -388,37 +388,33 @@ public class ExactFiltering extends Recommender {
                 Map<Integer, Double> ndcgs = Measures.nDCGAt(rankedItems, correctItems, cutoffs);
                 Map<Integer, Double> rrs = Measures.RRAt(rankedItems, correctItems, cutoffs);
 
-                c_precs5.add(precs.get(5));
-                c_precs10.add(precs.get(10));
-                c_precsN.add(precs.get(numRecs));
-                c_recalls5.add(recalls.get(5));
-                c_recalls10.add(recalls.get(10));
-                c_recallsN.add(recalls.get(numRecs));
+                // ======== adapt to evaluation strategies ========
+                if (evalStrategy.equals("uc")) {
+                    precs5.add(precs.get(5));       precs10.add(precs.get(10));       precsN.add(precs.get(numRecs));
+                    recalls5.add(recalls.get(5));   recalls10.add(recalls.get(10));   recallsN.add(recalls.get(numRecs));
+                    aucs5.add(aucs.get(5));         aucs10.add(aucs.get(10));         aucsN.add(aucs.get(numRecs));
+                    aps5.add(aps.get(5));           aps10.add(aps.get(10));           apsN.add(aps.get(numRecs));
+                    rrs5.add(rrs.get(5));           rrs10.add(rrs.get(10));           rrsN.add(rrs.get(numRecs));
+                    ndcgs5.add(ndcgs.get(5));       ndcgs10.add(ndcgs.get(10));       ndcgsN.add(ndcgs.get(numRecs));
 
+                    if (isDiverseUsed) {
+                        ds5.add(diverseAt(rankedItems, 5));
+                        ds10.add(diverseAt(rankedItems, 10));
+                        dsN.add(diverseAt(rankedItems, numRecs));
+                    }
+                } else {
+                    c_precs5.add(precs.get(5));       c_precs10.add(precs.get(10));       c_precsN.add(precs.get(numRecs));
+                    c_recalls5.add(recalls.get(5));   c_recalls10.add(recalls.get(10));   c_recallsN.add(recalls.get(numRecs));
+                    c_aucs5.add(aucs.get(5));         c_aucs10.add(aucs.get(10));         c_aucsN.add(aucs.get(numRecs));
+                    c_aps5.add(aps.get(5));           c_aps10.add(aps.get(10));           c_apsN.add(aps.get(numRecs));
+                    c_rrs5.add(rrs.get(5));           c_rrs10.add(rrs.get(10));           c_rrsN.add(rrs.get(numRecs));
+                    c_ndcgs5.add(ndcgs.get(5));       c_ndcgs10.add(ndcgs.get(10));       c_ndcgsN.add(ndcgs.get(numRecs));
 
-                c_aucs5.add(aucs.get(5));
-                c_aps5.add(aps.get(5));
-                c_rrs5.add(rrs.get(5));
-                c_ndcgs5.add(ndcgs.get(5));
-                c_aucs10.add(aucs.get(10));
-                c_aps10.add(aps.get(10));
-                c_rrs10.add(rrs.get(10));
-                c_ndcgs10.add(ndcgs.get(10));
-                c_aucsN.add(aucs.get(numRecs));
-                c_apsN.add(aps.get(numRecs));
-                c_rrsN.add(rrs.get(numRecs));
-                c_ndcgsN.add(ndcgs.get(numRecs));
-
-
-                // diversity
-                if (isDiverseUsed) {
-                    double d5 = diverseAt(rankedItems, 5);
-                    double d10 = diverseAt(rankedItems, 10);
-                    double dN = diverseAt(rankedItems, numRecs);
-
-                    c_ds5.add(d5);
-                    c_ds10.add(d10);
-                    c_dsN.add(dN);
+                    if (isDiverseUsed) {
+                        c_ds5.add(diverseAt(rankedItems, 5));
+                        c_ds10.add(diverseAt(rankedItems, 10));
+                        c_dsN.add(diverseAt(rankedItems, numRecs));
+                    }
                 }
 
                 // output predictions
@@ -432,28 +428,30 @@ public class ExactFiltering extends Recommender {
                 }
             } // end a context
 
-            // calculate metrics for a specific user averaged by contexts
-            ds5.add(isDiverseUsed ? Stats.mean(c_ds5) : 0.0);
-            ds10.add(isDiverseUsed ? Stats.mean(c_ds10) : 0.0);
-            dsN.add(isDiverseUsed ? Stats.mean(c_dsN) : 0.0);
-            precs5.add(Stats.mean(c_precs5));
-            precs10.add(Stats.mean(c_precs10));
-            precsN.add(Stats.mean(c_precsN));
-            recalls5.add(Stats.mean(c_recalls5));
-            recalls10.add(Stats.mean(c_recalls10));
-            recallsN.add(Stats.mean(c_recallsN));
-            aucs5.add(Stats.mean(c_aucs5));
-            ndcgs5.add(Stats.mean(c_ndcgs5));
-            aps5.add(Stats.mean(c_aps5));
-            rrs5.add(Stats.mean(c_rrs5));
-            aucs10.add(Stats.mean(c_aucs10));
-            ndcgs10.add(Stats.mean(c_ndcgs10));
-            aps10.add(Stats.mean(c_aps10));
-            rrs10.add(Stats.mean(c_rrs10));
-            aucsN.add(Stats.mean(c_aucsN));
-            ndcgsN.add(Stats.mean(c_ndcgsN));
-            apsN.add(Stats.mean(c_apsN));
-            rrsN.add(Stats.mean(c_rrsN));
+            if (!evalStrategy.equals("uc")) {
+                // calculate metrics for a specific user averaged by contexts
+                ds5.add(isDiverseUsed ? Stats.mean(c_ds5) : 0.0);
+                ds10.add(isDiverseUsed ? Stats.mean(c_ds10) : 0.0);
+                dsN.add(isDiverseUsed ? Stats.mean(c_dsN) : 0.0);
+                precs5.add(Stats.mean(c_precs5));
+                precs10.add(Stats.mean(c_precs10));
+                precsN.add(Stats.mean(c_precsN));
+                recalls5.add(Stats.mean(c_recalls5));
+                recalls10.add(Stats.mean(c_recalls10));
+                recallsN.add(Stats.mean(c_recallsN));
+                aucs5.add(Stats.mean(c_aucs5));
+                ndcgs5.add(Stats.mean(c_ndcgs5));
+                aps5.add(Stats.mean(c_aps5));
+                rrs5.add(Stats.mean(c_rrs5));
+                aucs10.add(Stats.mean(c_aucs10));
+                ndcgs10.add(Stats.mean(c_ndcgs10));
+                aps10.add(Stats.mean(c_aps10));
+                rrs10.add(Stats.mean(c_rrs10));
+                aucsN.add(Stats.mean(c_aucsN));
+                ndcgsN.add(Stats.mean(c_ndcgsN));
+                apsN.add(Stats.mean(c_apsN));
+                rrsN.add(Stats.mean(c_rrsN));
+            }
         }
         //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 

@@ -84,7 +84,7 @@ I would like to show our gratitude to Dr. Guibing Guo (the author of LibRec) for
 ### Release Notes
 ------------------
 **2026/04/29, Version 0.4.0**
-* DK Compatibility: Supports compilation using JDK 7 to 19, provided that the target bytecode version is set to JDK 7.
+* JDK Compatibility: Supports compilation using JDK 7 to 19, provided that the target bytecode version is set to 7.
 * New Evaluation Strategy: Introduces the "eval.strategy" configuration in setting.conf with ucu and uc options, where the uc mode aligns with the evaluation logic used in DeepCARSKit.
 
 **2019/02/18, Version 0.3.5**

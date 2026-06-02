@@ -6,8 +6,8 @@
 [![java](https://badges.aleen42.com/src/java.svg)](https://www.oracle.com/java/technologies/javase/javase7-archive-downloads.html)
 [![Website carskit.github.io](https://img.shields.io/website-up-down-green-red/http/monip.org.svg)](https://carskit.github.io/)
 [![Citation Badge](https://api.juleskreuer.eu/citation-badge.php?doi=10.1109/ICDMW.2015.222)](https://scholar.google.com/citations?view_op=view_citation&hl=en&citation_for_view=0FENWMcAAAAJ:ML0RJ9NH7IQC)
-[![DOI:10.1007/978-3-319-76207-4_15](https://zenodo.org/badge/DOI/10.1109/ICDMW.2015.222.svg)](https://doi.org/10.1109/ICDMW.2015.222)
-[![Twitter](https://img.shields.io/twitter/url/https/twitter.com/cloudposse.svg?style=social&label=Follow%20%40DeepCARSKit)](https://twitter.com/DeepCARSKit)
+[![IEEE ICDM Digital Library](https://img.shields.io/badge/IEEE%20ICDM-0085CA?logo=acm&logoColor=fff&style=flat)](https://doi.org/10.1109/ICDMW.2015.222)
+
 
 [![CARSKit Website](images/intro-img1.jpg)](https://carskit.github.io/)
 
